@@ -19,6 +19,10 @@ import { from } from 'rxjs';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserComponent } from './components/user/user.component';
 import { AssessmentComponent } from './components/assessment/assessment.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
+import { RegistryListComponent } from './components/registry-list/registry-list.component';
+import { RegistryComponent } from './components/registry/registry.component';
 
 @NgModule({
   imports: [
@@ -35,7 +39,11 @@ import { AssessmentComponent } from './components/assessment/assessment.componen
     FooterComponent,
     HomeComponent,
     UserComponent,
-    AssessmentComponent
+    AssessmentComponent,
+    UserListComponent,
+    AssessmentListComponent,
+    RegistryListComponent,
+    RegistryComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

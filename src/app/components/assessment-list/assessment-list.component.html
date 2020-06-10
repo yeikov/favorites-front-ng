@@ -1,0 +1,8 @@
+<div *ngIf="res">
+    <h5 class="card-title">{{media}}</h5>
+    <p class="card-text" *ngIf="favorite">lista de favoritos.</p>
+    <p class="card-text" *ngIf="recommend">lista de recomendaciones.</p>
+
+    <p *ngFor="let assessment of res.content"  >{{assessment.registry.title}}</p>
+    
+</div>

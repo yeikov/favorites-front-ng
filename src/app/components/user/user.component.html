@@ -1,1 +1,50 @@
-<p>user works!</p>
+
+
+<div class=row>
+    <div class=col-2>
+        <div class="card" style="/* width: 18rem; */">
+            <div class="card-body">
+                <h5 class="card-title">Usuario</h5>
+                <p class="card-text">...</p>
+                <p>{{user.name}}, <span style="font-family: monospace;">from {{user.city}} ({{user.birdth==null ?'...':user.birdth}})</span></p>
+                <pre *ngIf=userIn>{{user | json}}</pre>
+        
+            </div>
+        </div>
+    </div>
+    <div class=col-10 *ngIf=userIn>
+        <p>Los más valorados</p>
+        <div class=row>
+            <div class=col-3>
+                <app-assessment-list media="book" assessment='favorite' [userId]='paramId'></app-assessment-list>
+            </div>
+            <div class=col-3>
+                <app-assessment-list media="film" assessment='favorite' [userId]='paramId'></app-assessment-list>
+            </div>
+            <div class=col-3>
+                <app-assessment-list media="comic" assessment='favorite' [userId]='paramId'></app-assessment-list>
+            </div>
+            <div class=col-3>
+                <app-assessment-list media="serie" assessment='favorite' [userId]='paramId'></app-assessment-list>
+            </div>
+        </div>
+        <hr>
+        <p>Los más recomendados</p>
+        <div class=row>
+            <div class=col-3>
+                <app-assessment-list media="book" assessment='recommend' [userId]='paramId'></app-assessment-list>
+            </div>
+            <div class=col-3>
+                <app-assessment-list media="film" assessment='recommend' [userId]='paramId'></app-assessment-list>
+            </div>
+            <div class=col-3>
+                <app-assessment-list media="comic" assessment='recommend' [userId]='paramId'></app-assessment-list>
+            </div>
+            <div class=col-3>
+                <app-assessment-list media="serie" assessment='recommend' [userId]='paramId'></app-assessment-list>
+            </div>
+        </div>
+
+    </div>
+
+</div>
