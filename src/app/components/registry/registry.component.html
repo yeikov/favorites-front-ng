@@ -1,1 +1,35 @@
-<p>registry works!</p>
+<div class=row>
+    <div class=col-6>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">registry</h5>
+                <p><span style="font-family: monospace; ">Title:</span> <span
+                        style="font-weight: bold;">{{registry.title}}</span></p>
+                <p><span style="font-family: monospace; ">Media:</span> <span
+                        style="font-weight: bold;">{{registry.media}}
+                    </span>
+                </p>
+                <p><span style="font-family: monospace; ">Author:</span> <span
+                        style="font-weight: bold;">{{registry.author}}
+                    </span>
+                </p>
+                <p><span style="font-family: monospace; ">Production Date:</span> <span
+                        style="font-weight: bold;">{{registry.productionDate}}</span></p>
+                <p>
+                    <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                        aria-controls="collapseExample">
+                        +
+                    </span>
+                </p>
+                <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                    <div class="card">
+                        <div class="card-body">
+                            <code><pre *ngIf=registryIn>{{registry | json}}</pre></code>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

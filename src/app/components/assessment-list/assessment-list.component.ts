@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { AssessmentService } from 'src/app/services/assessment.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-assessment-list',
@@ -18,7 +19,7 @@ export class AssessmentListComponent implements OnInit {
 
 
 
-  constructor(private assessmentService: AssessmentService) { }
+  constructor(private assessmentService: AssessmentService, private router: Router) { }
 
   resIn: boolean = false;
   res;
@@ -49,6 +50,16 @@ export class AssessmentListComponent implements OnInit {
         this.resIn = true;
       });
     }
+  }
+
+  item (assessment) {
+    console.log(assessment);
+    if (this.userId==null){
+      this.router.navigate(['registry/'+ assessment.registry.id])
+    } else{
+      this.router.navigate(['assessment/' + assessment.id]);
+    }
+
   }
 
 }

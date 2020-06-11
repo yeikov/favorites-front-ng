@@ -1,8 +1,11 @@
 <div *ngIf="res">
     <h5 class="card-title">{{media}}</h5>
-    <p class="card-text" *ngIf="favorite">lista de favoritos.</p>
-    <p class="card-text" *ngIf="recommend">lista de recomendaciones.</p>
+    <!-- <p class="card-text" *ngIf="favorite" style="font-family: monospace;">lista de favoritos.</p>
+    <p class="card-text" *ngIf="recommend" style="font-family: monospace;">lista de recomendaciones.</p> -->
+    <hr>
+        <div *ngFor="let assessment of res.content" (click)="item(assessment)" >
 
-    <p *ngFor="let assessment of res.content"  >{{assessment.registry.title}}</p>
+            <p >{{assessment.registry.title}}</p>
+        </div>
     
 </div>

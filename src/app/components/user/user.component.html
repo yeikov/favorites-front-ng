@@ -4,16 +4,31 @@
     <div class=col-2>
         <div class="card" style="/* width: 18rem; */">
             <div class="card-body">
-                <h5 class="card-title">Usuario</h5>
-                <p class="card-text">...</p>
-                <p>{{user.name}}, <span style="font-family: monospace;">from {{user.city}} ({{user.birdth==null ?'...':user.birdth}})</span></p>
-                <pre *ngIf=userIn>{{user | json}}</pre>
+                <h5 class="card-title">User</h5>
+                <p><span style="font-family: monospace; ">Name:</span> <span style="font-weight: bold;">{{user.name}}</span></p>
+                <p><span style="font-family: monospace; ">City:</span> <span style="font-weight: bold;">{{user.city}} </span>
+                    
+                </p>
+                <p><span style="font-family: monospace; ">Born:</span> <span style="font-weight: bold;">({{user.birdth==null ?'...':user.birdth}})</span></p>
+                <p>
+                    <span (click)="isCollapsed = !isCollapsed"
+                            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+                      +
+                </span>
+                  </p>
+                <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                    <div class="card">
+                      <div class="card-body">
+                        <code><pre *ngIf=userIn>{{user | json}}</pre></code>
+                      </div>
+                    </div>
+                  </div>
         
             </div>
         </div>
     </div>
     <div class=col-10 *ngIf=userIn>
-        <p>Los más valorados</p>
+        <p>Most valued</p>
         <div class=row>
             <div class=col-3>
                 <app-assessment-list media="book" assessment='favorite' [userId]='paramId'></app-assessment-list>
@@ -29,7 +44,7 @@
             </div>
         </div>
         <hr>
-        <p>Los más recomendados</p>
+        <p>Most recommended</p>
         <div class=row>
             <div class=col-3>
                 <app-assessment-list media="book" assessment='recommend' [userId]='paramId'></app-assessment-list>

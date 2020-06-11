@@ -15,8 +15,13 @@ export class AssessmentService {
 
   assessmentUrl = this.fU.backendUrl + '/assessments';
 
+  
+  one(assessmentId): Observable<any> {
+    return this.http.get(this.assessmentUrl+'/'+assessmentId);
+  }
+
   user(userId): Observable<any> {
-    return this.http.get(this.assessmentUrl + '/user/' + userId)
+    return this.http.get(this.assessmentUrl + '/user/' + userId);
   }
 
   media(media): Observable<any> {

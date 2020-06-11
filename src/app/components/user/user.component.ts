@@ -9,11 +9,11 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  public isCollapsed = true;
 
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute) { }
-
 
   user;
   userIn: boolean = false;
