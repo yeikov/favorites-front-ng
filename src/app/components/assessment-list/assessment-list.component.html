@@ -3,9 +3,10 @@
     <!-- <p class="card-text" *ngIf="favorite" style="font-family: monospace;">lista de favoritos.</p>
     <p class="card-text" *ngIf="recommend" style="font-family: monospace;">lista de recomendaciones.</p> -->
     <hr>
-        <div *ngFor="let assessment of res.content" (click)="item(assessment)" >
-
-            <p >{{assessment.registry.title}}</p>
+        <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" *ngFor="let assessment of res.content" (click)="item(assessment)">
+            <p>
+                {{assessment.registry.title}}
+            </p>
         </div>
     
 </div>

@@ -28,25 +28,36 @@ export class AssessmentListComponent implements OnInit {
   recommend: boolean = false;
 
   ngOnInit(): void {
+    /*varios escenarios
+    *[1]-home. mostrará resultados estadísticos
+     [2]-usuario. mostrará valoraciones de un usuario
+     [a]-mostrará favoritos
+     [b]-mostrará recomendaciones
+    */
 
     console.log('->', this.media, this.assessment, this.userId)
     if (this.assessment == 'favorite') {
       this.favorite = true;
     } else {
-
       this.recommend = true;
     }
 
     if(this.userId == null || this.userId == undefined){
-
+      //en este caso se muestran en home con resultados generales [1]
       this.res = this.assessmentService.media(this.media).subscribe(res => {
         this.res = res;
+        
         this.resIn = true;
       });
     } else {
-      
+      //en este caso se muestran en el detalle de usuario [2]
       this.res = this.assessmentService.userMedia(this.userId, this.media).subscribe(res => {
         this.res = res;
+        if(this.assessment=='favorite'){
+          this.res.content = this.res.content.filter(r => r.favorite!=0).sort(function(a,b){return a.favorite - b.favorite});
+        } else {
+          this.res.content = this.res.content.filter(r => r.recommend!=0).sort(function(a,b){return a.recommend - b.recommend});
+        }
         this.resIn = true;
       });
     }
