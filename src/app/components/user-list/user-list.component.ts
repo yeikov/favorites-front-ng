@@ -14,7 +14,7 @@ export class UserListComponent implements OnInit {
 
   res
   resIn:boolean;
-  criterio = 'recientes'
+  criterio = 'recientes';
 
   ngOnInit(): void {
 

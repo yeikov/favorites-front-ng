@@ -18,7 +18,6 @@ export class AssessmentListComponent implements OnInit {
   userId: String;
 
 
-
   constructor(private assessmentService: AssessmentService, private router: Router) { }
 
   resIn: boolean = false;

@@ -12,10 +12,19 @@ export class RegistryService {
 
   constructor(private http: HttpClient, private fU: FavoriteUtilities) { }
 
+ 
   entityUrl = this.fU.backendUrl +'/registries';
 
   one(id): Observable<any>{
     return this.http.get(this.entityUrl+'/'+id)
   }
 
+  topFavorite(media): Observable<any> {
+    return this.http.get(this.entityUrl + "/topFavorite/"+ media);
+  }
+
+  topRecommend(media): Observable<any> {
+    return this.http.get(this.entityUrl + "/topRecommend/"+ media);
+  }
+  
 }
