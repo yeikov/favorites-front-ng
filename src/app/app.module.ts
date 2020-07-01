@@ -23,6 +23,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
 import { RegistryListComponent } from './components/registry-list/registry-list.component';
 import { RegistryComponent } from './components/registry/registry.component';
+import { LoginComponent } from './common/login/login.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { RegistryComponent } from './components/registry/registry.component';
     UserListComponent,
     AssessmentListComponent,
     RegistryListComponent,
-    RegistryComponent
+    RegistryComponent,
+    LoginComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

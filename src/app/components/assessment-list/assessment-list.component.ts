@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 
 import { AssessmentService } from 'src/app/services/assessment.service';
 import { Router } from '@angular/router';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-assessment-list',
@@ -18,7 +19,10 @@ export class AssessmentListComponent implements OnInit {
   userId: String;
 
 
-  constructor(private assessmentService: AssessmentService, private router: Router) { }
+  constructor(
+    private assessmentService: AssessmentService, 
+    public sessionService: SessionService, 
+    private router: Router) { }
 
   resIn: boolean = false;
   res;
@@ -28,7 +32,7 @@ export class AssessmentListComponent implements OnInit {
 
   ngOnInit(): void {
     /*varios escenarios
-    *[1]-home. mostrará resultados estadísticos
+    *
      [2]-usuario. mostrará valoraciones de un usuario
      [a]-mostrará favoritos
      [b]-mostrará recomendaciones
@@ -41,14 +45,14 @@ export class AssessmentListComponent implements OnInit {
       this.recommend = true;
     }
 
-    if(this.userId == null || this.userId == undefined){
+    /* if(this.userId == null || this.userId == undefined){
       //en este caso se muestran en home con resultados generales [1]
       this.res = this.assessmentService.media(this.media).subscribe(res => {
         this.res = res;
         
         this.resIn = true;
       });
-    } else {
+    } else { */
       //en este caso se muestran en el detalle de usuario [2]
       this.res = this.assessmentService.userMedia(this.userId, this.media).subscribe(res => {
         this.res = res;
@@ -59,7 +63,7 @@ export class AssessmentListComponent implements OnInit {
         }
         this.resIn = true;
       });
-    }
+    /* } */
   }
 
   item (assessment) {

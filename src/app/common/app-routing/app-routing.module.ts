@@ -5,6 +5,8 @@ import { RouterModule, Routes } from '@angular/router';
 //??
 import { CommonModule } from '@angular/common';
 
+//common
+import { LoginComponent } from 'src/app/common/login/login.component';
 //app
 import { HomeComponent } from 'src/app/components/home/home.component';
 import { UserComponent } from 'src/app/components/user/user.component';
@@ -18,6 +20,7 @@ import { RegistryComponent } from 'src/app/components/registry/registry.componen
 const routes: Routes = [
   { path: '', redirectTo:'/home', pathMatch: 'full'},
   { path: 'home', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'user/:id', component: UserComponent },
   { path: 'assessment/:id', component: AssessmentComponent },
   { path: 'registry/:id', component: RegistryComponent },

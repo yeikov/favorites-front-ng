@@ -13,12 +13,14 @@ export class UserService {
 
   usersUrl = this.fU.backendUrl +'/users';
 
-
   recent(criterio): Observable<any>{
     return this.http.get(this.usersUrl+'/recent/'+criterio)
   }
   one(id): Observable<any>{
     return this.http.get(this.usersUrl+'/'+id)
+  }
+  oneByEmail(eMail):Observable<any>{
+    return this.http.post(this.usersUrl+'/email', {eMail: eMail});
   }
 
 }

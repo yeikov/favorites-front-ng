@@ -1,4 +1,4 @@
-<div *ngIf="res">
+<div *ngIf="resIn">
     <h5 class="card-title">{{media}}</h5>
     <!-- <p class="card-text" *ngIf="favorite" style="font-family: monospace;">lista de favoritos.</p>
     <p class="card-text" *ngIf="recommend" style="font-family: monospace;">lista de recomendaciones.</p> -->
@@ -7,6 +7,9 @@
             <p>
                 {{assessment.registry.title}}
             </p>
+        </div>
+        <div *ngIf="sessionService.userLogged && res.content.length<8">
+            <p><span style="color: red;">+</span></p>
         </div>
     
 </div>

@@ -12,12 +12,15 @@
     
     <ul class="nav justify-content-end" style="margin: 1rem;">
         <li class="nav-item">
-            <a class="nav-link" href="#">Home</a>
+            <a class="nav-link" (click)="goto('home')">Home</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Users</a>
+            <a class="nav-link" aria-disabled>Find users</a>
         </li>  
-        <li class="nav-item">
-            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Sing In</a>
+        <li class="nav-item" *ngIf=!sessionService.userLogged>
+            <a class="nav-link" (click)="goto('login')">Log In</a>
+        </li>
+        <li class="nav-item" *ngIf=sessionService.userLogged>   
+            <a class="nav-link" (click)="logOut()">Log Out</a>
         </li>
     </ul>
