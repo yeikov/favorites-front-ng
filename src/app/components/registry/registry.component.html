@@ -2,7 +2,7 @@
     <div class=col-6>
         <div class="card">
             <div class="card-body" *ngIf=registryIn>
-                <h5 class="card-title">registry</h5>
+                <h5 class="card-title">Registry</h5>
                 <p><span style="font-family: monospace; ">Title:</span> <span
                         style="font-weight: bold;">{{registry.title}}</span></p>
                 <p><span style="font-family: monospace; ">Media:</span> <span
@@ -15,6 +15,31 @@
                 </p>
                 <p><span style="font-family: monospace; ">Production Date:</span> <span
                         style="font-weight: bold;">{{registry.productionDate}}</span></p>
+
+
+            </div>
+
+            <div class="card-body" *ngIf=assessmentsIn>
+                <h5 class="card-title">Assessments</h5>
+                <div class="card">
+                    <ul>
+                        <li *ngFor="let assessment of assessments" (click)="item(assessment)">
+
+                            <p class="notes">
+                                <!-- <span style="font-family: monospace; ">User: </span> <span
+                                    style="font-weight: bold;">
+                                </span> -->
+                                {{assessment.user.name}} - {{assessment.user.city}}
+                                <span style="font-weight: bold;">{{assessment.favorite}}</span>
+                                <span style="font-family: monospace; ">Favorite:</span>
+                                <span style="font-weight: bold;">{{assessment.recommend}}</span>
+                                <span style="font-family: monospace; ">Recommend:</span>
+                            </p>
+                            <p style="text-align: right;">{{assessment.notes}}</p>
+
+                        </li>
+                    </ul>
+                </div>
                 <p>
                     <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
                         aria-controls="collapseExample">
@@ -25,6 +50,7 @@
                     <div class="card">
                         <div class="card-body">
                             <code><pre *ngIf=registryIn>{{registry | json}}</pre></code>
+                            <code><pre *ngIf=assessmentsIn>{{assessments | json}}</pre></code>
                         </div>
                     </div>
                 </div>

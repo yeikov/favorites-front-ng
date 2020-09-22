@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RegistryService } from 'src/app/services/registry.service';
+import { AssessmentService } from 'src/app/services/assessment.service';
 
 @Component({
   selector: 'app-registry',
@@ -11,11 +12,15 @@ export class RegistryComponent implements OnInit {
   paramId;
   registry;
   registryIn;
+  assessments;
+  assessmentsIn;
   isCollapsed = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private router: Router,
     private registryService: RegistryService,
+    private assessmentService: AssessmentService,
     ) { }
 
   ngOnInit(): void {
@@ -30,7 +35,16 @@ export class RegistryComponent implements OnInit {
     this.registryService.one(this.paramId).subscribe(res => {
       this.registry = res,
       this.registryIn = true
+    });
+    this.assessmentService.registry(this.paramId).subscribe(res => {
+      this.assessments = res.content,
+      this.assessmentsIn = true
     })
+  }
+
+  item (assessment) {
+    console.log(assessment);
+    this.router.navigate(['assessment/'+ assessment.id])
   }
 
 }

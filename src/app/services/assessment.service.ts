@@ -32,5 +32,9 @@ export class AssessmentService {
     return this.http.get(this.assessmentUrl + "/user/"+userId+ "/" + media);
   }
 
+  registry(registryId): Observable<any> {
+    return this.http.get(this.assessmentUrl + "/registry/"+registryId);
+  }
+
 
 }
