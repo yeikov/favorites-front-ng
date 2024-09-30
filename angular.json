@@ -122,5 +122,8 @@
       }
     }
   },
-  "defaultProject": "favorites-front-ng"
+  "defaultProject": "favorites-front-ng",
+  "cli": {
+    "analytics": false
+  }
 }
