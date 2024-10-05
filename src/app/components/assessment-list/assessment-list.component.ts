@@ -16,7 +16,7 @@ export class AssessmentListComponent implements OnInit {
   @Input()
   assessment: String;
   @Input()
-  userId: String;
+  userId: number;
 
 
   constructor(
