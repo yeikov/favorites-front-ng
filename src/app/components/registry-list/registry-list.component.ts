@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RegistryService } from 'src/app/services/registry.service';
+import { RegistryService } from '../../services/registry.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,10 +10,10 @@ import { Router } from '@angular/router';
 export class RegistryListComponent implements OnInit {
 
   @Input()
-  media: String;
+  media = '';
 
   @Input()
-  assessment: String;
+  assessment = '';
 
 
   constructor(
@@ -21,27 +21,28 @@ export class RegistryListComponent implements OnInit {
     private router: Router
   ) { }
 
+  entityListName = 'registryList';
   resIn:boolean = false;
-  res;
+  list: any;
 
 
   ngOnInit(): void {
     if (this.assessment == 'recommend'){
-      this.registryService.topRecommend(this.media).subscribe(res=>{
-        this.res = res;
+      this.registryService.topRecommend(this.media).subscribe((res: any)=>{
+        this.list = res._embedded[this.entityListName];
         this.resIn = true;
       })
       
     } else {
-        this.registryService.topFavorite(this.media).subscribe(res=>{
-          this.res = res;
+        this.registryService.topFavorite(this.media).subscribe((res: any)=>{
+          this.list = res._embedded[this.entityListName];
           this.resIn = true;
         })
     }
 
   }
 
-  item (registry) {
+  item (registry: any) {
     console.log(registry);
       this.router.navigate(['registry/'+ registry.id])
   }

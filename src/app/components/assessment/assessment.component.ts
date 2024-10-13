@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AssessmentService } from 'src/app/services/assessment.service';
+import { AssessmentService } from '../../services/assessment.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -15,14 +15,14 @@ export class AssessmentComponent implements OnInit {
     private router: Router
     ) { }
 
-    assessment;
+    assessment: any;
     assessmentIn: boolean = false;
   
-    paramId: number;
+    paramId: number = 0;
   
     ngOnInit(): void {
       this.activatedRoute.params.subscribe(params => {
-        this.paramId = params.id;
+        this.paramId = params['id'];
         console.log('paramId', this.paramId)
         this.datosAssessment();
       })
@@ -36,7 +36,7 @@ export class AssessmentComponent implements OnInit {
       })
     }
 
-    item(entity, id){
+    item(entity: string, id: string){
       this.router.navigate([entity+'/'+id]); 
     }
 

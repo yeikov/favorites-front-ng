@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+
 
 import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -15,14 +16,14 @@ export class UserComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute) { }
 
-  user;
+  user: any;
   userIn: boolean = false;
 
-  paramId: number;
+  paramId = '';
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.paramId = params.id;
+      this.paramId = params['id'];
       console.log('paramId', this.paramId)
       this.datosUser();
     })
@@ -30,7 +31,7 @@ export class UserComponent implements OnInit {
   }
 
   datosUser(){
-    this.userService.one(this.paramId).subscribe(res => {
+    this.userService.one(this.paramId).subscribe((res:null) => {
       this.user = res,
       this.userIn = true
     })

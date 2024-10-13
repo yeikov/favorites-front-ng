@@ -6,23 +6,23 @@ import { UserService } from './services/user.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'favorites-front-ng';
-  constructor(private userService:UserService){
+  constructor(private userService: UserService) {
 
   }
-  res
-  resIn:boolean;
-  isEmpty:boolean;
+  dataList: any;
+  resIn = false;
+  isEmpty = true;
   criterio = 'recientes';
 
   ngOnInit(): void {
     this.isEmpty = true;
 
-    this.res = this.userService.recent(this.criterio).subscribe(res => {
-      this.res = res;
+    this.userService.recent(this.criterio).subscribe(response => {
+      this.dataList = response._embedded;
       this.resIn = true;
-      if (res.content.length>0){
+      if (this.dataList?.userList?.length > 0) {
         this.isEmpty = false;
       }
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { RegistryService } from 'src/app/services/registry.service';
-import { AssessmentService } from 'src/app/services/assessment.service';
+
+import { AssessmentService } from '../../services/assessment.service';
+import { RegistryService } from '../../services/registry.service';
 
 @Component({
   selector: 'app-registry',
@@ -9,11 +10,11 @@ import { AssessmentService } from 'src/app/services/assessment.service';
   styleUrls: ['./registry.component.css']
 })
 export class RegistryComponent implements OnInit {
-  paramId;
-  registry;
-  registryIn;
-  assessments;
-  assessmentsIn;
+  paramId= '';
+  registry = null;
+  registryIn = false;
+  assessments = null;
+  assessmentsIn = false;
   isCollapsed = false;
 
   constructor(
@@ -25,24 +26,24 @@ export class RegistryComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.paramId = params.id;
+      this.paramId = params['id'];
       
       this.datosRegistry();
     })
   }
     
   datosRegistry(){
-    this.registryService.one(this.paramId).subscribe(res => {
+    this.registryService.one(this.paramId).subscribe((res: null) => {
       this.registry = res,
       this.registryIn = true
     });
-    this.assessmentService.registry(this.paramId).subscribe(res => {
+    this.assessmentService.registry(this.paramId).subscribe((res: { content: null; }) => {
       this.assessments = res.content,
       this.assessmentsIn = true
     })
   }
 
-  item (assessment) {
+  item (assessment: { id: string; }) {
     console.log(assessment);
     this.router.navigate(['assessment/'+ assessment.id])
   }

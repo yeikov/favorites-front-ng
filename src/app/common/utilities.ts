@@ -1,10 +1,6 @@
-import { environment } from "src/environments/environment";
-import { Injectable } from '@angular/core';
+import { environment } from "../../environments/environment";
 
-
-
-@Injectable({ providedIn: 'root' } )
-export class Utilities{
-    constructor(){};
-    backendUrl = environment.development.url +'/backend';    
+export const Utilities = {
+    
+    favoritesBack: environment.favoritesBackUrl + '/backend'
 }

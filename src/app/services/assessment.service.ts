@@ -1,39 +1,37 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
-
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
-import { Utilities as FavoriteUtilities } from '../common/utilities';
+import { Utilities as FavoriteUtilities, Utilities } from '../common/utilities';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssessmentService {
 
-  constructor(private http: HttpClient, private fU: FavoriteUtilities) { }
+  constructor(private http: HttpClient) { }
 
-  assessmentUrl = this.fU.backendUrl + '/assessments';
+  private entityUrl = Utilities.favoritesBack + '/assessments';
 
-  
-  one(assessmentId): Observable<any> {
-    return this.http.get(this.assessmentUrl+'/'+assessmentId);
+  one(assessmentId: string | number): Observable<any> {
+    return this.http.get(this.entityUrl+'/'+assessmentId);
   }
 
-  user(userId): Observable<any> {
-    return this.http.get(this.assessmentUrl + '/user/' + userId);
+  user(userId: string): Observable<any> {
+    return this.http.get(this.entityUrl + '/user/' + userId);
   }
 
-  media(media): Observable<any> {
-    return this.http.get(this.assessmentUrl + "/media/" + media);
+  media(media: string): Observable<any> {
+    return this.http.get(this.entityUrl + "/media/" + media);
   }
 
-  userMedia(userId, media): Observable<any> {
-    return this.http.get(this.assessmentUrl + "/user/"+userId+ "/" + media);
+  userMedia(userId: string | number, media: string | String): Observable<any> {
+    return this.http.get(this.entityUrl + "/user/"+userId+ "/" + media);
   }
 
-  registry(registryId): Observable<any> {
-    return this.http.get(this.assessmentUrl + "/registry/"+registryId);
+  registry(registryId: string): Observable<any> {
+    return this.http.get(this.entityUrl + "/registry/"+registryId);
   }
 
 

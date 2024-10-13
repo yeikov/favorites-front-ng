@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { AssessmentService } from 'src/app/services/assessment.service';
+import { AssessmentService } from '../../services/assessment.service';
 import { Router } from '@angular/router';
-import { SessionService } from 'src/app/services/session.service';
+import { SessionService } from '../../services/session.service';
 
 @Component({
   selector: 'app-assessment-list',
@@ -12,11 +12,11 @@ import { SessionService } from 'src/app/services/session.service';
 export class AssessmentListComponent implements OnInit {
 
   @Input()
-  media: String;
+  media = '';
   @Input()
-  assessment: String;
+  assessment = '';
   @Input()
-  userId: number;
+  userId = '';
 
 
   constructor(
@@ -25,7 +25,7 @@ export class AssessmentListComponent implements OnInit {
     private router: Router) { }
 
   resIn: boolean = false;
-  res;
+  res: any;
 
   favorite: boolean = false;
   recommend: boolean = false;
@@ -57,16 +57,16 @@ export class AssessmentListComponent implements OnInit {
       this.res = this.assessmentService.userMedia(this.userId, this.media).subscribe(res => {
         this.res = res;
         if(this.assessment=='favorite'){
-          this.res.content = this.res.content.filter(r => r.favorite!=0).sort(function(a,b){return a.favorite - b.favorite});
+          this.res.content = this.res.content.filter((r: { favorite: number; }) => r.favorite!=0).sort(function(a: { favorite: number; },b: { favorite: number; }){return a.favorite - b.favorite});
         } else {
-          this.res.content = this.res.content.filter(r => r.recommend!=0).sort(function(a,b){return a.recommend - b.recommend});
+          this.res.content = this.res.content.filter((r: { recommend: number; }) => r.recommend!=0).sort(function(a: { recommend: number; },b: { recommend: number; }){return a.recommend - b.recommend});
         }
         this.resIn = true;
       });
     /* } */
   }
 
-  item (assessment) {
+  item (assessment: any) {
     console.log(assessment);
     if (this.userId==null){
       this.router.navigate(['registry/'+ assessment.registry.id])

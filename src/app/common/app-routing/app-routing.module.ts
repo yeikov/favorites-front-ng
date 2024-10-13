@@ -6,12 +6,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
 //common
-import { LoginComponent } from 'src/app/common/login/login.component';
+import { LoginComponent } from '../../common/login/login.component';
 //app
-import { HomeComponent } from 'src/app/components/home/home.component';
-import { UserComponent } from 'src/app/components/user/user.component';
-import { AssessmentComponent } from 'src/app/components/assessment/assessment.component';
-import { RegistryComponent } from 'src/app/components/registry/registry.component';
+import { HomeComponent } from '../../components/home/home.component';
+import { UserComponent } from '../../components/user/user.component';
+import { AssessmentComponent } from '../../components/assessment/assessment.component';
+import { RegistryComponent } from '../../components/registry/registry.component';
 
 
 

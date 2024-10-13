@@ -1,26 +1,30 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Utilities as FavoriteUtilities} from '../common/utilities';
+import { Utilities } from '../common/utilities';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http: HttpClient, private fU: FavoriteUtilities) { }
+  constructor(private http: HttpClient) { }
 
-  usersUrl = this.fU.backendUrl +'/users';
+  private entityUrl = Utilities.favoritesBack + '/users';
 
-  recent(criterio): Observable<any>{
-    return this.http.get(this.usersUrl+'/recent/'+criterio)
+  recent(criterio: string): Observable<any> {
+    console.log(this.entityUrl);
+    return this.http.get(this.entityUrl + '/recent/' + criterio)
   }
-  one(id): Observable<any>{
-    return this.http.get(this.usersUrl+'/'+id)
+
+  one(id: string): Observable<any> {
+    return this.http.get(this.entityUrl + '/' + id)
   }
-  oneByEmail(eMail):Observable<any>{
-    return this.http.post(this.usersUrl+'/email', {eMail: eMail});
+
+  oneByEmail(eMail: any): Observable<any> {
+    return this.http.post(this.entityUrl + '/email', { eMail: eMail });
   }
 
 }
