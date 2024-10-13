@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { SessionService } from 'src/app/services/session.service';
+import { SessionService } from '../../../services/session.service';
+
 
 @Component({
   selector: 'app-header',
@@ -16,13 +17,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  goto(path){
+  goto(path: any){
     this.router.navigate([path]);
   }
   logOut(){
     this.sessionService.user.name='';
     this.sessionService.user.eMail='';
-    this.sessionService.user.id='';
+    this.sessionService.user.id=null;
     this.sessionService.userLogged=false;
 
   }

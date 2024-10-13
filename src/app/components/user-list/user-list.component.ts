@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from 'src/app/services/user.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,19 +12,19 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService,
     private router: Router) { }
 
-  res
-  resIn:boolean;
+  res: any;
+  resIn:boolean = false;
   criterio = 'recientes';
 
   ngOnInit(): void {
 
-    this.res = this.userService.recent(this.criterio).subscribe(res => {
+    this.res = this.userService.recent(this.criterio).subscribe((res: null) => {
       this.res = res;
       this.resIn = true;
     });
   }
 
-  item(id){
+  item(id: number){
     console.log(id);
     this.router.navigate(['user/' + id]);
     
