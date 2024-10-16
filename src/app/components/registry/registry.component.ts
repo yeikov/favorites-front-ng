@@ -37,8 +37,8 @@ export class RegistryComponent implements OnInit {
       this.registry = res,
       this.registryIn = true
     });
-    this.assessmentService.registry(this.paramId).subscribe((res: { content: null; }) => {
-      this.assessments = res.content,
+    this.assessmentService.registry(this.paramId).subscribe((res) => {
+      this.assessments = res,
       this.assessmentsIn = true
     })
   }

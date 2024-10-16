@@ -24,7 +24,7 @@ export class UserComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['id'];
-      console.log('paramId', this.paramId)
+      //console.log('paramId', this.paramId)
       this.datosUser();
     })
 
@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
   datosUser() {
     this.userService.one(this.paramId).subscribe((res: null) => {
       this.user = res,
-        this.userIn = true
+      this.userIn = true
     })
   }
 

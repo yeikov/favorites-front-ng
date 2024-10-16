@@ -10,18 +10,13 @@ import { SessionService } from '../../services/session.service';
   styleUrls: ['./assessment-list.component.css']
 })
 export class AssessmentListComponent implements OnInit {
-
   @Input()
-  media = '';
-  @Input()
-  assessment = '';
-  @Input()
-  userId = '';
+  user = { id: '', name: '', city: '', born: '' };
 
 
   constructor(
-    private assessmentService: AssessmentService, 
-    public sessionService: SessionService, 
+    private assessmentService: AssessmentService,
+    public sessionService: SessionService,
     private router: Router) { }
 
   resIn: boolean = false;
@@ -38,31 +33,25 @@ export class AssessmentListComponent implements OnInit {
      [b]-mostrará recomendaciones
     */
 
-    console.log('->', this.media, this.assessment, this.userId)
-    if (this.assessment == 'favorite') {
-      this.favorite = true;
-    } else {
-      this.recommend = true;
-    }
+    console.log('->', this.user)
 
-      //en este caso se muestran en el detalle de usuario [2]
-      this.assessmentService.userMedia(this.userId, this.media).subscribe(res => {
-        
-        if(this.assessment=='favorite'){
-          this.list = res.filter((r: { favorite: number; }) => r.favorite!=0).sort(function(a: { favorite: number; },b: { favorite: number; }){return a.favorite - b.favorite});
-        } else {
-          this.list = res.filter((r: { recommend: number; }) => r.recommend!=0).sort(function(a: { recommend: number; },b: { recommend: number; }){return a.recommend - b.recommend});
-        }
-        this.resIn = true;
-      });
-    
+
+    this.assessmentService.user(this.user.id).subscribe(res => {
+
+      //this.list = res.filter((r: { favorite: number; }) => r.favorite != 0).sort(function (a: { favorite: number; }, b: { favorite: number; }) { return a.favorite - b.favorite });
+
+      this.list = res;
+
+      this.resIn = true;
+    });
+
   }
 
-  item (assessment: any) {
-    console.log(assessment);
-    if (this.userId==null){
-      this.router.navigate(['registry/'+ assessment.registry.id])
-    } else{
+  item(assessment: any) {
+
+    if (this.user.id === null) {
+      this.router.navigate(['registry/' + assessment.registry.id])
+    } else {
       this.router.navigate(['assessment/' + assessment.id]);
     }
 
