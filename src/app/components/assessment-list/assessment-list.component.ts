@@ -25,7 +25,7 @@ export class AssessmentListComponent implements OnInit {
     private router: Router) { }
 
   resIn: boolean = false;
-  res: any;
+  list: any;
 
   favorite: boolean = false;
   recommend: boolean = false;
@@ -45,25 +45,17 @@ export class AssessmentListComponent implements OnInit {
       this.recommend = true;
     }
 
-    /* if(this.userId == null || this.userId == undefined){
-      //en este caso se muestran en home con resultados generales [1]
-      this.res = this.assessmentService.media(this.media).subscribe(res => {
-        this.res = res;
-        
-        this.resIn = true;
-      });
-    } else { */
       //en este caso se muestran en el detalle de usuario [2]
-      this.res = this.assessmentService.userMedia(this.userId, this.media).subscribe(res => {
-        this.res = res;
+      this.assessmentService.userMedia(this.userId, this.media).subscribe(res => {
+        
         if(this.assessment=='favorite'){
-          this.res.content = this.res.content.filter((r: { favorite: number; }) => r.favorite!=0).sort(function(a: { favorite: number; },b: { favorite: number; }){return a.favorite - b.favorite});
+          this.list = res.filter((r: { favorite: number; }) => r.favorite!=0).sort(function(a: { favorite: number; },b: { favorite: number; }){return a.favorite - b.favorite});
         } else {
-          this.res.content = this.res.content.filter((r: { recommend: number; }) => r.recommend!=0).sort(function(a: { recommend: number; },b: { recommend: number; }){return a.recommend - b.recommend});
+          this.list = res.filter((r: { recommend: number; }) => r.recommend!=0).sort(function(a: { recommend: number; },b: { recommend: number; }){return a.recommend - b.recommend});
         }
         this.resIn = true;
       });
-    /* } */
+    
   }
 
   item (assessment: any) {

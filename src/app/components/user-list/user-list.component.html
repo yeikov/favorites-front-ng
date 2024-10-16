@@ -2,14 +2,16 @@
     <div class="card-body">
         <h5 class="card-title">Users</h5>
         <p class="card-text">Recently updated</p>
-        
 
-        <ul class="list-group" *ngIf="res">
-            
-            <!-- <li *ngFor="let u of res.content" class="list-group-item" >{{u.name}} - de {{u.city}}</li> -->
-            <a *ngFor="let u of res.content" (click)="item(u.id)" class="list-group-item list-group-item-action"> <span class=text-left>{{u.name}} </span> <span class=text-right style="font-family:monospace; color: gray;">{{u.city}}</span></a>
-        
+
+        <ul class="list-group" *ngIf="resIn">
+
+            <!-- <li *ngFor="let u of list" class="list-group-item" >{{user.name}} - de {{user.city}}</li> -->
+            <a *ngFor="let user of list" (click)="item(user.id)" class="list-group-item list-group-item-action"> <span
+                    class=text-left>{{user.name}} </span> <span class=text-right
+                    style="font-family:monospace; color: gray;">{{user.city}}</span></a>
+
         </ul>
-        
+
     </div>
 </div>

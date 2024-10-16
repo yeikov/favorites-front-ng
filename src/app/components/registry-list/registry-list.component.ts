@@ -21,7 +21,6 @@ export class RegistryListComponent implements OnInit {
     private router: Router
   ) { }
 
-  entityListName = 'registryList';
   resIn:boolean = false;
   list: any;
 
@@ -29,13 +28,13 @@ export class RegistryListComponent implements OnInit {
   ngOnInit(): void {
     if (this.assessment == 'recommend'){
       this.registryService.topRecommend(this.media).subscribe((res: any)=>{
-        this.list = res._embedded[this.entityListName];
+        this.list = res;
         this.resIn = true;
       })
       
     } else {
         this.registryService.topFavorite(this.media).subscribe((res: any)=>{
-          this.list = res._embedded[this.entityListName];
+          this.list = res;
           this.resIn = true;
         })
     }
