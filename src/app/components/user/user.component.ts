@@ -27,13 +27,13 @@ export class UserComponent implements OnInit {
       console.log('paramId', this.paramId)
       this.datosUser();
     })
-    
+
   }
 
-  datosUser(){
-    this.userService.one(this.paramId).subscribe((res:null) => {
+  datosUser() {
+    this.userService.one(this.paramId).subscribe((res: null) => {
       this.user = res,
-      this.userIn = true
+        this.userIn = true
     })
   }
 

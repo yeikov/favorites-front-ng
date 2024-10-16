@@ -3,12 +3,12 @@
     <!-- <p class="card-text" *ngIf="favorite" style="font-family: monospace;">lista de favoritos.</p>
     <p class="card-text" *ngIf="recommend" style="font-family: monospace;">lista de recomendaciones.</p> -->
     <hr>
-        <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" *ngFor="let assessment of res.content" (click)="item(assessment)">
+        <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" *ngFor="let assessment of list" (click)="item(assessment)">
             <p>
                 {{assessment.registry.title}}
             </p>
         </div>
-        <div *ngIf="sessionService.userLogged && res.content.length<8">
+        <div *ngIf="sessionService.userLogged && list.length<8">
             <p><span style="color: red;">+</span></p>
         </div>
     

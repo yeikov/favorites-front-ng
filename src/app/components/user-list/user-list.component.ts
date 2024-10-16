@@ -12,21 +12,21 @@ export class UserListComponent implements OnInit {
   constructor(private userService: UserService,
     private router: Router) { }
 
-  res: any;
-  resIn:boolean = false;
+  list: any;
+  resIn: boolean = false;
   criterio = 'recientes';
 
   ngOnInit(): void {
 
-    this.res = this.userService.recent(this.criterio).subscribe((res: null) => {
-      this.res = res;
+    this.userService.recent(this.criterio).subscribe((res: any) => {
+      this.list = res;
       this.resIn = true;
     });
   }
 
-  item(id: number){
+  item(id: number) {
     console.log(id);
     this.router.navigate(['user/' + id]);
-    
+
   }
 }

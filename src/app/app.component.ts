@@ -20,9 +20,9 @@ export class AppComponent implements OnInit {
     this.isEmpty = true;
 
     this.userService.recent(this.criterio).subscribe(response => {
-      this.dataList = response._embedded;
+      this.dataList = response;
       this.resIn = true;
-      if (this.dataList?.userList?.length > 0) {
+      if (this.dataList?.length > 0) {
         this.isEmpty = false;
       }
 
