@@ -12,9 +12,7 @@ import { HomeComponent } from '../../components/home/home.component';
 import { UserComponent } from '../../components/user/user.component';
 import { AssessmentComponent } from '../../components/assessment/assessment.component';
 import { RegistryComponent } from '../../components/registry/registry.component';
-
-
-
+import { AssessmentListComponent } from '../../components/assessment-list/assessment-list.component';
 
 
 const routes: Routes = [
@@ -24,7 +22,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserComponent },
   { path: 'assessment/:id', component: AssessmentComponent },
   { path: 'registry/:id', component: RegistryComponent },
-  
+  { path: 'registry/:id/assessments', component: AssessmentListComponent },
   
 ]
 

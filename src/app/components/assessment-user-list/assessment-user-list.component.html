@@ -1,0 +1,15 @@
+<div *ngIf="resIn">
+    <h5 class="card-title">Reseñas de {{user.name}}</h5>
+    <!-- <p class="card-text" *ngIf="favorite" style="font-family: monospace;">lista de favoritos.</p>
+    <p class="card-text" *ngIf="recommend" style="font-family: monospace;">lista de recomendaciones.</p> -->
+    <hr>
+        <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" *ngFor="let assessment of list" (click)="item(assessment)">
+            <p>
+               <em>{{assessment.registry.media}}</em>&nbsp;<b>{{assessment.registry.title}}</b> de {{assessment.registry.author}} <b>favorite:</b>&nbsp;{{assessment.favorite}}&nbsp;<b>recommend:</b>&nbsp;{{assessment.recommend}}
+            </p>
+        </div>
+        <div *ngIf="sessionService.userLogged && list.length<8">
+            <p><span style="color: red;">+</span></p>
+        </div>
+    
+</div>

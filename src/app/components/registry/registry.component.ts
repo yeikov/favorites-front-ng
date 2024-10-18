@@ -15,7 +15,7 @@ export class RegistryComponent implements OnInit {
   registryIn = false;
   assessments = null;
   assessmentsIn = false;
-  isCollapsed = false;
+  isCollapsed = true;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -43,9 +43,9 @@ export class RegistryComponent implements OnInit {
     })
   }
 
-  item (assessment: { id: string; }) {
-    console.log(assessment);
-    this.router.navigate(['assessment/'+ assessment.id])
+  item (id: string) {
+    
+    this.router.navigate([`registry/${id}/assessments`])
   }
 
 }

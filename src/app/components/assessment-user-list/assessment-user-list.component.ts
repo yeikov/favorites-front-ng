@@ -1,25 +1,24 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { AssessmentService } from '../../services/assessment.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
 
 @Component({
-  selector: 'app-assessment-list',
-  templateUrl: './assessment-list.component.html',
-  styleUrls: ['./assessment-list.component.css']
+  selector: 'app-assessment-user-list',
+  templateUrl: './assessment-user-list.component.html',
+  styleUrls: ['./assessment-user-list.component.css']
 })
-export class AssessmentListComponent implements OnInit {
-
+export class AssessmentUserListComponent implements OnInit {
+  @Input()
+  user = { id: '', name: '', city: '', born: '' };
 
 
   constructor(
     private assessmentService: AssessmentService,
     public sessionService: SessionService,
-    private router: Router,
-    private activatedRoute: ActivatedRoute) { }
+    private router: Router) { }
 
-  paramId = '';
   resIn: boolean = false;
   list: any;
 
@@ -27,16 +26,9 @@ export class AssessmentListComponent implements OnInit {
   recommend: boolean = false;
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.paramId = params['id'];
+ 
 
-      
-    })
-
-
-
-
-    this.assessmentService.registry(this.paramId).subscribe(res => {
+    this.assessmentService.user(this.user.id).subscribe(res => {
 
       //this.list = res.filter((r: { favorite: number; }) => r.favorite != 0).sort(function (a: { favorite: number; }, b: { favorite: number; }) { return a.favorite - b.favorite });
 
@@ -49,8 +41,11 @@ export class AssessmentListComponent implements OnInit {
 
   item(assessment: any) {
 
-    this.router.navigate(['assessment/' + assessment.id]);
-
+    if (this.user.id === null) {
+      this.router.navigate(['registry/' + assessment.registry.id])
+    } else {
+      this.router.navigate(['assessment/' + assessment.id]);
+    }
 
   }
 

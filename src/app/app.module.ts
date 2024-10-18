@@ -21,9 +21,12 @@ import { UserComponent } from './components/user/user.component';
 import { AssessmentComponent } from './components/assessment/assessment.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { AssessmentListComponent } from './components/assessment-list/assessment-list.component';
+
 import { RegistryListComponent } from './components/registry-list/registry-list.component';
 import { RegistryComponent } from './components/registry/registry.component';
 import { LoginComponent } from './common/login/login.component';
+import { AssessmentUserListComponent } from './components/assessment-user-list/assessment-user-list.component';
+import { AssessmentStatisticalSummaryComponent } from './components/assessment-statistical-summary/assessment-statistical-summary.component';
 
 @NgModule({
   imports: [
@@ -42,7 +45,9 @@ import { LoginComponent } from './common/login/login.component';
     UserComponent,
     AssessmentComponent,
     UserListComponent,
+    AssessmentStatisticalSummaryComponent,
     AssessmentListComponent,
+    AssessmentUserListComponent,
     RegistryListComponent,
     RegistryComponent,
     LoginComponent
