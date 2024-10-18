@@ -8,36 +8,37 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./assessment.component.css']
 })
 export class AssessmentComponent implements OnInit {
-  isCollapsed=true;
+
+  public isCollapsed = true;
 
   constructor(private assessmentService: AssessmentService,
     private activatedRoute: ActivatedRoute,
     private router: Router
-    ) { }
+  ) { }
 
-    assessment: any;
-    assessmentIn: boolean = false;
-  
-    paramId: number = 0;
-  
-    ngOnInit(): void {
-      this.activatedRoute.params.subscribe(params => {
-        this.paramId = params['id'];
-        console.log('paramId', this.paramId)
-        this.datosAssessment();
-      })
-      
-    }
+  assessment: any;
+  assessmentIn: boolean = false;
 
-    datosAssessment(){
-      this.assessmentService.one(this.paramId).subscribe(res => {
-        this.assessment = res,
+  paramId: number = 0;
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe(params => {
+      this.paramId = params['id'];
+      console.log('paramId', this.paramId)
+      this.datosAssessment();
+    })
+
+  }
+
+  datosAssessment() {
+    this.assessmentService.one(this.paramId).subscribe(res => {
+      this.assessment = res,
         this.assessmentIn = true
-      })
-    }
+    })
+  }
 
-    item(entity: string, id: string){
-      this.router.navigate([entity+'/'+id]); 
-    }
+  item(entity: string, id: string) {
+    this.router.navigate([entity + '/' + id]);
+  }
 
 }

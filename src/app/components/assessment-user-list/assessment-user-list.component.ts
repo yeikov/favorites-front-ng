@@ -13,7 +13,6 @@ export class AssessmentUserListComponent implements OnInit {
   @Input()
   user = { id: '', name: '', city: '', born: '' };
 
-
   constructor(
     private assessmentService: AssessmentService,
     public sessionService: SessionService,
@@ -26,21 +25,15 @@ export class AssessmentUserListComponent implements OnInit {
   recommend: boolean = false;
 
   ngOnInit(): void {
- 
 
     this.assessmentService.user(this.user.id).subscribe(res => {
-
-      //this.list = res.filter((r: { favorite: number; }) => r.favorite != 0).sort(function (a: { favorite: number; }, b: { favorite: number; }) { return a.favorite - b.favorite });
-
       this.list = res;
-
       this.resIn = true;
-    });
 
+    });
   }
 
   item(assessment: any) {
-
     if (this.user.id === null) {
       this.router.navigate(['registry/' + assessment.registry.id])
     } else {

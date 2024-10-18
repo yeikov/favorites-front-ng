@@ -15,36 +15,33 @@ export class RegistryListComponent implements OnInit {
   @Input()
   assessment = '';
 
-
   constructor(
     private registryService: RegistryService,
     private router: Router
   ) { }
 
-  resIn:boolean = false;
+  resIn: boolean = false;
   list: any;
 
-
   ngOnInit(): void {
-    if (this.assessment == 'recommend'){
-      this.registryService.topRecommend(this.media).subscribe((res: any)=>{
+    if (this.assessment == 'recommend') {
+      this.registryService.topRecommend(this.media).subscribe((res: any) => {
         this.list = res;
         this.resIn = true;
       })
-      
+
     } else {
-        this.registryService.topFavorite(this.media).subscribe((res: any)=>{
-          this.list = res;
-          this.resIn = true;
-        })
+      this.registryService.topFavorite(this.media).subscribe((res: any) => {
+        this.list = res;
+        this.resIn = true;
+      })
     }
 
   }
 
-  item (registry: any) {
+  item(registry: any) {
     console.log(registry);
-      this.router.navigate(['registry/'+ registry.id])
+    this.router.navigate(['registry/' + registry.id])
   }
-
 
 }

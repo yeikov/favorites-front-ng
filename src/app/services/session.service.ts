@@ -9,7 +9,7 @@ export class SessionService {
 
   constructor() { }
 
-  user = {id:null, name:'',  eMail:''};
+  user = { id: null, name: '', eMail: '' };
 
   userLogged = false;
 }

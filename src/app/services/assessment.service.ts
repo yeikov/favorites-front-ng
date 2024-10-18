@@ -1,9 +1,8 @@
-import { Injectable, OnInit } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
-import { catchError, retry } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { Utilities as FavoriteUtilities, Utilities } from '../common/utilities';
+import { Utilities as FavoriteUtilities } from '../common/utilities';
 
 @Injectable({
   providedIn: 'root'
@@ -12,10 +11,10 @@ export class AssessmentService {
 
   constructor(private http: HttpClient) { }
 
-  private entityUrl = Utilities.favoritesBack + '/assessments';
+  private entityUrl = FavoriteUtilities.favoritesBack + '/assessments';
 
   one(assessmentId: string | number): Observable<any> {
-    return this.http.get(this.entityUrl+'/'+assessmentId);
+    return this.http.get(this.entityUrl + '/' + assessmentId);
   }
 
   user(userId: string): Observable<any> {
@@ -27,11 +26,11 @@ export class AssessmentService {
   }
 
   userMedia(userId: string | number, media: string | String): Observable<any> {
-    return this.http.get(this.entityUrl + "/user/"+userId+ "/" + media);
+    return this.http.get(this.entityUrl + "/user/" + userId + "/" + media);
   }
 
   registry(registryId: string | number): Observable<any> {
-    return this.http.get(this.entityUrl + "/registry/"+registryId);
+    return this.http.get(this.entityUrl + "/registry/" + registryId);
   }
 
 

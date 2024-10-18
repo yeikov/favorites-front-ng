@@ -11,7 +11,6 @@ export class AssessmentStatisticalSummaryComponent {
   registryId = '';
 
   constructor(private assessmentService: AssessmentService) {
-
   }
 
   resIn: boolean = false;
@@ -22,16 +21,12 @@ export class AssessmentStatisticalSummaryComponent {
   recommendSum = 0;
 
   ngOnInit(): void {
-
     this.assessmentService.registry(this.registryId).subscribe(res => {
-
       this.list = res;
-
       this.resIn = true;
-
       this.showStadistics();
-    })
 
+    })
   }
 
   showStadistics() {
@@ -45,7 +40,6 @@ export class AssessmentStatisticalSummaryComponent {
 
     this.favoriteSum += fav / this.mentions;
     this.recommendSum += rec / this.mentions;
-
 
   }
 

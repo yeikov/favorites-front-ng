@@ -3,27 +3,35 @@
     <div class="card" style="/* width: 18rem; */">
       <div class="card-body">
         <h5 class="card-title">assessment</h5>
-        
+
         <div (click)="item('user', assessment.user.id)">
-          <p><span style="font-family: monospace; ">User:</span> <span
-              style="font-weight: bold;">{{assessment.user.name}}</span><span style="font-weight: bold;">
-              {{assessment.user.birdth}}</span><span style="font-weight: normal;"> - {{assessment.user.city}}</span></p>
-        </div>
-        
-        <div (click)="item('registry', assessment.registry.id)">
-          <p><span style="font-family: monospace; ">Registry:</span> <span
-              style="font-weight: bold;">{{assessment.registry.title}} </span> <span style="font-weight: normal;">(
-              {{assessment.registry.media}} )</span> <span style="font-style: italic;">{{assessment.registry.author}}
-            </span> <span style="font-weight: bold;">{{assessment.registry.productionDate[0]}} </span></p>
+          <p><span style="font-family: monospace; ">User:</span>
+            <span style="font-weight: bold;">{{assessment.user.name}}</span><span style="font-weight: bold;">
+              {{assessment.user.birdth}}</span><span style="font-weight: normal;"> - {{assessment.user.city}}</span>
+          </p>
         </div>
 
-        <p><span style="font-family: monospace; ">Favorite:</span> <span
-            style="font-weight: bold;">{{assessment.favorite}}</span></p>
-        <p><span style="font-family: monospace; ">Recommend:</span> <span
-            style="font-weight: bold;">{{assessment.recommend}} </span>
+        <div (click)="item('registry', assessment.registry.id)">
+          <p><span style="font-family: monospace; ">Registry:</span>
+            <span style="font-weight: bold;">{{assessment.registry.title}} </span>
+            <span style="font-weight: normal;">(
+              {{assessment.registry.media}} )</span>
+            <span style="font-style: italic;">{{assessment.registry.author}}
+            </span>
+            <span style="font-weight: bold;">{{assessment.registry.productionDate[0]}} </span>
+          </p>
+        </div>
+
+        <p><span style="font-family: monospace; ">Favorite:</span>
+          <span style="font-weight: bold;">{{assessment.favorite}}</span>
+        </p>
+        <p><span style="font-family: monospace; ">Recommend:</span>
+          <span style="font-weight: bold;">{{assessment.recommend}} </span>
 
         </p>
-        <p><span style="font-family: monospace; ">Modified:</span> <span style="">{{assessment.registeredAt}}</span></p>
+        <p><span style="font-family: monospace; ">Modified:</span>
+          <span style="">{{assessment.registeredAt}}</span>
+        </p>
         <textarea name="notes" id="notes" cols="100" rows="10">{{assessment.notes}}</textarea>
         <p>
           <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"

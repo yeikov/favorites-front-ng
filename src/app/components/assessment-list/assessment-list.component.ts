@@ -11,8 +11,6 @@ import { SessionService } from '../../services/session.service';
 })
 export class AssessmentListComponent implements OnInit {
 
-
-
   constructor(
     private assessmentService: AssessmentService,
     public sessionService: SessionService,
@@ -30,15 +28,10 @@ export class AssessmentListComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['id'];
 
-      
+
     })
 
-
-
-
     this.assessmentService.registry(this.paramId).subscribe(res => {
-
-      //this.list = res.filter((r: { favorite: number; }) => r.favorite != 0).sort(function (a: { favorite: number; }, b: { favorite: number; }) { return a.favorite - b.favorite });
 
       this.list = res;
 
@@ -48,9 +41,7 @@ export class AssessmentListComponent implements OnInit {
   }
 
   item(assessment: any) {
-
     this.router.navigate(['assessment/' + assessment.id]);
-
 
   }
 

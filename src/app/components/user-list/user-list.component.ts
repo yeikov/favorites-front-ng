@@ -17,7 +17,6 @@ export class UserListComponent implements OnInit {
   criterio = 'recientes';
 
   ngOnInit(): void {
-
     this.userService.recent(this.criterio).subscribe((res: any) => {
       this.list = res;
       this.resIn = true;

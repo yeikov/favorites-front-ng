@@ -3,30 +3,36 @@
         <div class="card">
             <div class="card-body" *ngIf=registryIn>
                 <h5 class="card-title">Registry</h5>
-                <p><span style="font-family: monospace; ">Title:</span> <span style="font-weight: bold;">{{registry?
-                        registry['title']: ''}}</span></p>
-                <p><span style="font-family: monospace; ">Media:</span> <span style="font-weight: bold;">{{registry?
+                <p>
+                    <span style="font-family: monospace; ">Title:</span>
+                    <span style="font-weight: bold;">{{registry?
+                        registry['title']: ''}}</span>
+                </p>
+                <p>
+                    <span style="font-family: monospace; ">Media:</span>
+                    <span style="font-weight: bold;">{{registry?
                         registry['media']: ''}}
                     </span>
                 </p>
-                <p><span style="font-family: monospace; ">Author:</span> <span style="font-weight: bold;">{{registry?
+                <p>
+                    <span style="font-family: monospace; ">Author:</span>
+                    <span style="font-weight: bold;">{{registry?
                         registry['author']: ''}}
                     </span>
                 </p>
-                <p><span style="font-family: monospace; ">Production Date:</span> <span
-                        style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span></p>
-
+                <p>
+                    <span style="font-family: monospace; ">Production Date:</span>
+                    <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
+                </p>
 
             </div>
 
-            <div class="card-body" *ngIf=assessmentsIn>
-                
+            <div class="card-body" *ngIf=registryIn>
+
                 <h6 class="card-title">Statistics</h6>
                 <hr>
-                <hgroup>
-                    <app-assessment-statistical-summary [registryId]='paramId' ></app-assessment-statistical-summary>
-                    
-                </hgroup>
+                    <app-assessment-statistical-summary [registryId]='paramId'></app-assessment-statistical-summary>
+
                 <button class="btn btn-primary" (click)="item(paramId)">See all assessments</button>
                 <p>
                     <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
@@ -38,7 +44,6 @@
                     <div class="card">
                         <div class="card-body">
                             <code><pre *ngIf=registryIn>{{registry | json}}</pre></code>
-                            <code><pre *ngIf=assessmentsIn>{{assessments | json}}</pre></code>
                         </div>
                     </div>
                 </div>

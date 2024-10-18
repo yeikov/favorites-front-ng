@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistryComponent } from './registry.component';
 
@@ -6,11 +6,11 @@ describe('RegistryComponent', () => {
   let component: RegistryComponent;
   let fixture: ComponentFixture<RegistryComponent>;
 
-  beforeEach(async(() => {
+  beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ RegistryComponent ]
+      declarations: [RegistryComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

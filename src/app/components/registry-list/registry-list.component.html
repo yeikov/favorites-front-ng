@@ -1,7 +1,5 @@
 <div *ngIf="resIn">
     <h5 class="card-title">{{media}}</h5>
-    <!-- <p class="card-text" *ngIf="favorite" style="font-family: monospace;">lista de favoritos.</p>
-    <p class="card-text" *ngIf="recommend" style="font-family: monospace;">lista de recomendaciones.</p> -->
     <hr>
     <div style="cursor: pointer" *ngFor="let registry of list" (click)="item(registry)">
         <p>{{registry.title}}</p>
