@@ -1,4 +1,5 @@
-<div class=row *ngIf=userIn>
+@if(userIn){
+<div class=row>
 
     <div class='col-10 offset-1 separe-to-down'>
         <div class="card">
@@ -16,7 +17,7 @@
                 <div id="collapseExample" [ngbCollapse]="isCollapsed">
                     <div class="card">
                         <div class="card-body">
-                            <code><pre *ngIf=userIn>{{user | json}}</pre></code>
+                            <code><pre>{{user | json}}</pre></code>
                         </div>
                     </div>
                 </div>
@@ -33,3 +34,4 @@
     </div>
 
 </div>
+}

@@ -1,8 +1,9 @@
-<div *ngIf="resIn">
-    <h5 class="card-title">{{media}}</h5>
-    <hr>
-    <div style="cursor: pointer" *ngFor="let registry of list" (click)="item(registry)">
-        <p>{{registry.title}}</p>
-    </div>
-    
+@if(resIn){
+<h5 class="card-title">{{media}}</h5>
+<hr>
+@for(registry of list; track registry.id){
+<div style="cursor: pointer" (click)="item(registry)">
+    <p>{{registry.title}}</p>
 </div>
+}
+}

@@ -1,6 +1,8 @@
 <div class="col-6 offset-3">
     <div class="card">
-        <div class="card-body" *ngIf=resIn>
+
+        @if (resIn) {
+        <div class="card-body">
             <h5 class="card-title">Registry</h5>
             <p>
                 <span style="font-family: monospace; ">Title:</span>
@@ -25,14 +27,17 @@
             </p>
 
         </div>
+        }
         <div class="card-body">
 
             <div class="card">
 
-                <div *ngIf="resIn">
-                    <ul>
-                        <li *ngFor="let assessment of list" (click)="item(assessment)">
+                @if (resIn) {
+                <ul>
+                    @for(assessment of list; track assessment.id){
 
+                        <li (click)="item(assessment)">
+                            
                             <p class="notes">
                                 {{assessment.user.name}} - {{assessment.user.city}}
                                 <span style="font-weight: bold;">{{assessment.favorite}}</span>
@@ -41,10 +46,11 @@
                                 <span style="font-family: monospace; ">Recommend:</span>
                             </p>
                             <p style="text-align: right;">{{assessment.notes}}</p>
-
+                            
                         </li>
-                    </ul>
-                </div>
+                    }
+                </ul>
+                }
             </div>
         </div>
     </div>

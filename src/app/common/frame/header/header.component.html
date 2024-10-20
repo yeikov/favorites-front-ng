@@ -1,6 +1,6 @@
 <!-- https://getbootstrap.com/docs/4.5/components/navs/ -->
 
-    <div style="
+<div style="
         margin-left: 1rem;
         position: absolute;
         top: 0;
@@ -9,18 +9,21 @@
         font-size: 3rem;
         font-weight: bolder;
         font-weight: lighter;">FAVORITES</div>
-    
-    <ul class="nav justify-content-end" style="margin: 1rem;">
-        <li class="nav-item">
-            <a class="nav-link" (click)="goto('home')">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-disabled>Find users</a>
-        </li>  
-        <li class="nav-item" *ngIf=!sessionService.userLogged>
-            <a class="nav-link" (click)="goto('login')">Log In</a>
-        </li>
-        <li class="nav-item" *ngIf=sessionService.userLogged>   
-            <a class="nav-link" (click)="logOut()">Log Out</a>
-        </li>
-    </ul>
+
+<ul class="nav justify-content-end" style="margin: 1rem;">
+    <li class="nav-item">
+        <a class="nav-link" (click)="goto('home')">Home</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" aria-disabled>Find users</a>
+    </li>
+    @if(sessionService.userLogged){
+    <li class="nav-item">
+        <a class="nav-link" (click)="logOut()">Log Out</a>
+    </li>
+    } @else {
+    <li class="nav-item">
+        <a class="nav-link" (click)="goto('login')">Log In</a>
+    </li>
+    }
+</ul>

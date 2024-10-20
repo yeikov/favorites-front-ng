@@ -1,17 +1,19 @@
-<div role=main >
-  <app-header></app-header>  
+<div role=main>
+  <app-header></app-header>
 </div>
 
 <div role=main>
-  <div *ngIf="resIn && isEmpty" class=container-fluid style="min-height: 2.5rem;">
-  Es posible que la bbdd esté vacía.
-   
-  <a href="http://localhost:8080/backend/" target="_black">http://localhost:8080/backend/</a>
+  @if (resIn && isEmpty) {
+  <div class=container-fluid style="min-height: 2.5rem;">
+    Es posible que la bbdd esté vacía.
+    <a href="http://localhost:8080/backend/" target="_black">http://localhost:8080/backend/</a>
   </div>
-  <div *ngIf="resIn && !isEmpty" class=container-fluid style="min-height: 2.5rem;">
-      <router-outlet></router-outlet>
+  }
+  @else if (resIn && !isEmpty){
+  <div class=container-fluid style="min-height: 2.5rem;">
+    <router-outlet></router-outlet>
   </div>
+  }
 </div>
-
 
 <app-footer></app-footer>
