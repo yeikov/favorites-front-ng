@@ -1,5 +1,30 @@
 <div class="col-6 offset-3">
     <div class="card">
+        <div class="card-body" *ngIf=resIn>
+            <h5 class="card-title">Registry</h5>
+            <p>
+                <span style="font-family: monospace; ">Title:</span>
+                <span style="font-weight: bold;">{{registry?
+                    registry['title']: ''}}</span>
+            </p>
+            <p>
+                <span style="font-family: monospace; ">Media:</span>
+                <span style="font-weight: bold;">{{registry?
+                    registry['media']: ''}}
+                </span>
+            </p>
+            <p>
+                <span style="font-family: monospace; ">Author:</span>
+                <span style="font-weight: bold;">{{registry?
+                    registry['author']: ''}}
+                </span>
+            </p>
+            <p>
+                <span style="font-family: monospace; ">Production Date:</span>
+                <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
+            </p>
+
+        </div>
         <div class="card-body">
 
             <div class="card">
