@@ -1,10 +1,9 @@
-@if(userIn){
 <div class=row>
-
-    <div class='col-10 offset-1 separe-to-down'>
+    <div class='col-6 offset-3 separe-to-down'>
         <div class="card">
             <div class="card-body">
-                <!-- <h5 class="card-title">User</h5> -->
+
+                @defer(on viewport){
                 <span style="font-family: monospace; ">Name:</span>
                 <span style="font-weight: bold;">{{user.name}}</span>
                 <span style="font-family: monospace; ">City:</span>
@@ -21,17 +20,30 @@
                         </div>
                     </div>
                 </div>
+                } @placeholder {
+                <span>Name:</span>
+                } @loading {
+                <span>loading...</span>
+                }
 
             </div>
         </div>
     </div>
-    <div class='col-10 offset-1 separe-to-down'>
+
+
+    <div class='col-6 offset-3 separe-to-down'>
         <div class=row>
+            @defer(on viewport){
             <div>
                 <app-assessment-user-list [user]='user'></app-assessment-user-list>
             </div>
+            }@placeholder {
+            <span>assessments:</span>
+            } @loading (minimum 1s) {
+            <span>loading assessments...</span>
+
+            }
         </div>
     </div>
 
 </div>
-}

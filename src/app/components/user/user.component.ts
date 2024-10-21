@@ -17,25 +17,13 @@ export class UserComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { }
 
   user: any;
-  userIn: boolean = false;
-
   paramId = '';
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['id'];
-      //console.log('paramId', this.paramId)
-      this.datosUser();
-    })
-
-  }
-
-  datosUser() {
-    this.userService.one(this.paramId).subscribe((res: null) => {
-      this.user = res,
-      this.userIn = true
+      this.userService.one(this.paramId).subscribe((res: null) => this.user = res)  
     })
   }
-
 
 }

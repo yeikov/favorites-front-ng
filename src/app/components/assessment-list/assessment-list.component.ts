@@ -21,7 +21,6 @@ export class AssessmentListComponent implements OnInit {
 
   paramId = '';
   registry = {title: '', media: '', author: '', productionDate: ''};
-  resIn: boolean = false;
   list: any;
 
   favorite: boolean = false;
@@ -39,10 +38,7 @@ export class AssessmentListComponent implements OnInit {
     })
 
     this.assessmentService.registry(this.paramId).subscribe(res => {
-
       this.list = res;
-
-      this.resIn = true;
     });
 
   }

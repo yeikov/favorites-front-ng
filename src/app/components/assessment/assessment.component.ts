@@ -17,7 +17,7 @@ export class AssessmentComponent implements OnInit {
   ) { }
 
   assessment: any;
-  assessmentIn: boolean = false;
+  
 
   paramId: number = 0;
 
@@ -32,8 +32,7 @@ export class AssessmentComponent implements OnInit {
 
   datosAssessment() {
     this.assessmentService.one(this.paramId).subscribe(res => {
-      this.assessment = res,
-        this.assessmentIn = true
+      this.assessment = res
     })
   }
 

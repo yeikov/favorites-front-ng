@@ -1,16 +1,14 @@
-@if (resIn) {
+@defer {
 <h5 class="card-title">Reseñas de {{user.name}}</h5>
 <hr>
 @for(assessment of list; track assessment.id){
-<div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend"
-    (click)="item(assessment)">
+<div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" (click)="item(assessment)">
     <p>
         <em>{{assessment.registry.media}}</em>&nbsp;<b>{{assessment.registry.title}}</b> de
         {{assessment.registry.author}}
         <b>favorite:</b>&nbsp;{{assessment.favorite}}&nbsp;<b>recommend:</b>&nbsp;{{assessment.recommend}}
     </p>
 </div>
-}
 @if (sessionService.userLogged && list.length<8) { 
     <div>
     <p><span style="color: red;">+</span></p>
@@ -18,3 +16,4 @@
 
     }
     }
+}
