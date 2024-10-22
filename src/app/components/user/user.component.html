@@ -1,15 +1,16 @@
 <div class=row>
+    @if(resIn){
+
     <div class='col-6 offset-3 separe-to-down'>
         <div class="card">
             <div class="card-body">
 
-                @defer(on viewport){
                 <span style="font-family: monospace; ">Name:</span>
                 <span style="font-weight: bold;">{{user.name}}</span>
                 <span style="font-family: monospace; ">City:</span>
                 <span style="font-weight: bold;">{{user.city}}</span>
                 <span style="font-family: monospace; ">Born:</span>
-                <span style="font-weight: bold;">({{user.birdth==null ?'...':user.birdth}})</span>
+                <span style="font-weight: bold;">({{user.birth==null ?'...':user.birth}})</span>
                 <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
                     aria-controls="collapseExample"> + </span>
 
@@ -20,11 +21,6 @@
                         </div>
                     </div>
                 </div>
-                } @placeholder {
-                <span>Name:</span>
-                } @loading {
-                <span>loading...</span>
-                }
 
             </div>
         </div>
@@ -33,17 +29,11 @@
 
     <div class='col-6 offset-3 separe-to-down'>
         <div class=row>
-            @defer(on viewport){
             <div>
-                <app-assessment-user-list [user]='user'></app-assessment-user-list>
+                <app-assessment-user-list [userId]='user.id.toString()' />
             </div>
-            }@placeholder {
-            <span>assessments:</span>
-            } @loading (minimum 1s) {
-            <span>loading assessments...</span>
-
-            }
         </div>
     </div>
 
+    }
 </div>

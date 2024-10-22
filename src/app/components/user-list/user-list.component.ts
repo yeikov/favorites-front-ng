@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
+  standalone: true,
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
@@ -25,8 +26,6 @@ export class UserListComponent implements OnInit {
   }
 
   item(id: number) {
-    console.log(id);
     this.router.navigate(['user/' + id]);
-
   }
 }

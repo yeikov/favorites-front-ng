@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registry-list',
+  standalone: true,
   templateUrl: './registry-list.component.html',
   styleUrls: ['./registry-list.component.css']
 })
@@ -40,7 +41,6 @@ export class RegistryListComponent implements OnInit {
   }
 
   item(registry: any) {
-    console.log(registry);
     this.router.navigate(['registry/' + registry.id])
   }
 

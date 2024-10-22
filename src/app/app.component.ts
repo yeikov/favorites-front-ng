@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
+import { RouterOutlet } from '@angular/router';
+import { UiModule } from './ui/ui.module';
+import { HeaderComponent } from './common/frame/header/header.component';
+import { FooterComponent } from './common/frame/footer/footer.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports:[RouterOutlet, UiModule, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
   title = 'favorites-front-ng';
-  constructor(private userService: UserService) {
-
-  }
+  private userService = inject(UserService);
   dataList: any;
   resIn = false;
   isEmpty = true;

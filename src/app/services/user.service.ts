@@ -15,7 +15,6 @@ export class UserService {
   private entityUrl = Utilities.favoritesBack + '/users';
 
   recent(criterio: string): Observable<any> {
-    console.log(this.entityUrl);
     return this.http.get(this.entityUrl + '/recent/' + criterio)
   }
 

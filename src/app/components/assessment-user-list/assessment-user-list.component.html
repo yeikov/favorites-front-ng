@@ -1,5 +1,5 @@
 @defer {
-<h5 class="card-title">Reseñas de {{user.name}}</h5>
+<h5 class="card-title">Reseñas</h5>
 <hr>
 @for(assessment of list; track assessment.id){
 <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" (click)="item(assessment)">
@@ -9,11 +9,11 @@
         <b>favorite:</b>&nbsp;{{assessment.favorite}}&nbsp;<b>recommend:</b>&nbsp;{{assessment.recommend}}
     </p>
 </div>
-@if (sessionService.userLogged && list.length<8) { 
-    <div>
+
+}
+@if (sessionService.userLogged && list.length<80) { <div>
     <p><span style="color: red;">+</span></p>
     </div>
 
     }
     }
-}

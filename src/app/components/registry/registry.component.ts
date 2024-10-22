@@ -1,10 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { JsonPipe } from '@angular/common';
 
 import { RegistryService } from '../../services/registry.service';
+import { AssessmentStatisticalSummaryComponent } from '../assessment-statistical-summary/assessment-statistical-summary.component';
+import { UiModule } from '../../ui/ui.module';
+
 
 @Component({
   selector: 'app-registry',
+  standalone: true,
+  imports:[AssessmentStatisticalSummaryComponent, UiModule, JsonPipe],
   templateUrl: './registry.component.html',
   styleUrls: ['./registry.component.css']
 })

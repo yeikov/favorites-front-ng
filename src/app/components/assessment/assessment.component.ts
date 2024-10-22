@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { AssessmentService } from '../../services/assessment.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { NgbAccordionCollapse } from '@ng-bootstrap/ng-bootstrap';
+import { UiModule } from '../../ui/ui.module';
+import { JsonPipe } from '@angular/common';
+import { User } from '../../models/user.model';
+import { Assessment } from '../../models/assessment.model';
 
 @Component({
   selector: 'app-assessment',
+  standalone: true,
+  imports: [UiModule, JsonPipe],
   templateUrl: './assessment.component.html',
   styleUrls: ['./assessment.component.css']
 })
@@ -16,7 +23,7 @@ export class AssessmentComponent implements OnInit {
     private router: Router
   ) { }
 
-  assessment: any;
+  assessment: Assessment | undefined;
   
 
   paramId: number = 0;
@@ -24,7 +31,6 @@ export class AssessmentComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['id'];
-      console.log('paramId', this.paramId)
       this.datosAssessment();
     })
 
@@ -36,7 +42,7 @@ export class AssessmentComponent implements OnInit {
     })
   }
 
-  item(entity: string, id: string) {
+  item(entity: string, id: string | number) {
     this.router.navigate([entity + '/' + id]);
   }
 

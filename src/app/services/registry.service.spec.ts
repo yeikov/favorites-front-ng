@@ -5,8 +5,8 @@ import { RegistryService } from './registry.service';
 describe('RegistryService', () => {
   let service: RegistryService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({});
     service = TestBed.inject(RegistryService);
   });
 

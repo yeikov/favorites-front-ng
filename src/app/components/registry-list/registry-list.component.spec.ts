@@ -7,15 +7,15 @@ describe('RegistryListComponent', () => {
   let component: RegistryListComponent;
   let fixture: ComponentFixture<RegistryListComponent>;
 
-  beforeEach((() => {
-    TestBed.configureTestingModule({
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
       declarations: [ RegistryListComponent ]
     })
     .compileComponents();
-  }));
+  });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(RegistryListComponent);
+  beforeEach(async () => {
+    fixture = await TestBed.createComponent(RegistryListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,19 +1,19 @@
 <div role=main>
-  <app-header></app-header>
+  <app-header/>
 </div>
 
 <div role=main>
   @if (resIn && isEmpty) {
   <div class=container-fluid style="min-height: 2.5rem;">
-    Es posible que la bbdd esté vacía.
-    <a href="http://localhost:8080/backend/" target="_black">http://localhost:8080/backend/</a>
+    the database seems to be empty.
+    <a href="http://localhost:8080/backend/" target="_black">the backend should be available http://localhost:8080/backend/</a>
   </div>
   }
   @else if (resIn && !isEmpty){
   <div class=container-fluid style="min-height: 2.5rem;">
-    <router-outlet></router-outlet>
+    <router-outlet/>
   </div>
   }
 </div>
 
-<app-footer></app-footer>
+<app-footer/>

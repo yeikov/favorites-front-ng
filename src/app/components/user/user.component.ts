@@ -1,11 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { JsonPipe } from '@angular/common';
 
 
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../../services/user.service';
 
+import { AssessmentUserListComponent } from '../assessment-user-list/assessment-user-list.component';
+import { UiModule } from '../../ui/ui.module';
+import { User } from '../../models/user.model';
+
+
 @Component({
   selector: 'app-user',
+  standalone: true,
+  imports: [UiModule, AssessmentUserListComponent, JsonPipe],
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
@@ -16,13 +24,14 @@ export class UserComponent implements OnInit {
     private userService: UserService,
     private activatedRoute: ActivatedRoute) { }
 
-  user: any;
+  user = new User();
   paramId = '';
+  resIn = false;
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['id'];
-      this.userService.one(this.paramId).subscribe((res: null) => this.user = res)  
+      this.userService.one(this.paramId).subscribe(res => { this.user = res; this.resIn = true })
     })
   }
 

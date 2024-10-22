@@ -3,12 +3,14 @@
     <div class="card" style="/* width: 18rem; */">
       <div class="card-body">
         <h5 class="card-title">assessment</h5>
-        
+
         @defer(on viewport){
+        @if(assessment){
+
         <div (click)="item('user', assessment.user.id)">
           <p><span style="font-family: monospace; ">User:</span>
             <span style="font-weight: bold;">{{assessment.user.name}}</span>
-            <span style="font-weight: bold;">{{assessment.user.birdth}}</span>
+            <span style="font-weight: bold;">{{assessment.user.birth}}</span>
             <span style="font-weight: normal;"> - {{assessment.user.city}}</span>
           </p>
         </div>
@@ -20,7 +22,7 @@
               {{assessment.registry.media}} )</span>
             <span style="font-style: italic;">{{assessment.registry.author}}
             </span>
-            <span style="font-weight: bold;">{{assessment.registry.productionDate[0]}} </span>
+            <span style="font-weight: bold;">{{assessment.registry.productionDate}} </span>
           </p>
         </div>
 
@@ -50,6 +52,7 @@
             </div>
           </div>
         </div>
+        }
         }@placeholder {
         <div>assessment detail</div>
         }

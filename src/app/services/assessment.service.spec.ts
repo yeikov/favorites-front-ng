@@ -5,8 +5,8 @@ import { AssessmentService } from './assessment.service';
 describe('AssessmentService', () => {
   let service: AssessmentService;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({});
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({});
     service = TestBed.inject(AssessmentService);
   });
 

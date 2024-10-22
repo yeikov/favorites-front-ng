@@ -3,20 +3,24 @@ import { Component, OnInit, Input } from '@angular/core';
 import { AssessmentService } from '../../services/assessment.service';
 import { Router } from '@angular/router';
 import { SessionService } from '../../services/session.service';
+import { User } from '../../models/user.model';
 
 @Component({
   selector: 'app-assessment-user-list',
+  standalone: true,
   templateUrl: './assessment-user-list.component.html',
   styleUrls: ['./assessment-user-list.component.css']
 })
 export class AssessmentUserListComponent implements OnInit {
   @Input()
-  user = { id: '', name: '', city: '', born: '' };
+  userId = '';
 
   constructor(
     private assessmentService: AssessmentService,
     public sessionService: SessionService,
-    private router: Router) { }
+    private router: Router) { 
+      
+    }
 
   resIn: boolean = false;
   list: any;
@@ -26,7 +30,7 @@ export class AssessmentUserListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.assessmentService.user(this.user.id).subscribe(res => {
+    this.assessmentService.user(this.userId).subscribe(res => {
       this.list = res;
       this.resIn = true;
 
@@ -34,7 +38,7 @@ export class AssessmentUserListComponent implements OnInit {
   }
 
   item(assessment: any) {
-    if (this.user.id === null) {
+    if (this.userId === null) {
       this.router.navigate(['registry/' + assessment.registry.id])
     } else {
       this.router.navigate(['assessment/' + assessment.id]);

@@ -7,6 +7,7 @@ import { RegistryService } from '../../services/registry.service';
 
 @Component({
   selector: 'app-assessment-list',
+  standalone: true,
   templateUrl: './assessment-list.component.html',
   styleUrls: ['./assessment-list.component.css']
 })
