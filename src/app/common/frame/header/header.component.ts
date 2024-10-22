@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { SessionService } from '../../../services/session.service';
 
 
@@ -7,12 +7,14 @@ import { SessionService } from '../../../services/session.service';
   selector: 'app-header',
   standalone: true,
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['./header.component.css'],
+  imports:[RouterLink]
 })
 export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
+    
     public sessionService: SessionService) { }
 
   ngOnInit(): void {
@@ -21,6 +23,7 @@ export class HeaderComponent implements OnInit {
   goto(path: any){
     this.router.navigate([path]);
   }
+
   logOut(){
     this.sessionService.user.name='';
     this.sessionService.user.eMail='';

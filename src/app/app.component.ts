@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { UserService } from './services/user.service';
-import { RouterOutlet } from '@angular/router';
+import { RouterLink, RouterOutlet } from '@angular/router';
 import { UiModule } from './ui/ui.module';
 import { HeaderComponent } from './common/frame/header/header.component';
 import { FooterComponent } from './common/frame/footer/footer.component';
@@ -8,7 +8,7 @@ import { FooterComponent } from './common/frame/footer/footer.component';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports:[RouterOutlet, UiModule, HeaderComponent, FooterComponent],
+  imports:[RouterOutlet, RouterLink, UiModule, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
