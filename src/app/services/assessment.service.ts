@@ -11,6 +11,8 @@ export class AssessmentService {
 
   constructor(private http: HttpClient) { }
 
+  public path = 'home';
+
   private entityUrl = FavoriteUtilities.favoritesBack + '/assessments';
 
   one(assessmentId: string | number): Observable<any> {

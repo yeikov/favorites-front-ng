@@ -1,0 +1,71 @@
+<div class=row>
+    <div class="col-6 offset-3">
+        <div class="card" style="/* width: 18rem; */">
+            <div class="card-body">
+                <h5 class="card-title">Edit assessment</h5>
+
+                @defer(on viewport){
+                @if(assessment){
+
+                <div>
+                    <p><span style="font-family: monospace; ">User:</span>
+                        <span style="font-weight: bold;">{{assessment.user.name}}</span>
+                        <span style="font-weight: bold;">{{assessment.user.birth}}</span>
+                        <span style="font-weight: normal;"> - {{assessment.user.city}}</span>
+                    </p>
+                </div>
+
+                <div>
+                    <p><span style="font-family: monospace; ">Registry:</span>
+                        <span style="font-weight: bold;">{{assessment.registry.title}} </span>
+                        <span style="font-weight: normal;">(
+                            {{assessment.registry.media}} )</span>
+                        <span style="font-style: italic;">{{assessment.registry.author}}
+                        </span>
+                        <span style="font-weight: bold;">{{assessment.registry.productionDate}} </span>
+                    </p>
+                </div>
+
+                <form>
+                    <div>
+                        <label style="font-family: monospace; ">Favorite:</label>
+                        <input id="favorite" name="favorite" [value]="assessment.favorite" />
+                    </div>
+                    <div>
+                        <label style="font-family: monospace; ">Recommend:</label>
+                        <input style="font-weight: bold;" [value]="assessment.recommend" />
+
+                    </div>
+                    <p><span style="font-family: monospace; ">Last modified:</span>
+                        <span style="">{{assessment.registeredAt | date: 'dd-MM-yy - hh:mm:ss'}}</span>
+                    </p>
+                    <textarea name="notes" id="notes" class="notes" cols="100" rows="10">{{assessment.notes}}</textarea>
+                    <button class="btn btn-secondary" (click)="cancel()">
+                        Cancel
+                    </button>
+                    <button class="btn btn-primary" type="submit">Submit</button>
+                </form>
+
+                <p>
+                    <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                        aria-controls="collapseExample">
+                        +
+                    </span>
+                </p>
+                <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                    <div class="card">
+                        <div class="card-body">
+                            <code>
+                    <pre>{{assessment | json}}</pre>
+                </code>
+                        </div>
+                    </div>
+                </div>
+                }
+                }@placeholder {
+                <div>assessment detail</div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

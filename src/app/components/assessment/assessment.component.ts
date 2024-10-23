@@ -7,6 +7,8 @@ import { JsonPipe } from '@angular/common';
 import { User } from '../../models/user.model';
 import { Assessment } from '../../models/assessment.model';
 
+
+
 @Component({
   selector: 'app-assessment',
   standalone: true,
@@ -24,7 +26,6 @@ export class AssessmentComponent implements OnInit {
   ) { }
 
   assessment: Assessment | undefined;
-  
 
   paramId: number = 0;
 
@@ -33,7 +34,6 @@ export class AssessmentComponent implements OnInit {
       this.paramId = params['id'];
       this.datosAssessment();
     })
-
   }
 
   datosAssessment() {
@@ -44,6 +44,17 @@ export class AssessmentComponent implements OnInit {
 
   item(entity: string, id: string | number) {
     this.router.navigate([entity + '/' + id]);
+  }
+
+  editAssessment(id: string | number) {
+    this.router.navigate(['assessment/' + id + '/edit']);
+  }
+
+  goBack(registryId: number | string, userId: number | string) {
+    if(this.assessmentService.path === 'assessments')
+      this.router.navigate(['registry/'+registryId+'/assessments']);
+    if (this.assessmentService.path === 'user')
+      this.router.navigate(['user/'+userId]);
   }
 
 }
