@@ -18,9 +18,9 @@ export class AssessmentUserListComponent implements OnInit {
   constructor(
     private assessmentService: AssessmentService,
     public sessionService: SessionService,
-    private router: Router) { 
-      
-    }
+    private router: Router) {
+
+  }
 
   resIn: boolean = false;
   list: any;
@@ -29,7 +29,6 @@ export class AssessmentUserListComponent implements OnInit {
   recommend: boolean = false;
 
   ngOnInit(): void {
-
     this.assessmentService.user(this.userId).subscribe(res => {
       this.list = res;
       this.resIn = true;
@@ -41,7 +40,7 @@ export class AssessmentUserListComponent implements OnInit {
     if (this.userId === null) {
       this.router.navigate(['registry/' + assessment.registry.id])
     } else {
-      this.assessmentService.path='user';
+      this.assessmentService.path = 'user';
       this.router.navigate(['assessment/' + assessment.id]);
     }
 

@@ -4,7 +4,7 @@ import { Assessment } from '../../models/assessment.model';
 import { AssessmentService } from '../../services/assessment.service';
 import { UiModule } from '../../ui/ui.module';
 import { DatePipe, JsonPipe } from '@angular/common';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-assessment-edit-create',
@@ -18,13 +18,24 @@ export class AssessmentEditCreateComponent {
 
   constructor(private assessmentService: AssessmentService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    
   ) { 
   }
 
   assessment: Assessment | undefined;
 
   paramId: number = 0;
+
+  assessmentForm = new FormGroup({
+    favorite: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9)]),
+    recommend: new FormControl('', [Validators.required,  Validators.min(0), Validators.max(9)]),
+    notes: new FormControl('')
+  })
+
+  handleSubmit(){
+    console.log(this.assessmentForm.value.favorite, this.assessmentForm.value.recommend)
+  }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
@@ -35,7 +46,10 @@ export class AssessmentEditCreateComponent {
 
   datosAssessment() {
     this.assessmentService.one(this.paramId).subscribe(res => {
-      this.assessment = res
+      this.assessment = res;
+      this.assessmentForm.controls.favorite.setValue(res.favorite);
+      this.assessmentForm.controls.recommend.setValue(res.recommend);
+      this.assessmentForm.controls.notes.setValue(res.notes);
     })
   }
 

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { UserService } from './user.service';
+import { User } from '../models/user.model';
 
 
 @Injectable({
@@ -9,7 +10,7 @@ export class SessionService {
 
   constructor() { }
 
-  user = { id: null, name: '', eMail: '' };
+  user = new User();
 
   userLogged = false;
 }

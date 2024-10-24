@@ -26,24 +26,32 @@
                     </p>
                 </div>
 
-                <form>
+                <form [formGroup]="assessmentForm" (ngSubmit)="handleSubmit()">
                     <div>
-                        <label style="font-family: monospace; ">Favorite:</label>
-                        <input id="favorite" name="favorite" [value]="assessment.favorite" />
+                        <label style="font-family: monospace; ">Favorite:
+                            <input formControlName="favorite" style="font-weight: bold;"
+                                [value]="assessment.favorite" />
+                        </label>
                     </div>
                     <div>
-                        <label style="font-family: monospace; ">Recommend:</label>
-                        <input style="font-weight: bold;" [value]="assessment.recommend" />
+                        <label style="font-family: monospace; ">Recommend:
+                            <input formControlName="recommend" style="font-weight: bold;"
+                                [value]="assessment.recommend" />
+                        </label>
+                    </div>
 
-                    </div>
                     <p><span style="font-family: monospace; ">Last modified:</span>
                         <span style="">{{assessment.registeredAt | date: 'dd-MM-yy - hh:mm:ss'}}</span>
                     </p>
-                    <textarea name="notes" id="notes" class="notes" cols="100" rows="10">{{assessment.notes}}</textarea>
+
+                    <textarea name="notes" formControlName="notes" id="notes" class="notes" cols="100" rows="10">
+                    {{assessment.notes}}
+                </textarea>
                     <button class="btn btn-secondary" (click)="cancel()">
                         Cancel
                     </button>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-primary" type="submit"
+                    [disabled]="!assessmentForm.valid">Submit</button>
                 </form>
 
                 <p>

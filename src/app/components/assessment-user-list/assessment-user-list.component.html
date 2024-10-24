@@ -1,19 +1,21 @@
-@defer {
-<h5 class="card-title">Reseñas</h5>
-<hr>
-@for(assessment of list; track assessment.id){
-<div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" (click)="item(assessment)">
-    <p>
-        <em>{{assessment.registry.media}}</em>&nbsp;<b>{{assessment.registry.title}}</b> de
-        {{assessment.registry.author}}
-        <b>favorite:</b>&nbsp;{{assessment.favorite}}&nbsp;<b>recommend:</b>&nbsp;{{assessment.recommend}}
-    </p>
-</div>
-
-}
-@if (sessionService.userLogged && list.length<80) { <div>
-    <p><span style="color: red;">+</span></p>
+<div class="margin-bottom">
+@if (list) {
+    <h5 class="card-title">Reseñas</h5>
+    <hr>
+    @for(assessment of list; track assessment.id){
+    <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" (click)="item(assessment)">
+        <p>
+            <em>{{assessment.registry.media}}</em>&nbsp;<b>{{assessment.registry.title}}</b> de
+            {{assessment.registry.author}}
+            <b>favorite:</b>&nbsp;{{assessment.favorite}}&nbsp;<b>recommend:</b>&nbsp;{{assessment.recommend}}
+        </p>
     </div>
 
     }
+    @if (sessionService.userLogged) { 
+        
+        <div><button class="btn btn-primary" [disabled]="list.length >60">add</button></div>
+        
     }
+}
+</div>
