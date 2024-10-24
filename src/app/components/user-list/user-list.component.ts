@@ -8,22 +8,21 @@ import { Router } from '@angular/router';
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.css']
 })
-export class UserListComponent implements OnInit {
+export class UserListComponent {
 
-  private userService = inject(UserService);
+  
   constructor(
-    private router: Router) { }
+    private userService: UserService,
+    private router: Router) {
+      this.userService.recent(this.criterio).subscribe((res: any) => {
+        this.list = res;
+        this.resIn = true;
+      });
+     }
 
   list: any;
   resIn: boolean = false;
   criterio = 'recientes';
-
-  ngOnInit(): void {
-    this.userService.recent(this.criterio).subscribe((res: any) => {
-      this.list = res;
-      this.resIn = true;
-    });
-  }
 
   item(id: number) {
     this.router.navigate(['user/' + id]);
