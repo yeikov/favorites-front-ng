@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Assessment } from '../../models/assessment.model';
-import { AssessmentService } from '../../services/assessment.service';
-import { UiModule } from '../../ui/ui.module';
+import { Assessment } from '../../../models/assessment.model';
+import { AssessmentService } from '../../../services/assessment.service';
+import { UiModule } from '../../../ui/ui.module';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 

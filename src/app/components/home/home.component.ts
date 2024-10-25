@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserListComponent } from '../user-list/user-list.component';
-import { RegistryListComponent } from '../registry-list/registry-list.component';
+import { UserListComponent } from '../users/user-list/user-list.component';
+import { RegistryListComponent } from '../registries/registry-list/registry-list.component';
 
 
 @Component({

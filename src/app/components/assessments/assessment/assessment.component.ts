@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { AssessmentService } from '../../services/assessment.service';
+import { AssessmentService } from '../../../services/assessment.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { NgbAccordionCollapse } from '@ng-bootstrap/ng-bootstrap';
-import { UiModule } from '../../ui/ui.module';
+import { UiModule } from '../../../ui/ui.module';
 import { JsonPipe } from '@angular/common';
-import { User } from '../../models/user.model';
-import { Assessment } from '../../models/assessment.model';
-import { ScorePipe } from '../../common/pipes/score.pipe';
+import { User } from '../../../models/user.model';
+import { Assessment } from '../../../models/assessment.model';
+import { ScorePipe } from '../../../common/pipes/score.pipe';
 
 
 

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { AssessmentService } from '../../services/assessment.service';
+import { AssessmentService } from '../../../services/assessment.service';
 import { Router } from '@angular/router';
-import { SessionService } from '../../services/session.service';
-import { User } from '../../models/user.model';
+import { SessionService } from '../../../services/session.service';
+import { User } from '../../../models/user.model';
 
 @Component({
   selector: 'app-assessment-user-list',

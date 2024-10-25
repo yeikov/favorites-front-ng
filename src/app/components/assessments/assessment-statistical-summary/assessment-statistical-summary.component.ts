@@ -1,5 +1,5 @@
 import { Component, Input, Pipe } from '@angular/core';
-import { AssessmentService } from '../../services/assessment.service';
+import { AssessmentService } from '../../../services/assessment.service';
 import { DecimalPipe, NgLocaleLocalization, NumberSymbol } from '@angular/common';
 
 

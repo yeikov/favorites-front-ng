@@ -3,11 +3,11 @@ import { JsonPipe } from '@angular/common';
 
 
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../services/user.service';
 
-import { AssessmentUserListComponent } from '../assessment-user-list/assessment-user-list.component';
-import { UiModule } from '../../ui/ui.module';
-import { User } from '../../models/user.model';
+import { AssessmentUserListComponent } from '../../assessments/assessment-user-list/assessment-user-list.component';
+import { UiModule } from '../../../ui/ui.module';
+import { User } from '../../../models/user.model';
 
 
 @Component({
