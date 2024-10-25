@@ -6,12 +6,21 @@
             <div class="card">
                 <div class="card-body">
 
-                    <span style="font-family: monospace; ">Name:</span>
+                    <p>
+                        <span style="font-family: monospace; ">Name:</span>
                     <span style="font-weight: bold;">{{user.name}}</span>
+                    </p>
+                    <p>
+                        
                     <span style="font-family: monospace; ">City:</span>
                     <span style="font-weight: bold;">{{user.city}}</span>
-                    <span style="font-family: monospace; ">Born:</span>
-                    <span style="font-weight: bold;">({{user.birth==null ?'...':user.birth}})</span>
+                    
+                    </p>
+                    <p>
+
+                        <span style="font-family: monospace; ">Born:</span>
+                        <span style="font-weight: bold;">({{user.birth==null ?'...':user.birth}})</span>
+                    </p>
                     <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
                         aria-controls="collapseExample"> + </span>
 

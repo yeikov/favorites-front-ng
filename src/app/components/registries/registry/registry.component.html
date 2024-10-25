@@ -1,59 +1,54 @@
+<div class=row>
+    <div class='col-12'>
+        <div class="card">
+            @defer {
 
-    <div class=row>
-        <div class='col-12'>
-            <div class="card">
-                @defer {
+            <div class="card-body">
+                <h4 class="card-title" style="text-transform: capitalize;">{{registry?registry['media']: '' }}</h4>
+                <h2>
+                    <span style="font-weight: lighter;">{{registry?
+                        registry['title']: ''}}</span>
+                </h2>
 
-                <div class="card-body">
-                    <h5 class="card-title">Registry</h5>
-                    <p>
-                        <span style="font-family: monospace; ">Title:</span>
-                        <span style="font-weight: bold;">{{registry?
-                            registry['title']: ''}}</span>
-                    </p>
-                    <p>
-                        <span style="font-family: monospace; ">Media:</span>
-                        <span style="font-weight: bold;">{{registry?
-                            registry['media']: ''}}
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-family: monospace; ">Author:</span>
-                        <span style="font-weight: bold;">{{registry?
-                            registry['author']: ''}}
-                        </span>
-                    </p>
-                    <p>
-                        <span style="font-family: monospace; ">Production Date:</span>
-                        <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
-                    </p>
+                <p>
+                    <span style="font-family: monospace; ">Author:</span>
+                    <span style="font-weight: bold;">{{registry?
+                        registry['author']: ''}}
+                    </span>
+                </p>
+                <p>
+                    <span style="font-family: monospace; ">Production Date:</span>
+                    <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
+                </p>
 
-                </div>
+            </div>
 
 
-                <div class="card-body">
+            <div class="card-body">
 
-                    <h6 class="card-title">Statistics</h6>
-                    <hr>
-                    <app-assessment-statistical-summary [registryId]='paramId' />
+                <h6 class="card-title">Statistics</h6>
+                <hr>
+                <app-assessment-statistical-summary [registryId]='paramId' />
 
+                <div class="actions">
                     <button class="btn btn-primary" (click)="item(paramId)">See all assessments</button>
-                    <p>
-                        <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-                            aria-controls="collapseExample">
-                            +
-                        </span>
-                    </p>
-                    <div id="collapseExample" [ngbCollapse]="isCollapsed">
-                        <div class="card">
-                            <div class="card-body">
-                                <code><pre>{{registry | json}}</pre></code>
-                            </div>
+                </div>
+                <p>
+                    <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                        aria-controls="collapseExample">
+                        +
+                    </span>
+                </p>
+                <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                    <div class="card">
+                        <div class="card-body">
+                            <code><pre>{{registry | json}}</pre></code>
                         </div>
                     </div>
-
                 </div>
-                }
+
             </div>
+            }
         </div>
     </div>
+</div>

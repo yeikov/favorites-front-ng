@@ -1,14 +1,18 @@
 <div class=row>
-  <div class="col-10 offset-1 col-lg-6 offset-lg-3">
+
+  @defer(on viewport){
+  @if(assessment){
+
+
+  <div class="col-12">
     <div class="card" style="/* width: 18rem; */">
+
+
+
       <div class="card-body">
-        <h5 class="card-title">assessment</h5>
-
-        @defer(on viewport){
-        @if(assessment){
-
-        <div (click)="item('user', assessment.user.id)">
-          <p><span style="font-family: monospace; ">User:</span>
+        <div class="margin-bottom" (click)="item('user', assessment.user.id)">
+          <p>
+            <!-- <span style="font-family: monospace; ">User:</span> -->
             <span style="font-weight: bold;">{{assessment.user.name}}</span>
             <span style="font-weight: bold;">{{assessment.user.birth}}</span>
             <span style="font-weight: normal;"> - {{assessment.user.city}}</span>
@@ -16,13 +20,14 @@
         </div>
 
         <div (click)="item('registry', assessment.registry.id)">
-          <p><span style="font-family: monospace; ">Registry:</span>
+          <p>
+            <span style="font-family: monospace; text-transform: capitalize;">{{assessment.registry.media}}: </span>
             <span style="font-weight: bold;">{{assessment.registry.title}} </span>
             <span style="font-weight: normal;">(
               {{assessment.registry.media}} )</span>
             <span style="font-style: italic;">{{assessment.registry.author}}
             </span>
-            <span style="font-weight: bold;">{{assessment.registry.productionDate}} </span>
+            <span style="font-weight: bold;">{{assessment.registry.productionDate | date: "dd-MM-yyyy"}} </span>
           </p>
         </div>
 
@@ -34,10 +39,11 @@
 
         </p>
         <p><span style="font-family: monospace; ">Modified:</span>
-          <span style="">{{assessment.registeredAt}}</span>
+          <span style="">{{assessment.registeredAt | date: "dd-MM-yy - hh:mm:ss"}}</span>
         </p>
-        <textarea [contentEditable]="false" name="notes" id="notes" class="notes" cols="100" rows="10">{{assessment.notes}}</textarea>
-        <div>
+        <textarea [contentEditable]="false" name="notes" id="notes" class="notes" cols="100"
+          rows="10">{{assessment.notes}}</textarea>
+        <div class="actions">
           <button type="button" class="btn btn-secondary" (click)="goBack(assessment.registry.id, assessment.user.id)">
             back
           </button>
@@ -60,11 +66,11 @@
             </div>
           </div>
         </div>
-        }
-        }@placeholder {
-        <div>assessment detail</div>
-        }
       </div>
     </div>
   </div>
+  }
+  }@placeholder {
+  <div>assessment detail</div>
+  }
 </div>

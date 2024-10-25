@@ -45,12 +45,15 @@
                     </p>
 
                     <textarea name="notes" formControlName="notes" id="notes" class="notes" cols="100" rows="10">
-                    {{assessment.notes}}
-                </textarea>
-                    <button class="btn btn-secondary" (click)="cancel()">
-                        Cancel
-                    </button>
-                    <button class="btn btn-primary" type="submit" [disabled]="!assessmentForm.valid">Submit</button>
+                        {{assessment.notes}}
+                    </textarea>
+                    <div class="actions">
+
+                        <button class="btn btn-secondary" (click)="cancel()">
+                            Cancel
+                        </button>
+                        <button class="btn btn-primary" type="submit" [disabled]="!assessmentForm.valid">Submit</button>
+                    </div>
                 </form>
 
                 <p>
@@ -63,8 +66,8 @@
                     <div class="card">
                         <div class="card-body">
                             <code>
-                    <pre>{{assessment | json}}</pre>
-                </code>
+                                <pre>{{assessment | json}}</pre>
+                            </code>
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@ import { AssessmentService } from '../assessment.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { UiModule } from '../../../ui/ui.module';
-import { JsonPipe } from '@angular/common';
+import { DatePipe, JsonPipe } from '@angular/common';
 
 import { ScorePipe } from '../../../common/pipes/score.pipe';
 import { Assessment } from '../assessment.model';
@@ -13,7 +13,7 @@ import { Assessment } from '../assessment.model';
 @Component({
   selector: 'app-assessment',
   standalone: true,
-  imports: [UiModule, JsonPipe, ScorePipe],
+  imports: [UiModule, JsonPipe, ScorePipe, DatePipe],
   templateUrl: './assessment.component.html',
   styleUrls: ['./assessment.component.css']
 })

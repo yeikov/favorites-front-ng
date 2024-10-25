@@ -5,18 +5,12 @@
 
             @defer {
             <div class="card-body">
-                <h5 class="card-title">Registry</h5>
-                <p>
-                    <span style="font-family: monospace; ">Title:</span>
-                    <span style="font-weight: bold;">{{registry?
+                <h4 class="card-title" style="text-transform: capitalize;">{{registry['media'] }}</h4>
+                <h2>
+                    <span style="font-weight: lighter;">{{registry?
                         registry['title']: ''}}</span>
-                </p>
-                <p>
-                    <span style="font-family: monospace; ">Media:</span>
-                    <span style="font-weight: bold;">{{registry?
-                        registry['media']: ''}}
-                    </span>
-                </p>
+                </h2>
+
                 <p>
                     <span style="font-family: monospace; ">Author:</span>
                     <span style="font-weight: bold;">{{registry?

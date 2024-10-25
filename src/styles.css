@@ -7,3 +7,12 @@
 .margin-bottom {
     margin-bottom: 3em;
 }
+
+.actions {
+    float: right;
+    margin-top: 1em;
+    
+}
+.actions button {
+    margin-left: .5rem;
+}
