@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { SessionService } from '../../../services/session.service';
+import { SessionService } from '../../../components/login/session.service';
 
 
 @Component({
@@ -18,6 +18,7 @@ export class HeaderComponent implements OnInit {
     public sessionService: SessionService) { }
 
   ngOnInit(): void {
+    
   }
 
   goto(path: any) {

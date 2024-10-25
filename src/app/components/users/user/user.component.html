@@ -1,39 +1,40 @@
-<div class=row>
-    @if(resIn){
 
-    <div class='col-6 offset-3 margin-top'>
-        <div class="card">
-            <div class="card-body">
+    <div class=row>
+        @if(resIn){
 
-                <span style="font-family: monospace; ">Name:</span>
-                <span style="font-weight: bold;">{{user.name}}</span>
-                <span style="font-family: monospace; ">City:</span>
-                <span style="font-weight: bold;">{{user.city}}</span>
-                <span style="font-family: monospace; ">Born:</span>
-                <span style="font-weight: bold;">({{user.birth==null ?'...':user.birth}})</span>
-                <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-                    aria-controls="collapseExample"> + </span>
+        <div class='margin-top'>
+            <div class="card">
+                <div class="card-body">
 
-                <div id="collapseExample" [ngbCollapse]="isCollapsed">
-                    <div class="card">
-                        <div class="card-body">
-                            <code><pre>{{user | json}}</pre></code>
+                    <span style="font-family: monospace; ">Name:</span>
+                    <span style="font-weight: bold;">{{user.name}}</span>
+                    <span style="font-family: monospace; ">City:</span>
+                    <span style="font-weight: bold;">{{user.city}}</span>
+                    <span style="font-family: monospace; ">Born:</span>
+                    <span style="font-weight: bold;">({{user.birth==null ?'...':user.birth}})</span>
+                    <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+                        aria-controls="collapseExample"> + </span>
+
+                    <div id="collapseExample" [ngbCollapse]="isCollapsed">
+                        <div class="card">
+                            <div class="card-body">
+                                <code><pre>{{user | json}}</pre></code>
+                            </div>
                         </div>
                     </div>
+
                 </div>
-
             </div>
         </div>
-    </div>
 
 
-    <div class='col-6 offset-3 margin-top'>
-        <div class=row>
-            <div>
-                <app-assessment-user-list [userId]='user.id.toString()' />
+        <div class='margin-top'>
+            <div class=row>
+                <div class="col-10 offset-1 col-lg-8 offset-lg-2">
+                    <app-assessment-user-list [userId]='user.id.toString()' />
+                </div>
             </div>
         </div>
-    </div>
 
-    }
-</div>
+        }
+    </div>

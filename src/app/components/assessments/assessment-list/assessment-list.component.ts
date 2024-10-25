@@ -1,9 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { AssessmentService } from '../../../services/assessment.service';
+import { AssessmentService } from '../assessment.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { SessionService } from '../../../services/session.service';
-import { RegistryService } from '../../../services/registry.service';
+
+import { RegistryService } from '../../registries/registry.service';
+import { SessionService } from '../../login/session.service';
 
 @Component({
   selector: 'app-assessment-list',

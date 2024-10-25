@@ -1,5 +1,5 @@
-import { Registry } from "./registry.model"
-import { User } from "./user.model"
+import { Registry } from "../registries/registry.model"
+import { User } from "../users/user.model"
 
 export interface Assessment {
     

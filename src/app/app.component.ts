@@ -1,9 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { UserService } from './services/user.service';
+
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { UiModule } from './ui/ui.module';
 import { HeaderComponent } from './common/frame/header/header.component';
 import { FooterComponent } from './common/frame/footer/footer.component';
+import { UserService } from './components/users/user.service';
 
 @Component({
   selector: 'app-root',

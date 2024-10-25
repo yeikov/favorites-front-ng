@@ -1,43 +1,45 @@
-<div class="col-6 offset-3">
-    <div class="card">
+<div class="row">
 
-        @defer {
-        <div class="card-body">
-            <h5 class="card-title">Registry</h5>
-            <p>
-                <span style="font-family: monospace; ">Title:</span>
-                <span style="font-weight: bold;">{{registry?
-                    registry['title']: ''}}</span>
-            </p>
-            <p>
-                <span style="font-family: monospace; ">Media:</span>
-                <span style="font-weight: bold;">{{registry?
-                    registry['media']: ''}}
-                </span>
-            </p>
-            <p>
-                <span style="font-family: monospace; ">Author:</span>
-                <span style="font-weight: bold;">{{registry?
-                    registry['author']: ''}}
-                </span>
-            </p>
-            <p>
-                <span style="font-family: monospace; ">Production Date:</span>
-                <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
-            </p>
+    <div class="col-12">
+        <div class="card">
 
-        </div>
-        
-        <div class="card-body">
+            @defer {
+            <div class="card-body">
+                <h5 class="card-title">Registry</h5>
+                <p>
+                    <span style="font-family: monospace; ">Title:</span>
+                    <span style="font-weight: bold;">{{registry?
+                        registry['title']: ''}}</span>
+                </p>
+                <p>
+                    <span style="font-family: monospace; ">Media:</span>
+                    <span style="font-weight: bold;">{{registry?
+                        registry['media']: ''}}
+                    </span>
+                </p>
+                <p>
+                    <span style="font-family: monospace; ">Author:</span>
+                    <span style="font-weight: bold;">{{registry?
+                        registry['author']: ''}}
+                    </span>
+                </p>
+                <p>
+                    <span style="font-family: monospace; ">Production Date:</span>
+                    <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
+                </p>
 
-            <div class="card">
+            </div>
 
-                
-                <ul>
-                    @for(assessment of list; track assessment.id){
+            <div class="card-body">
+
+                <div class="card">
+
+
+                    <ul>
+                        @for(assessment of list; track assessment.id){
 
                         <li (click)="item(assessment)">
-                            
+
                             <p class="notes">
                                 {{assessment.user.name}} - {{assessment.user.city}}
                                 <span style="font-weight: bold;">{{assessment.favorite}}</span>
@@ -46,13 +48,14 @@
                                 <span style="font-family: monospace; ">Recommend:</span>
                             </p>
                             <p style="text-align: right;">{{assessment.notes}}</p>
-                            
-                        </li>
-                    }
-                </ul>
-            </div>
-        </div>
-    }
-    </div>
 
+                        </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+            }
+        </div>
+
+    </div>
 </div>

@@ -4,7 +4,7 @@ import { AssessmentComponent } from '../../components/assessments/assessment/ass
 import { HomeComponent } from '../../components/home/home.component';
 import { RegistryComponent } from '../../components/registries/registry/registry.component';
 import { UserComponent } from '../../components/users/user/user.component';
-import { LoginComponent } from '../login/login.component';
+import { LoginComponent } from '../../components/login/login.component';
 import { AssessmentEditCreateComponent } from '../../components/assessments/assessment-edit-create/assessment-edit-create.component';
 
 export const routes: Routes = [

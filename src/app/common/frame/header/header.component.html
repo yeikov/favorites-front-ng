@@ -1,7 +1,9 @@
 <!-- https://getbootstrap.com/docs/4.5/components/navs/ -->
-<div class="col-6 offset-3">
 
-    <a style="
+    <div class="row">
+        <div class="col-12">
+
+            <a style="
         text-decoration: none;
         margin-left: 1rem;
         position: relative;
@@ -12,32 +14,49 @@
         font-weight: bolder;
         font-weight: lighter;" routerLink="/">FAVORITES</a>
 
-    <ul class="nav justify-content-end" style="margin: 1rem; float: right;">
-        @if(sessionService.userLogged){
-        <li class="nav-item">
-            <a class="nav-link" (click)="logOut()">Log Out</a>
-        </li>
-        } @else {
-        <li class="nav-item">
-            <a class="nav-link" (click)="goto('login')">Log In</a>
-        </li>
-        }
-    </ul>
-    <ul class="nav justify-content-end" style="margin: 1rem;">
-        <li class="nav-item">
-            <a class="nav-link" (click)="goto('home')">Home</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" aria-disabled>Find users</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link" aria-disabled>Favorites</a>
-        </li>
-        
-        <li class="nav-item">
-            <a class="nav-link" aria-disabled>Recommended</a>
-        </li>
+            
+            <ul class="nav justify-content-end" style="margin: 1rem; float: right;">
+                @if(sessionService.userLogged){
+                    <span class="nav justify-content-end" style="
+                        padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
+                        font-size: var(--bs-nav-link-font-size);
+                        font-weight: var(--bs-nav-link-font-weight);
+                        text-decoration: none;
+                        background: 0 0;
+                        border: 0;
+                        transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
+                    ">{{sessionService.user.name}} {{sessionService.user.city}}</span>
+                <li class="nav-item">
+                    <a class="nav-link" (click)="logOut()">Log Out</a>
+                </li>
+                } @else {
+                <li class="nav-item">
+                    <a class="nav-link" (click)="goto('login')">Log In</a>
+                </li>
+                }
+            </ul>
+        </div>
+    </div>
 
-    </ul>
-</div>
+    <div class="row">
+        <div class="col-12">
+
+            <ul class="nav justify-content-end" style="margin: 1rem;">
+                <li class="nav-item">
+                    <a class="nav-link" (click)="goto('home')">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-disabled>Find users</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-disabled>Favorites</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" aria-disabled>Recommended</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>

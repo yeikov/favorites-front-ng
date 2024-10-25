@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 
-import { RegistryService } from '../../../services/registry.service';
+import { RegistryService } from '../registry.service';
 import { AssessmentStatisticalSummaryComponent } from '../../assessments/assessment-statistical-summary/assessment-statistical-summary.component';
 import { UiModule } from '../../../ui/ui.module';
 

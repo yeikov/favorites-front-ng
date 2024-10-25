@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { RegistryService } from '../../../services/registry.service';
+import { RegistryService } from '../registry.service';
 import { Router } from '@angular/router';
 
 @Component({

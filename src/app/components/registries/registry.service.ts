@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Utilities as FavoriteUtilities } from '../common/utilities';
+import { Utilities as FavoriteUtilities } from '../../common/utilities';
 
 @Injectable({
   providedIn: 'root'
