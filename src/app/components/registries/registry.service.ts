@@ -25,6 +25,10 @@ export class RegistryService {
     return this.http.get(this.entityUrl + "/topRecommend/" + media);
   }
 
+  find(title: string): Observable<any>{
+    return this.http.post(this.entityUrl + "/find", title);
+  }
+
   /* list(media: string, assessment: string){
     if ()
     return this.http.get(this.entityUrl + "/topRecommend/" + media);

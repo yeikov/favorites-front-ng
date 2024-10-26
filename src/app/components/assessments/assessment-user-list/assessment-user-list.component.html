@@ -14,8 +14,11 @@
     }
     @if (sessionService.userLogged) { 
         
+        <!-- <div class="actions">
+            <button class="btn btn-primary" [disabled]="list.length >60" routerLink="/assessment/add">add</button>
+        </div> -->
         <div class="actions">
-            <button class="btn btn-primary" [disabled]="list.length >60">add</button>
+            <button class="btn btn-primary" [disabled]="list.length >60" routerLink="/registry_explorer">add</button>
         </div>
         
     }

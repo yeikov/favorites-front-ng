@@ -5,6 +5,7 @@ import { UiModule } from '../../../ui/ui.module';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Assessment } from '../assessment.model';
+import { SessionService } from '../../login/session.service';
 
 @Component({
   selector: 'app-assessment-edit-create',
@@ -19,46 +20,54 @@ export class AssessmentEditCreateComponent {
   constructor(private assessmentService: AssessmentService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    
-  ) { 
+    private sessionService: SessionService
+  ) {
   }
 
   assessment: Assessment | undefined;
 
-  paramId: number = 0;
+  paramId = 0;
 
   assessmentForm = new FormGroup({
     favorite: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9)]),
-    recommend: new FormControl('', [Validators.required,  Validators.min(0), Validators.max(9)]),
+    recommend: new FormControl('', [Validators.required, Validators.min(0), Validators.max(9)]),
     notes: new FormControl('')
   })
 
-  handleSubmit(){
+  handleSubmit() {
     console.log(this.assessmentForm.value.favorite, this.assessmentForm.value.recommend)
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['id'];
-      this.datosAssessment();
+      this.datosAssessment(this.paramId);
     })
   }
 
-  datosAssessment() {
-    this.assessmentService.one(this.paramId).subscribe(res => {
-      this.assessment = res;
-      this.assessmentForm.controls.favorite.setValue(res.favorite);
-      this.assessmentForm.controls.recommend.setValue(res.recommend);
-      this.assessmentForm.controls.notes.setValue(res.notes);
-    })
+  datosAssessment(paramId: number | string) {
+    if (paramId)
+      this.assessmentService.one(this.paramId).subscribe(res => {
+        this.assessment = res;
+        this.assessmentForm.controls.favorite.setValue(res.favorite);
+        this.assessmentForm.controls.recommend.setValue(res.recommend);
+        this.assessmentForm.controls.notes.setValue(res.notes);
+      })
+
+    if (!paramId) {
+      //add 
+      this.assessment = new Assessment();
+      this.assessment.user = this.sessionService.user;
+
+    }
   }
 
-  cancel(){
+  cancel() {
     this.goBack();
   }
 
-  goBack(){
-    this.router.navigate(['assessment/'+this.paramId])
+  goBack() {
+    this.router.navigate(['assessment/' + this.paramId])
   }
 
 }

@@ -8,9 +8,8 @@ import { User } from '../users/user.model';
 })
 export class SessionService {
 
-  constructor() { }
+  user = new User('john', 'john@london.exp');
+  userLogged = true;
 
-  user = new User();
 
-  userLogged = false;
 }

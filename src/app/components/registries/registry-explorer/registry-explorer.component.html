@@ -1,7 +1,7 @@
 <div class=row>
-
-
     <div class="col-12">
+        @if(!searchCardActive){
+
         <div class=row>
             <div class=col-12>
                 <div class="card">
@@ -11,7 +11,39 @@
                         <app-registry-list [listLite]="false" [media]="media" [assessment]="assessment" />
                     </div>
                 </div>
+                <div class="actions">
+                    <!-- <button class="btn btn-primary" routerLink="/registry/add">add Registy</button> -->
+                    <button class="btn btn-primary" (click)="searchCard(true)">add Registy</button>
+                </div>
             </div>
         </div>
+        }
+        @if(searchCardActive){
+        <div class="row margin-top">
+
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-title">Find Work</h5>
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="title" [(ngModel)]="searchText" name="title"
+                            placeholder="Two Cyties Story" (keyup)="search()">
+                    </div>
+                </div>
+                <ul class="list-group">
+                    @for (registry of searchResult; track registry.id){
+                    <li class="list-group-item">{{registry.title}}</li>
+                    }
+                    @if(searchResult.length<1) { <li class="list-group-item"> ... </li>
+                        }
+
+                </ul>
+            </div>
+        </div>
+        <div class="actions">
+            <!-- <button class="btn btn-primary" routerLink="/registry/add">add Registy</button> -->
+            <button class="btn btn-secondary" (click)="searchCard(false)">Back</button>
+        </div>
+        }
     </div>
 </div>
