@@ -18,7 +18,7 @@ export class HeaderComponent implements OnInit {
     public sessionService: SessionService) { }
 
   ngOnInit(): void {
-    
+
   }
 
   goto(path: any) {

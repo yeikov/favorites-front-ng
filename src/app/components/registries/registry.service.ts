@@ -25,4 +25,9 @@ export class RegistryService {
     return this.http.get(this.entityUrl + "/topRecommend/" + media);
   }
 
+  /* list(media: string, assessment: string){
+    if ()
+    return this.http.get(this.entityUrl + "/topRecommend/" + media);
+  } */
+
 }

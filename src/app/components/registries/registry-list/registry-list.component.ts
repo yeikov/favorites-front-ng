@@ -9,6 +9,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./registry-list.component.css']
 })
 export class RegistryListComponent implements OnInit {
+  @Input()
+  listLite = true;
 
   @Input()
   media = '';
@@ -19,13 +21,20 @@ export class RegistryListComponent implements OnInit {
   constructor(
     private registryService: RegistryService,
     private router: Router
-  ) { }
+  ) {
+    
+   }
+
+   ngOnInit(): void {
+    this.getRegistries();
+   }
 
   resIn: boolean = false;
   list: any;
 
-  ngOnInit(): void {
-    if (this.assessment == 'recommend') {
+  getRegistries(): void {
+
+    if (this.assessment === 'recommend') {
       this.registryService.topRecommend(this.media).subscribe((res: any) => {
         this.list = res;
         this.resIn = true;
@@ -43,5 +52,19 @@ export class RegistryListComponent implements OnInit {
   item(registry: any) {
     this.router.navigate(['registry/' + registry.id])
   }
+
+
+  
+  filterMedia(media: string) {
+    this.media = media;
+    this.getRegistries();
+    
+  }
+  
+  filterAssestment(assessment: string) {
+    this.assessment = assessment;
+    this.getRegistries();
+  }
+
 
 }
