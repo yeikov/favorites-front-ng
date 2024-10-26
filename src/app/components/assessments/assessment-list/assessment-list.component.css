@@ -1,0 +1,21 @@
+.card-body ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.card-body li {
+    padding: 1rem;
+    border-bottom: solid .1pt #afafaf;
+}
+
+.notes {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.notes span {
+    float: right;
+    padding-left: .2rem;
+}

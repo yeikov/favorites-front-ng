@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  favoritesBackUrl: 'http://localhost:8080/backend'
+  favoritesBackUrl: 'http://localhost:8080'
 };

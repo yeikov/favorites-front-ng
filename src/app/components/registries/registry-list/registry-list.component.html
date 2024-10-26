@@ -1,0 +1,43 @@
+@defer{
+@if(!listLite){
+<div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+
+    <div class="btn-group me-2" role="group" aria-label="Assessment group">
+        <input type="radio" (click)="filterAssestment('favorites')" class="btn-check" name="btn_assesments_radio"
+            id="btn_assesments_radio1" autocomplete="off" checked>
+        <label class="btn btn-light" for="btn_assesments_radio1">Favorites</label>
+
+        <input type="radio" (click)="filterAssestment('recommend')" class="btn-check" name="btn_assesments_radio"
+            id="btn_assesments_radio2" autocomplete="off">
+        <label class="btn btn-light" for="btn_assesments_radio2">Recommend</label>
+
+    </div>
+
+    <div class="btn-group" role="group" aria-label="Media group">
+        <input type="radio" (click)="filterMedia('book')" class="btn-check" name="btn_media_radio" id="btn_media_radio1"
+            autocomplete="off" checked>
+        <label class="btn btn-light" for="btn_media_radio1">Book</label>
+
+        <input type="radio" (click)="filterMedia('film')" class="btn-check" name="btn_media_radio" id="btn_media_radio2"
+            autocomplete="off">
+        <label class="btn btn-light" for="btn_media_radio2">Film</label>
+
+        <input type="radio" (click)="filterMedia('album')" class="btn-check" name="btn_media_radio"
+            id="btn_media_radio3" autocomplete="off">
+        <label class="btn btn-light" for="btn_media_radio3">Album</label>
+    </div>
+</div>
+}
+
+@if(listLite){
+
+<h5 class="card-title">{{media}}</h5>
+}
+<hr>
+@for(registry of list; track registry.id){
+<div style="cursor: pointer" (click)="item(registry)">
+    <p>{{registry.title}}</p>
+</div>
+}
+
+}

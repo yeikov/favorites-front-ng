@@ -1,0 +1,76 @@
+<div class=row>
+
+  @defer(on viewport){
+  @if(assessment){
+
+
+  <div class="col-12">
+    <div class="card" style="/* width: 18rem; */">
+
+
+
+      <div class="card-body">
+        <div class="margin-bottom" (click)="item('user', assessment.user.id)">
+          <p>
+            <!-- <span style="font-family: monospace; ">User:</span> -->
+            <span style="font-weight: bold;">{{assessment.user.name}}</span>
+            <span style="font-weight: bold;">{{assessment.user.birth}}</span>
+            <span style="font-weight: normal;"> - {{assessment.user.city}}</span>
+          </p>
+        </div>
+
+        <div (click)="item('registry', assessment.registry.id)">
+          <p>
+            <span style="font-family: monospace; text-transform: capitalize;">{{assessment.registry.media}}: </span>
+            <span style="font-weight: bold;">{{assessment.registry.title}} </span>
+            <span style="font-weight: normal;">(
+              {{assessment.registry.media}} )</span>
+            <span style="font-style: italic;">{{assessment.registry.author}}
+            </span>
+            <span style="font-weight: bold;">{{assessment.registry.productionDate | date: "dd-MM-yyyy"}} </span>
+          </p>
+        </div>
+
+        <p><span style="font-family: monospace; ">Favorite:</span>
+          <span style="font-weight: bold;">{{assessment.favorite | score}}</span>
+        </p>
+        <p><span style="font-family: monospace; ">Recommend:</span>
+          <span style="font-weight: bold;">{{assessment.recommend | score}} </span>
+
+        </p>
+        <p><span style="font-family: monospace; ">Modified:</span>
+          <span style="">{{assessment.registeredAt | date: "dd-MM-yy - hh:mm:ss"}}</span>
+        </p>
+        <textarea [contentEditable]="false" name="notes" id="notes" class="notes" cols="100"
+          rows="10">{{assessment.notes}}</textarea>
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" (click)="goBack(assessment.registry.id, assessment.user.id)">
+            back
+          </button>
+          <button type="button" class="btn btn-primary" (click)="editAssessment(assessment.id)">
+            Edit
+          </button>
+        </div>
+        <p>
+          <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
+            aria-controls="collapseExample">
+            +
+          </span>
+        </p>
+        <div id="collapseExample" [ngbCollapse]="isCollapsed">
+          <div class="card">
+            <div class="card-body">
+              <code>
+                  <pre>{{assessment | json}}</pre>
+              </code>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+  }@placeholder {
+  <div>assessment detail</div>
+  }
+</div>
