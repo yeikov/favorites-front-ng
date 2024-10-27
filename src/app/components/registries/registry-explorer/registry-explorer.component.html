@@ -7,13 +7,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title margin-bottom">Explore the Registered Works</h5>
-                        <!-- <p>The most valued</p> -->
                         <app-registry-list [listLite]="false" [media]="media" [assessment]="assessment" />
                     </div>
                 </div>
                 <div class="actions">
-                    <!-- <button class="btn btn-primary" routerLink="/registry/add">add Registy</button> -->
-                    <button class="btn btn-primary" (click)="searchCard(true)">add Registy</button>
+                    <button class="btn btn-secondary" (click)="searchCard(true)">add Registy</button>
                 </div>
             </div>
         </div>
@@ -42,7 +40,6 @@
             </div>
         </div>
         <div class="actions">
-            <!-- <button class="btn btn-primary" routerLink="/registry/add">add Registy</button> -->
             <button class="btn btn-secondary" (click)="searchCard(false)">Find existing one</button>
         </div>
         }

@@ -13,6 +13,8 @@ export class RegistryService {
 
   private entityUrl = FavoriteUtilities.favoritesBack + '/registries';
 
+  public searchCardActive = false;
+
   one(id: string): Observable<any> {
     return this.http.get(this.entityUrl + '/' + id)
   }

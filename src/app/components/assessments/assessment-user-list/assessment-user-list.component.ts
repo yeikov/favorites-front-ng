@@ -48,7 +48,10 @@ export class AssessmentUserListComponent implements OnInit {
 
   }
 
-  
+  doAdd(){
+    this.sessionService.addMode = true;
+    this.router.navigate(['/registry_explorer']);
+  }
 
 }
 

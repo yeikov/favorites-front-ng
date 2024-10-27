@@ -1,5 +1,5 @@
 <div class="margin-bottom">
-@if (list) {
+    @if (list) {
     <h5 class="card-title">Reseñas</h5>
     <hr>
     @for(assessment of list; track assessment.id){
@@ -12,15 +12,11 @@
     </div>
 
     }
-    @if (sessionService.userLogged) { 
-        
-        <!-- <div class="actions">
-            <button class="btn btn-primary" [disabled]="list.length >60" routerLink="/assessment/add">add</button>
-        </div> -->
-        <div class="actions">
-            <button class="btn btn-primary" [disabled]="list.length >60" routerLink="/registry_explorer">add</button>
-        </div>
-        
+    @if (sessionService.userLogged) {
+    <div class="actions">
+        <button class="btn btn-primary" [disabled]="list.length >60" (click)="doAdd()">add</button>
+    </div>
     }
-}
+
+    }
 </div>

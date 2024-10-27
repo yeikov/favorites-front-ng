@@ -6,6 +6,8 @@ import { DatePipe, JsonPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Assessment } from '../assessment.model';
 import { SessionService } from '../../login/session.service';
+import { Registry } from '../../registries/registry.model';
+import { RegistryService } from '../../registries/registry.service';
 
 @Component({
   selector: 'app-assessment-edit-create',
@@ -17,14 +19,17 @@ import { SessionService } from '../../login/session.service';
 export class AssessmentEditCreateComponent {
   public isCollapsed = true;
 
-  constructor(private assessmentService: AssessmentService,
+  constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
+    private assessmentService: AssessmentService,
+    private registryService: RegistryService,
     private sessionService: SessionService
-  ) {
-  }
+  ) { }
 
   assessment: Assessment | undefined;
+
+  componentMode = 'editAssessment'; // 'editAssessment' or 'addAssessment';
 
   paramId = 0;
 
@@ -40,27 +45,48 @@ export class AssessmentEditCreateComponent {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.paramId = params['id'];
-      this.datosAssessment(this.paramId);
+      if (params['registryId']) {
+        //change component mode
+        this.componentMode = 'addAssessment';
+        this.paramId = params['registryId'];
+        this.datosRegistry(this.paramId);
+
+      }
+
+      if (params['assessmentId']) {
+        this.paramId = params['assessmentId'];
+        this.datosAssessment(this.paramId);
+
+      }
+
+
     })
   }
 
-  datosAssessment(paramId: number | string) {
-    if (paramId)
-      this.assessmentService.one(this.paramId).subscribe(res => {
-        this.assessment = res;
-        this.assessmentForm.controls.favorite.setValue(res.favorite);
-        this.assessmentForm.controls.recommend.setValue(res.recommend);
-        this.assessmentForm.controls.notes.setValue(res.notes);
-      })
-
-    if (!paramId) {
-      //add 
+  datosRegistry(paramId: number | string) {
+    // mode add
+    this.registryService.one(this.paramId.toString()).subscribe(res => {
+      
       this.assessment = new Assessment();
-      this.assessment.user = this.sessionService.user;
+      this.assessment.registry = res;
+      this.assessment.user = this.sessionService.getUser();
+      
+    })
 
-    }
   }
+  datosAssessment(paramId: number | string) {
+    //mode edit
+    this.assessmentService.one(this.paramId).subscribe(res => {
+      this.assessment = res;
+      this.assessmentForm.controls.favorite.setValue(res.favorite);
+      this.assessmentForm.controls.recommend.setValue(res.recommend);
+      this.assessmentForm.controls.notes.setValue(res.notes);
+    })
+  }
+
+
+
+
 
   cancel() {
     this.goBack();

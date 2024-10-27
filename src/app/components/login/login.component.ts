@@ -26,15 +26,13 @@ export class LoginComponent implements OnInit {
     this.userService.oneByEmail(this.eMail).subscribe(
       res=>{
         this.sessionService.userLogged = true;
-        this.sessionService.user.id=res.id;
-        this.sessionService.user.eMail=res.eMail;
-        this.sessionService.user.name=res.name;
+        this.sessionService.setUser(res);
 
       });
   }
 
   continue(){
-    this.router.navigate(['/user/'+this.sessionService.user.id])
+    this.router.navigate(['/user/'+this.sessionService.getUser().id])
   }
 
 
