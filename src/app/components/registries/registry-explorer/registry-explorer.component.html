@@ -27,22 +27,23 @@
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Title</label>
                         <input type="text" class="form-control" id="title" [(ngModel)]="searchText" name="title"
-                            placeholder="Two Cyties Story" (keyup)="search()">
+                            placeholder="A tale of two cities" (keyup)="search()">
                     </div>
                 </div>
                 <ul class="list-group">
                     @for (registry of searchResult; track registry.id){
-                    <li class="list-group-item">{{registry.title}}</li>
+                        <li class="list-group-item" [routerLink]="['/registry/'+registry.id]">{{registry.title}}</li>
                     }
-                    @if(searchResult.length<1) { <li class="list-group-item"> ... </li>
-                        }
+                    @if(searchResult.length<1) { 
+                        <li class="list-group-item"> ... </li>
+                    }
 
                 </ul>
             </div>
         </div>
         <div class="actions">
             <!-- <button class="btn btn-primary" routerLink="/registry/add">add Registy</button> -->
-            <button class="btn btn-secondary" (click)="searchCard(false)">Back</button>
+            <button class="btn btn-secondary" (click)="searchCard(false)">Find existing one</button>
         </div>
         }
     </div>

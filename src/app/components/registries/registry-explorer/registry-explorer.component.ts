@@ -30,6 +30,7 @@ export class RegistryExplorerComponent {
 
   search() {
     console.log(this.searchText);
+    //TODO: search only after a time from the last input
     if (this.searchText !== '')
       this.registryService.find(this.searchText).subscribe(res => this.searchResult = res)
 
