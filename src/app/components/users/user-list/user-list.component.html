@@ -2,22 +2,23 @@
     <div class="card-body">
         <h5 class="card-title">Users</h5>
         <p class="card-text">Recently updated</p>
-        
+
         @defer (on viewport) {
-            <ul class="list-group">
-                @for(user of list; track user.id){
-                <a (click)="item(user.id)" class="list-group-item list-group-item-action">
-                    <span class=text-left>{{user.name}} </span> <span class=text-right
-                        style="font-family:monospace; color: gray;">{{user.city}}
-                    </span>
-                </a>
-                }
-            </ul>
-        }@placeholder {
-            <p>User list</p>
-        }@loading {
-            <p>loading...</p>
+        <ul class="list-group">
+            @for(user of list; track user.id){
+            <li (click)="item(user.id)" class="list-group-item list-group-item-action fav-pointer">
+                <span> {{user.name}} </span>
+                <span class="fav-user-city">
+                    {{user.city}}
+                </span>
+            </li>
+            }
+        </ul>
+        } @placeholder {
+        <p>User list</p>
+        } @loading {
+        <p>loading...</p>
         }
-       
+
     </div>
 </div>

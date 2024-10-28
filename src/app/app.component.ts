@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
 
 
     this.userService.one('2').subscribe(response => {
-      this.sessionService.setUser(response);
+      this.sessionService.user = response;
     })
   }
 }

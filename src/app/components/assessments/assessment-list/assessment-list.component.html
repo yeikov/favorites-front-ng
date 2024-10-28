@@ -1,47 +1,46 @@
 <div class="row">
-
     <div class="col-12">
         <div class="card">
 
             @defer {
             <div class="card-body">
-                <h4 class="card-title" style="text-transform: capitalize;">{{registry['media'] }}</h4>
+                <h4 class="card-title" class="fav-media">
+                    {{registry['media'] }}
+                </h4>
                 <h2>
-                    <span style="font-weight: lighter;">{{registry?
-                        registry['title']: ''}}</span>
+                    <span class="fav-title">
+                        {{registry? registry['title']: ''}}
+                    </span>
                 </h2>
-
                 <p>
-                    <span style="font-family: monospace; ">Author:</span>
-                    <span style="font-weight: bold;">{{registry?
-                        registry['author']: ''}}
+                    <span class="fav-label">Author:</span>
+                    <span class="fav-value">
+                        {{registry? registry['author']: ''}}
                     </span>
                 </p>
                 <p>
-                    <span style="font-family: monospace; ">Production Date:</span>
-                    <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
+                    <span class="fav-label">Production Date:</span>
+                    <span class="fav-value">
+                        {{registry? registry['productionDate']: ''}}
+                    </span>
                 </p>
 
             </div>
 
             <div class="card-body">
-
                 <div class="card">
-
-
                     <ul>
                         @for(assessment of list; track assessment.id){
 
-                        <li (click)="item(assessment)">
-
+                        <li (click)="item(assessment)" class="fav-pointer">
                             <p class="notes">
                                 {{assessment.user.name}} - {{assessment.user.city}}
-                                <span style="font-weight: bold;">{{assessment.favorite}}</span>
-                                <span style="font-family: monospace; ">Favorite:</span>
-                                <span style="font-weight: bold;">{{assessment.recommend}}</span>
-                                <span style="font-family: monospace; ">Recommend:</span>
+                                <span class="fav-value">{{assessment.favorite}}</span>
+                                <span class="fav-label">Favorite:</span>
+                                <span class="fav-value">{{assessment.recommend}}</span>
+                                <span class="fav-label">Recommend:</span>
                             </p>
-                            <p style="text-align: right;">{{assessment.notes}}</p>
+                            <p class="fav-text-align-right">{{assessment.notes}}</p>
 
                         </li>
                         }
@@ -50,6 +49,5 @@
             </div>
             }
         </div>
-
     </div>
 </div>

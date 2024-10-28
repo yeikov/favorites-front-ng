@@ -9,7 +9,6 @@ import { ScorePipe } from '../../../common/pipes/score.pipe';
 import { Assessment } from '../assessment.model';
 
 
-
 @Component({
   selector: 'app-assessment',
   standalone: true,
@@ -32,7 +31,7 @@ export class AssessmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.paramId = params['id'];
+      this.paramId = params['assessmentId'];
       this.datosAssessment();
     })
   }
@@ -52,10 +51,10 @@ export class AssessmentComponent implements OnInit {
   }
 
   goBack(registryId: number | string, userId: number | string) {
-    if(this.assessmentService.path === 'assessments')
-      this.router.navigate(['registry/'+registryId+'/assessments']);
     if (this.assessmentService.path === 'user')
       this.router.navigate(['user/'+userId]);
+    if(this.assessmentService.path !== 'user')
+      this.router.navigate(['registry/'+registryId+'/assessments']);
   }
 
 }

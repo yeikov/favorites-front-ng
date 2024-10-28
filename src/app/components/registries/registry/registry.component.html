@@ -4,21 +4,22 @@
             @defer {
 
             <div class="card-body">
-                <h4 class="card-title" style="text-transform: capitalize;">{{registry?registry['media']: '' }}</h4>
+                <h4 class="card-title" class="fav-media">{{registry?registry['media']: '' }}</h4>
                 <h2>
-                    <span style="font-weight: lighter;">
-                        {{registry? registry['title']: ''}}</span>
+                    <span class="fav-title">
+                        {{registry? registry['title']: ''}}
+                    </span>
                 </h2>
 
                 <p>
-                    <span style="font-family: monospace; ">Author:</span>
-                    <span style="font-weight: bold;">
+                    <span class="fav-label">Author:</span>
+                    <span class="fav-value">
                         {{registry? registry['author']: ''}}
                     </span>
                 </p>
                 <p>
-                    <span style="font-family: monospace; ">Production Date:</span>
-                    <span style="font-weight: bold;">{{registry? registry['productionDate']: ''}}</span>
+                    <span class="fav-label">Production Date:</span>
+                    <span class="fav-value">{{registry? registry['productionDate']: ''}}</span>
                 </p>
 
             </div>
@@ -29,7 +30,7 @@
                 <hr>
                 <app-assessment-statistical-summary [registryId]='paramId' />
 
-                <div class="actions">
+                <div class="fav-actions">
                     <button type="button" class="btn btn-secondary" (click)="goBack()">
                         back
                     </button>

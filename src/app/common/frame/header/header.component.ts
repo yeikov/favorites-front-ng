@@ -23,11 +23,12 @@ export class HeaderComponent implements OnInit {
   }
 
   goto(path: any) {
+    this.sessionService.addMode = false;
     this.router.navigate([path]);
   }
 
   logOut() {
-    this.sessionService.setUser(new User())
+    this.sessionService.user = new User();
     this.sessionService.userLogged = false;
 
   }

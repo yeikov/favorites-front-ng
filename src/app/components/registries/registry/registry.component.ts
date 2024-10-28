@@ -6,6 +6,7 @@ import { RegistryService } from '../registry.service';
 import { AssessmentStatisticalSummaryComponent } from '../../assessments/assessment-statistical-summary/assessment-statistical-summary.component';
 import { UiModule } from '../../../ui/ui.module';
 import { SessionService } from '../../login/session.service';
+import { AssessmentService } from '../../assessments/assessment.service';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class RegistryComponent implements OnInit {
     private router: Router,
     private registryService: RegistryService,
     private sessionService: SessionService,
+    private assessmentService: AssessmentService,
     private location: Location
   ) { }
 
@@ -46,6 +48,7 @@ export class RegistryComponent implements OnInit {
   }
 
   goToItemAssessments(id: string) {
+    this.assessmentService.path = 'assessments';
     this.router.navigate([`registry/${id}/assessments`])
   }
 

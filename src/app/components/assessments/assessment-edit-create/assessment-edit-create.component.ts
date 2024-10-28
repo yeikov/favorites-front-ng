@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssessmentService } from '../assessment.service';
 import { UiModule } from '../../../ui/ui.module';
@@ -6,7 +6,6 @@ import { DatePipe, JsonPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Assessment } from '../assessment.model';
 import { SessionService } from '../../login/session.service';
-import { Registry } from '../../registries/registry.model';
 import { RegistryService } from '../../registries/registry.service';
 
 @Component({
@@ -16,7 +15,7 @@ import { RegistryService } from '../../registries/registry.service';
   templateUrl: './assessment-edit-create.component.html',
   styleUrl: './assessment-edit-create.component.css'
 })
-export class AssessmentEditCreateComponent {
+export class AssessmentEditCreateComponent implements OnInit {
   public isCollapsed = true;
 
   constructor(
@@ -27,7 +26,9 @@ export class AssessmentEditCreateComponent {
     private sessionService: SessionService
   ) { }
 
-  assessment: Assessment | undefined;
+  dataIn = false;
+
+  assessment = new Assessment();
 
   componentMode = 'editAssessment'; // 'editAssessment' or 'addAssessment';
 
@@ -58,42 +59,42 @@ export class AssessmentEditCreateComponent {
         this.datosAssessment(this.paramId);
 
       }
-
-
     })
   }
 
   datosRegistry(paramId: number | string) {
     // mode add
-    this.registryService.one(this.paramId.toString()).subscribe(res => {
-      
+    this.registryService.one(paramId.toString()).subscribe(res => {
+
       this.assessment = new Assessment();
       this.assessment.registry = res;
-      this.assessment.user = this.sessionService.getUser();
-      
-    })
+      this.assessment.user = this.sessionService.user;
+      this.dataIn = true;
 
+    })
   }
+
   datosAssessment(paramId: number | string) {
     //mode edit
-    this.assessmentService.one(this.paramId).subscribe(res => {
+    this.assessmentService.one(paramId).subscribe(res => {
       this.assessment = res;
       this.assessmentForm.controls.favorite.setValue(res.favorite);
       this.assessmentForm.controls.recommend.setValue(res.recommend);
       this.assessmentForm.controls.notes.setValue(res.notes);
+      this.dataIn = true;
     })
   }
-
-
-
-
 
   cancel() {
     this.goBack();
   }
 
   goBack() {
-    this.router.navigate(['assessment/' + this.paramId])
+    if (this.componentMode === 'editAssessment') {
+      this.router.navigate(['assessment/' + this.paramId])
+    } else {
+      this.router.navigate(['registry/' + this.paramId])
+    }
   }
 
 }

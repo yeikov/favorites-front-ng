@@ -1,9 +1,11 @@
-<div class="margin-bottom">
+<div class="fav-margin-bottom">
     @if (list) {
     <h5 class="card-title">Reseñas</h5>
     <hr>
     @for(assessment of list; track assessment.id){
-    <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" (click)="item(assessment)">
+    <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" 
+    class="fav-pointer"
+    (click)="gotoItem(assessment)">
         <p>
             <em>{{assessment.registry.media}}</em>&nbsp;<b>{{assessment.registry.title}}</b> de
             {{assessment.registry.author}}
@@ -13,7 +15,7 @@
 
     }
     @if (sessionService.userLogged) {
-    <div class="actions">
+    <div class="fav-actions">
         <button class="btn btn-primary" [disabled]="list.length >60" (click)="doAdd()">add</button>
     </div>
     }

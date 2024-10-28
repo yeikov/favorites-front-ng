@@ -6,18 +6,18 @@
             <div class=col-12>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title margin-bottom">Explore the Registered Works</h5>
+                        <h5 class="card-title fav-margin-bottom">Explore the Registered Works</h5>
                         <app-registry-list [listLite]="false" [media]="media" [assessment]="assessment" />
                     </div>
                 </div>
-                <div class="actions">
+                <div class="fav-actions">
                     <button class="btn btn-secondary" (click)="searchCard(true)">add Registy</button>
                 </div>
             </div>
         </div>
         }
         @if(searchCardActive){
-        <div class="row margin-top">
+        <div class="row fav-margin-top">
 
             <div class="col-12">
                 <div class="card">
@@ -30,7 +30,7 @@
                 </div>
                 <ul class="list-group">
                     @for (registry of searchResult; track registry.id){
-                        <li class="list-group-item" [routerLink]="['/registry/'+registry.id]">{{registry.title}}</li>
+                        <li class="list-group-item fav-pointer" [routerLink]="['/registry/'+registry.id]">{{registry.title}}</li>
                     }
                     @if(searchResult.length<1) { 
                         <li class="list-group-item"> ... </li>
@@ -39,7 +39,7 @@
                 </ul>
             </div>
         </div>
-        <div class="actions">
+        <div class="fav-actions">
             <button class="btn btn-secondary" (click)="searchCard(false)">Find existing one</button>
         </div>
         }

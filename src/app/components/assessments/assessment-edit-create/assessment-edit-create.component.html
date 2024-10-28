@@ -1,54 +1,46 @@
 <div class=row>
     <div class="col-10 offset-1 col-lg-6 offset-lg-3">
-        <div class="card" style="/* width: 18rem; */">
+        <div class="card">
             <div class="card-body">
                 <h5 class="card-title">Edit assessment</h5>
-
                 @defer(on viewport){
-                @if(assessment){
-
-                <div>
-                    <p><span style="font-family: monospace; ">User:</span>
-                        <span style="font-weight: bold;">{{assessment.user.name}}</span>
-                        <span style="font-weight: bold;">{{assessment.user.birth}}</span>
-                        <span style="font-weight: normal;"> - {{assessment.user.city}}</span>
+                @if(dataIn){
+                <div class="fav-margin-bottom">
+                    <p>
+                        <span class="fav-label fav-media">{{assessment.registry.media}}</span>
                     </p>
-                </div>
-
-                <div>
-                    <p><span style="font-family: monospace; ">Registry:</span>
-                        <span style="font-weight: bold;">{{assessment.registry.title}} </span>
-                        <span style="font-weight: normal;">(
-                            {{assessment.registry.media}} )</span>
-                        <span style="font-style: italic;">{{assessment.registry.author}}
-                        </span>
-                        <span style="font-weight: bold;">{{assessment.registry.productionDate}} </span>
-                    </p>
+                    <div class="">
+                        <p>
+                            <span class="fav-value">{{assessment.registry.title}} </span>
+                        </p>
+                        <p>
+                            <span class="fav-author">{{assessment.registry.author}}</span>
+                            <span class="fav-value-date">{{assessment.registry.productionDate | date: "dd-MM-yyyy"}}
+                            </span>
+                        </p>
+                    </div>
                 </div>
 
                 <form [formGroup]="assessmentForm" (ngSubmit)="handleSubmit()">
-                    <div>
-                        <label style="font-family: monospace; ">Favorite:
-                            <input formControlName="favorite" style="font-weight: bold;"
-                                [value]="assessment.favorite" />
+                    <div class="fav-input">
+                        <label class="fav-label">Favorite:
+                            <input formControlName="favorite" [value]="assessment.favorite" />
                         </label>
                     </div>
-                    <div>
-                        <label style="font-family: monospace; ">Recommend:
-                            <input formControlName="recommend" style="font-weight: bold;"
-                                [value]="assessment.recommend" />
+                    <div class="fav-input">
+                        <label class="fav-label">Recommend:
+                            <input formControlName="recommend" [value]="assessment.recommend" />
                         </label>
                     </div>
 
-                    <p><span style="font-family: monospace; ">Last modified:</span>
-                        <span style="">{{assessment.registeredAt | date: 'dd-MM-yy - hh:mm:ss'}}</span>
+                    <p><span class="fav-label">Last modified:</span>
+                        <span class="fav-value-date">{{assessment.registeredAt | date: 'dd-MM-yy - hh:mm:ss'}}</span>
                     </p>
 
                     <textarea name="notes" formControlName="notes" id="notes" class="notes" cols="100" rows="10">
                         {{assessment.notes}}
                     </textarea>
-                    <div class="actions">
-
+                    <div class="fav-actions">
                         <button class="btn btn-secondary" (click)="cancel()">
                             Cancel
                         </button>

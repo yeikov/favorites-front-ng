@@ -17,22 +17,22 @@ export class LoginComponent implements OnInit {
     private userService: UserService,
     public sessionService: SessionService,
     private router: Router
-    
+
   ) { }
   // template-driven form
 
-  eMail='john@london.exp';
+  eMail = 'john@london.exp';
   ngOnInit(): void {
     this.userService.oneByEmail(this.eMail).subscribe(
-      res=>{
+      res => {
         this.sessionService.userLogged = true;
-        this.sessionService.setUser(res);
+        this.sessionService.user = res;
 
       });
   }
 
-  continue(){
-    this.router.navigate(['/user/'+this.sessionService.getUser().id])
+  continue() {
+    this.router.navigate(['/user/' + this.sessionService.user.id])
   }
 
 

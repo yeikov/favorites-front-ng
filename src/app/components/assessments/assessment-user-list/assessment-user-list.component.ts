@@ -38,9 +38,10 @@ export class AssessmentUserListComponent implements OnInit {
     });
   }
 
-  item(assessment: any) {
+  gotoItem(assessment: any) {
     if (this.userId === null) {
-      this.router.navigate(['registry/' + assessment.registry.id])
+      this.assessmentService.path = 'user';
+      this.router.navigate(['registry/' + assessment.registry.id]);
     } else {
       this.assessmentService.path = 'user';
       this.router.navigate(['assessment/' + assessment.id]);
