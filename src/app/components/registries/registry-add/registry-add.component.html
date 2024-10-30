@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-6 offset-3">
+
+        <div class="card">
+            <div class="card-body">
+
+
+                <h5>Add Registry</h5>
+                <form [formGroup]="registryForm" (ngSubmit)="handleSubmit()">
+
+                    <div class="fav-input">
+
+                        <label class="fav-label fav-margin-top">Type of work:
+                        </label>
+                        <div>
+
+                            <input formControlName="media" type="radio" class="btn-check" name="media" id="book" value="book" autocomplete="off">
+                            <label class="btn" for="book">Book</label>
+
+                            <input formControlName="media" type="radio" class="btn-check" name="media" id="film" value="film" autocomplete="off">
+                            <label class="btn" for="film">Film</label>
+
+                            <input formControlName="media" type="radio" class="btn-check" name="media" id="album" value="album" autocomplete="off">
+                            <label class="btn" for="album">album</label>
+
+                            <input formControlName="media" type="radio" class="btn-check" name="media" id="serie" value="serie" autocomplete="off">
+                            <label class="btn" for="serie">serie</label>
+                        </div>
+
+                    </div>
+
+                    <div class="fav-input">
+                        <label class="fav-label">Title:</label>
+                        <input class="form-control" formControlName="title" [value]="registry.title" />
+                    </div>
+                    <div class="fav-input">
+                        <label class="fav-label">Author:</label>
+                        <input class="form-control" formControlName="author" [value]="registry.author" />
+                    </div>
+                    <div class="fav-input">
+                        <label class="fav-label">Production year:
+                        <input class="form-control fav-year-input" formControlName="year"
+                            [value]="registry.productionDate" />
+                        </label>
+                    </div>
+
+                    <div class="fav-actions">
+                        <button class="btn btn-secondary" (click)="cancel()">
+                            Cancel
+                        </button>
+                        <button class="btn btn-primary" type="submit" [disabled]="!registryForm.valid">Submit</button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -65,8 +65,12 @@
 
 .fav-input input {
     padding-left: .5em;
+}
+
+.fav-score-input{
     width: 4rem;
 }
+
 
 .fav-text-align-right {
     text-align: right;
@@ -74,4 +78,8 @@
 
 .fav-pointer {
     cursor: pointer;
+}
+
+.fav-year-input{
+    width: 4em;
 }

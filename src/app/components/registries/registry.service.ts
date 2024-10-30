@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { Utilities as FavoriteUtilities } from '../../common/utilities';
+import { Registry } from './registry.model';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,11 @@ export class RegistryService {
   find(title: string): Observable<any>{
     return this.http.post(this.entityUrl + "/find", title);
   }
+
+  add(title: string, media: string, author: string, year: string): Observable<any> {
+    return this.http.post(this.entityUrl, {'title': title, 'media': media, 'author': author, 'year': year})
+  }
+  
 
   /* list(media: string, assessment: string){
     if ()

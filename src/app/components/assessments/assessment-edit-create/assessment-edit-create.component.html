@@ -15,7 +15,7 @@
                         </p>
                         <p>
                             <span class="fav-author">{{assessment.registry.author}}</span>
-                            <span class="fav-value-date">{{assessment.registry.productionDate | date: "dd-MM-yyyy"}}
+                            <span class="fav-value-date">{{assessment.registry.productionDate | date: "yyyy"}}
                             </span>
                         </p>
                     </div>
@@ -23,21 +23,24 @@
 
                 <form [formGroup]="assessmentForm" (ngSubmit)="handleSubmit()">
                     <div class="fav-input">
-                        <label class="fav-label">Favorite:
-                            <input formControlName="favorite" [value]="assessment.favorite" />
-                        </label>
+                        <label class="fav-label">Favorite:</label>
+                        {{assessmentForm.controls.favorite.value}}
+                        <input type="range" min="0" max="9" class="form-range" formControlName="favorite"
+                            [value]="assessment.favorite" />
+
                     </div>
                     <div class="fav-input">
-                        <label class="fav-label">Recommend:
-                            <input formControlName="recommend" [value]="assessment.recommend" />
-                        </label>
+                        <label class="fav-label">Recommend:</label>
+                        {{assessmentForm.controls.recommend.value}}
+                            <input type="range" min="0" max="9" class="form-range" formControlName="recommend"
+                                [value]="assessment.recommend" />
                     </div>
 
                     <p><span class="fav-label">Last modified:</span>
                         <span class="fav-value-date">{{assessment.registeredAt | date: 'dd-MM-yy - hh:mm:ss'}}</span>
                     </p>
 
-                    <textarea name="notes" formControlName="notes" id="notes" class="notes" cols="100" rows="10">
+                    <textarea name="notes" class="form-control" formControlName="notes" id="notes" cols="100" rows="10">
                         {{assessment.notes}}
                     </textarea>
                     <div class="fav-actions">
