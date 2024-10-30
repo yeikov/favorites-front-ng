@@ -36,10 +36,8 @@ export class RegistryService {
     return this.http.post(this.entityUrl, {'title': title, 'media': media, 'author': author, 'year': year})
   }
   
-
-  /* list(media: string, assessment: string){
-    if ()
-    return this.http.get(this.entityUrl + "/topRecommend/" + media);
-  } */
+  delete(id: string):Observable<any>{
+    return this.http.delete(this.entityUrl + "/" + id);
+  }
 
 }

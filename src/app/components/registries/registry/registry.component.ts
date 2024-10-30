@@ -62,4 +62,11 @@ export class RegistryComponent implements OnInit {
     this.location.historyGo(-1);
   }
 
+  deleteRegistry(id: string){
+
+    this.registryService.delete(id).subscribe(res =>{
+      this.router.navigate(['home'])
+    })
+  }
+
 }

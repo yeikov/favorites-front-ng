@@ -26,17 +26,31 @@
 
             <div class="card-body">
 
+                @if(registry.registrations){
+
                 <h6 class="card-title">Statistics</h6>
                 <hr>
                 <app-assessment-statistical-summary [registryId]='paramId' />
+                }@else {
+                <h6 class="card-title">No mentions found</h6>
+                }
 
                 <div class="fav-actions">
                     <button type="button" class="btn btn-secondary" (click)="goBack()">
                         back
                     </button>
-                    <button type="button" class="btn btn-primary" (click)="goToItemAssessments(paramId)">
+                    
+                    @if(registry.registrations){
+                    
+                        <button type="button" class="btn btn-primary" (click)="goToItemAssessments(paramId)">
                         See all assessments
                     </button>
+                    }@else {
+
+                    <button type="button" class="btn btn-primary" (click)="deleteRegistry(paramId)">
+                        Delete registry
+                    </button>
+                    }
                 </div>
                 <p>
                     <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"

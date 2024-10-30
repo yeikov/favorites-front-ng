@@ -4,6 +4,7 @@ export interface Registry {
     media: 'film' | 'album' | 'book' | 'comic'
     author: string,
     productionDate: Date,
+    registrations?: string | number
 
 
 }
