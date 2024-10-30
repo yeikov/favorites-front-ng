@@ -30,7 +30,7 @@ export class AssessmentEditCreateComponent implements OnInit {
 
   assessment = new Assessment();
 
-  componentMode = 'editAssessment'; // 'editAssessment' or 'addAssessment';
+  componentModeIsEdit = true; // edit Assessment.  add Assessment if false;
 
   paramId = 0;
 
@@ -41,14 +41,23 @@ export class AssessmentEditCreateComponent implements OnInit {
   })
 
   handleSubmit() {
-    console.log(this.assessmentForm.value.favorite, this.assessmentForm.value.recommend)
+    this.assessment.favorite = this.assessmentForm.controls.favorite.value as string;
+    this.assessment.recommend = this.assessmentForm.controls.recommend.value as string;
+    this.assessment.notes = this.assessmentForm.controls.notes.value as string;
+
+    if (this.componentModeIsEdit)
+      this.assessmentService.edit(this.assessment).subscribe(res => { this.submitResponse(res) })
+
+    if (this.componentModeIsEdit === false)
+      this.assessmentService.add(this.assessment).subscribe(res => { this.submitResponse(res) })
+
   }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params['registryId']) {
         //change component mode
-        this.componentMode = 'addAssessment';
+        this.componentModeIsEdit = false;
         this.paramId = params['registryId'];
         this.datosRegistry(this.paramId);
 
@@ -65,10 +74,10 @@ export class AssessmentEditCreateComponent implements OnInit {
   datosRegistry(paramId: number | string) {
     // mode add
     this.registryService.one(paramId.toString()).subscribe(res => {
-
       this.assessment = new Assessment();
       this.assessment.registry = res;
       this.assessment.user = this.sessionService.user;
+
       this.dataIn = true;
 
     })
@@ -89,8 +98,13 @@ export class AssessmentEditCreateComponent implements OnInit {
     this.goBack();
   }
 
+  submitResponse(res: Assessment) {
+    if (res)
+      this.goBack();
+  }
+
   goBack() {
-    if (this.componentMode === 'editAssessment') {
+    if (this.componentModeIsEdit) {
       this.router.navigate(['assessment/' + this.paramId])
     } else {
       this.router.navigate(['registry/' + this.paramId])

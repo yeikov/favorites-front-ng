@@ -19,7 +19,10 @@ export class RegistryExplorerComponent implements OnDestroy{
   
   searchText = '';
   searchCardActive: boolean;
-  constructor(private registryService: RegistryService) { 
+
+  constructor(private registryService: RegistryService,
+    private router: Router
+  ) { 
     this.searchCardActive = this.registryService.searchCardActive;
   }
 
@@ -39,5 +42,9 @@ export class RegistryExplorerComponent implements OnDestroy{
 
   ngOnDestroy(): void {
       this.registryService.searchCardActive = this.searchCardActive;
+  }
+
+  goto(path:string){
+    this.router.navigate([path])
   }
 }

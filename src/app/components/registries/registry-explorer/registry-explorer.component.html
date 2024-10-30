@@ -21,14 +21,18 @@
 
             <div class="col-12">
                 <div class="card">
-                    <h5 class="card-title">Find Work</h5>
-                    <div class="mb-3">
+                    <h5 class="card-title mx-3 my-3">Find Work</h5>
+                    <div class="mb-3 mx-3">
                         <label for="exampleFormControlInput1" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="title" [(ngModel)]="searchText" name="title"
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="title" [(ngModel)]="searchText" name="title"
                             placeholder="A tale of two cities" (keyup)="search()">
+                            <button class="btn btn-primary" type="button" id="button-addon-add"
+                            (click)="goto('registry')">Add</button>
+                        </div>
                     </div>
                 </div>
-                <ul class="list-group">
+                <ul class="list-group fav-margin-top">
                     @for (registry of searchResult; track registry.id){
                         <li class="list-group-item fav-pointer" [routerLink]="['/registry/'+registry.id]">{{registry.title}}</li>
                     }
@@ -39,7 +43,7 @@
                 </ul>
             </div>
         </div>
-        <div class="fav-actions">
+        <div class="fav-actions fav-margin-top">
             <button class="btn btn-secondary" (click)="searchCard(false)">Find existing one</button>
         </div>
         }
