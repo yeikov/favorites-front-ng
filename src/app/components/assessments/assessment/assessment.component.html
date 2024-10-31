@@ -50,6 +50,10 @@
           <button type="button" class="btn btn-primary" (click)="editAssessment(assessment.id)">
             Edit
           </button>
+          <button type="button" class="btn btn-danger" (click)="deleteAssessment(assessment.id)">
+            Delete
+          </button>
+
         </div>
         <p>
           <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"

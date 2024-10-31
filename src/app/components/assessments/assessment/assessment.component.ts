@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { AssessmentService } from '../assessment.service';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -7,7 +7,12 @@ import { DatePipe, JsonPipe } from '@angular/common';
 
 import { ScorePipe } from '../../../common/pipes/score.pipe';
 import { Assessment } from '../assessment.model';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ModalConfirmComponent } from '../../../common/modal-confirm/modal-confirm.component';
 
+const MODALS: { [name: string]: Type<any> } = {
+	confirmDelete: ModalConfirmComponent
+};
 
 @Component({
   selector: 'app-assessment',
@@ -22,7 +27,8 @@ export class AssessmentComponent implements OnInit {
 
   constructor(private assessmentService: AssessmentService,
     private activatedRoute: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalService: NgbModal
   ) { }
 
   assessment: Assessment | undefined;
@@ -48,6 +54,22 @@ export class AssessmentComponent implements OnInit {
 
   editAssessment(id: string | number) {
     this.router.navigate(['assessment/' + id + '/edit']);
+  }
+
+  deleteAssessment(id: string | number) {
+    const confirmModal = this.modalService.open(MODALS['confirmDelete']);
+    confirmModal.componentInstance.entity='assessment';
+    confirmModal.closed.subscribe((result)=>this.deleteItem(result))
+    
+  }
+
+  deleteItem(result:boolean){
+    if (result )
+    this.assessmentService.delete(this.paramId).subscribe(res => {
+  console.log('delete')
+    if(this.assessment)
+      this.goBack(this.assessment.registry.id, this.assessment.user.id);
+    })
   }
 
   goBack(registryId: number | string, userId: number | string) {

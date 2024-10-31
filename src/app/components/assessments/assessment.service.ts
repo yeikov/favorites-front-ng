@@ -44,5 +44,9 @@ export class AssessmentService {
     return this.http.put(this.entityUrl + '/' + assessment.id, {'registryId': assessment.registry.id, 'userId': assessment.user.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend});
   }
 
+  delete(id:number): Observable<any> {
+    return this.http.delete(this.entityUrl + '/' + id);
+  }
+
 
 }

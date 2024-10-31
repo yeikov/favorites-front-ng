@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-title">Profile deletion</h4>
+    <button type="button" class="btn-close" aria-label="Close button" aria-describedby="modal-title"
+        (click)="modal.dismiss('Cross click')"></button>
+</div>
+<div class="modal-body">
+
+
+    <p>
+        <strong>Are you sure you want to delete this <span class="text-primary">{{entity}}</span>?</strong>
+    </p>
+    <p>
+        @if(entity === 'user'){
+        All information associated to this user profile will be permanently deleted.
+        }
+        @if(entity === 'registry'){
+        The registry will be deleted.
+        }
+        @if(entity === 'assessment'){
+        The Assessment will be deleted.
+        }
+
+        <span class="text-danger">This operation can not be undone.</span>
+    </p>
+
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="modal.dismiss('cancel click')">Cancel</button>
+    <button type="button" ngbAutofocus class="btn btn-danger" (click)="confirmAction()">Ok</button>
+</div>
