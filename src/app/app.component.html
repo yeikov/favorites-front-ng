@@ -4,15 +4,15 @@
   </div>
 </div>
 
-<div role=main class="margin-bottom">
+<div role=main class="fav-margin-bottom">
   @if (resIn && isEmpty) {
-  <div class="container-sm" style="min-height: 2.5rem;">
+  <div class="container-sm fav-min-height">
     the database seems to be empty.
     <a href="http://localhost:8080/backend/" target="_black">the backend should be available http://localhost:8080/backend/</a>
   </div>
   }
   @else if (resIn && !isEmpty){
-  <div class="container-sm">
+  <div class="container-sm fav-min-height">
     <router-outlet/>
   </div>
   }

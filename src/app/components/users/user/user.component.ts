@@ -8,6 +8,7 @@ import { UserService } from '../user.service';
 import { AssessmentUserListComponent } from '../../assessments/assessment-user-list/assessment-user-list.component';
 import { UiModule } from '../../../ui/ui.module';
 import { User } from '../user.model';
+import { AssessmentService } from '../../assessments/assessment.service';
 
 
 @Component({
@@ -22,6 +23,7 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
+    private assessmentService: AssessmentService,
     private activatedRoute: ActivatedRoute) { }
 
   user = new User();
@@ -32,7 +34,8 @@ export class UserComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['id'];
       this.userService.one(this.paramId).subscribe(res => { this.user = res; this.resIn = true })
-    })
+    });
+    this.assessmentService.path = 'user';
   }
 
 }

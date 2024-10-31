@@ -5,6 +5,7 @@ import { UiModule } from './ui/ui.module';
 import { HeaderComponent } from './common/frame/header/header.component';
 import { FooterComponent } from './common/frame/footer/footer.component';
 import { UserService } from './components/users/user.service';
+import { SessionService } from './components/login/session.service';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { UserService } from './components/users/user.service';
 export class AppComponent implements OnInit {
   title = 'favorites-front-ng';
   private userService = inject(UserService);
+  private sessionService = inject(SessionService);
   dataList: any;
   resIn = false;
   isEmpty = true;
@@ -32,5 +34,10 @@ export class AppComponent implements OnInit {
       }
 
     });
+
+
+    this.userService.one('2').subscribe(response => {
+      this.sessionService.user = response;
+    })
   }
 }

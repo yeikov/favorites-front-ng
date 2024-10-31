@@ -1,17 +1,51 @@
 <div class=row>
-
-
     <div class="col-12">
+        @if(!searchCardActive){
+
         <div class=row>
             <div class=col-12>
                 <div class="card">
                     <div class="card-body">
-                        <h5 class="card-title margin-bottom">Explore the Registered Works</h5>
-                        <!-- <p>The most valued</p> -->
+                        <h5 class="card-title fav-margin-bottom">Explore the Registered Works</h5>
                         <app-registry-list [listLite]="false" [media]="media" [assessment]="assessment" />
                     </div>
                 </div>
+                <div class="fav-actions">
+                    <button class="btn btn-secondary" (click)="searchCard(true)">add Registy</button>
+                </div>
             </div>
         </div>
+        }
+        @if(searchCardActive){
+        <div class="row fav-margin-top">
+
+            <div class="col-12">
+                <div class="card">
+                    <h5 class="card-title mx-3 my-3">Find Work</h5>
+                    <div class="mb-3 mx-3">
+                        <label for="exampleFormControlInput1" class="form-label">Title</label>
+                        <div class="input-group">
+                            <input type="text" class="form-control" id="title" [(ngModel)]="searchText" name="title"
+                            placeholder="A tale of two cities" (keyup)="search()">
+                            <button class="btn btn-primary" type="button" id="button-addon-add"
+                            (click)="goto('registry')">Add</button>
+                        </div>
+                    </div>
+                </div>
+                <ul class="list-group fav-margin-top">
+                    @for (registry of searchResult; track registry.id){
+                        <li class="list-group-item fav-pointer" [routerLink]="['/registry/'+registry.id]">{{registry.title}}</li>
+                    }
+                    @if(searchResult.length<1) { 
+                        <li class="list-group-item"> ... </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+        <div class="fav-actions fav-margin-top">
+            <button class="btn btn-secondary" (click)="searchCard(false)">Find existing one</button>
+        </div>
+        }
     </div>
 </div>

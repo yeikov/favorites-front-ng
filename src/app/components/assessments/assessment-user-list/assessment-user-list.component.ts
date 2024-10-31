@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 import { AssessmentService } from '../assessment.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 import { User } from '../../users/user.model';
 import { SessionService } from '../../login/session.service';
@@ -9,6 +9,7 @@ import { SessionService } from '../../login/session.service';
 @Component({
   selector: 'app-assessment-user-list',
   standalone: true,
+  imports:[RouterLink],
   templateUrl: './assessment-user-list.component.html',
   styleUrls: ['./assessment-user-list.component.css']
 })
@@ -37,14 +38,20 @@ export class AssessmentUserListComponent implements OnInit {
     });
   }
 
-  item(assessment: any) {
+  gotoItem(assessment: any) {
     if (this.userId === null) {
-      this.router.navigate(['registry/' + assessment.registry.id])
+      this.assessmentService.path = 'user';
+      this.router.navigate(['registry/' + assessment.registry.id]);
     } else {
       this.assessmentService.path = 'user';
       this.router.navigate(['assessment/' + assessment.id]);
     }
 
+  }
+
+  doAdd(){
+    this.sessionService.addMode = true;
+    this.router.navigate(['/registry_explorer']);
   }
 
 }

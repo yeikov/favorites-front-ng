@@ -1,22 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { JsonPipe } from '@angular/common';
+import { JsonPipe, Location } from '@angular/common';
 
 import { RegistryService } from '../registry.service';
 import { AssessmentStatisticalSummaryComponent } from '../../assessments/assessment-statistical-summary/assessment-statistical-summary.component';
 import { UiModule } from '../../../ui/ui.module';
+import { SessionService } from '../../login/session.service';
+import { AssessmentService } from '../../assessments/assessment.service';
+import { Registry } from '../registry.model';
 
 
 @Component({
   selector: 'app-registry',
   standalone: true,
-  imports:[AssessmentStatisticalSummaryComponent, UiModule, JsonPipe],
+  imports: [AssessmentStatisticalSummaryComponent, UiModule, JsonPipe],
   templateUrl: './registry.component.html',
   styleUrls: ['./registry.component.css']
 })
 export class RegistryComponent implements OnInit {
   paramId = '';
-  registry = null;
+  registry = new Registry();
   registryIn = false;
   assessments = null;
   assessmentsIn = false;
@@ -26,24 +29,44 @@ export class RegistryComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private registryService: RegistryService,
+    private sessionService: SessionService,
+    private assessmentService: AssessmentService,
+    private location: Location
   ) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
-      this.paramId = params['id'];
+      if (params['id'])
+        this.paramId = params['id'];
+
       this.datosRegistry();
     })
   }
 
   datosRegistry() {
-    this.registryService.one(this.paramId).subscribe((res: null) => {
-      this.registry = res,
-        this.registryIn = true
-    });
+    if (this.paramId)
+      this.registryService.one(this.paramId).subscribe((res: Registry) => {
+        this.registry = res,
+          this.registryIn = true;
+      });
+    if (!this.paramId)
+      this.registryIn = true;
   }
 
-  item(id: string) {
+  goToItemAssessments(id: string) {
+    this.assessmentService.path = 'assessments';
     this.router.navigate([`registry/${id}/assessments`])
+  }
+
+  goBack() {
+    this.location.historyGo(-1);
+  }
+
+  deleteRegistry(id: string){
+
+    this.registryService.delete(id).subscribe(res =>{
+      this.router.navigate(['home'])
+    })
   }
 
 }

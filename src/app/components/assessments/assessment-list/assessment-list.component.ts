@@ -46,9 +46,7 @@ export class AssessmentListComponent implements OnInit {
   }
 
   item(assessment: any) {
-    this.assessmentService.path='assessments'
     this.router.navigate(['assessment/' + assessment.id]);
-
   }
 
 }

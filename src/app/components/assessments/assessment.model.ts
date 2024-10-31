@@ -12,3 +12,11 @@ export interface Assessment {
     registeredAt: Date
 
 }
+
+export class Assessment implements Assessment{
+    
+    constructor(){
+
+    }
+
+}

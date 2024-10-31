@@ -1,18 +1,85 @@
 /* You can add global styles to this file, and also import other style files */
+.fav-min-height {
+    min-height: 2.5rem
+}
 
-.margin-top {
+.fav-margin-top {
     margin-top: 3em;
 }
 
-.margin-bottom {
+.fav-margin-bottom {
     margin-bottom: 3em;
 }
 
-.actions {
+.fav-actions {
     float: right;
     margin-top: 1em;
-    
 }
-.actions button {
+
+.fav-actions button {
     margin-left: .5rem;
+}
+
+.fav-title {
+    font-weight: lighter
+}
+
+.fav-label {
+    font-family: monospace;
+}
+
+.fav-value {
+    padding-left: 1em;
+    font-weight: bold;
+}
+
+.fav-value-date {
+    padding-left: 1em;
+}
+
+.fav-media {
+    text-transform: capitalize;
+}
+
+.fav-author {
+    font-style: italic;
+    padding-left: 1em
+}
+
+.fav-user-info-name {
+    font-weight: 600;
+}
+
+.fav-user-info {
+    font-weight: 200;
+}
+
+.fav-user-city {
+    font-family: monospace;
+    color: gray;
+}
+
+.fav-input {
+    margin-bottom: 1em;
+}
+
+.fav-input input {
+    padding-left: .5em;
+}
+
+.fav-score-input{
+    width: 4rem;
+}
+
+
+.fav-text-align-right {
+    text-align: right;
+}
+
+.fav-pointer {
+    cursor: pointer;
+}
+
+.fav-year-input{
+    width: 4em;
 }

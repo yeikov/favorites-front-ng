@@ -35,7 +35,7 @@
 }
 <hr>
 @for(registry of list; track registry.id){
-<div style="cursor: pointer" (click)="item(registry)">
+<div class="fav-pointer" (click)="gotoItem(registry)">
     <p>{{registry.title}}</p>
 </div>
 }

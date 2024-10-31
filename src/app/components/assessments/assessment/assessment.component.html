@@ -1,55 +1,59 @@
 <div class=row>
-
   @defer(on viewport){
   @if(assessment){
-
-
   <div class="col-12">
-    <div class="card" style="/* width: 18rem; */">
-
-
-
+    <div class="card">
       <div class="card-body">
-        <div class="margin-bottom" (click)="item('user', assessment.user.id)">
+        <div class="fav-margin-bottom" (click)="item('user', assessment.user.id)">
           <p>
-            <!-- <span style="font-family: monospace; ">User:</span> -->
-            <span style="font-weight: bold;">{{assessment.user.name}}</span>
-            <span style="font-weight: bold;">{{assessment.user.birth}}</span>
-            <span style="font-weight: normal;"> - {{assessment.user.city}}</span>
+            <span class="fav-user-info-name">{{assessment.user.name}}</span>
+            @if(assessment.user.birth){
+            <span class="fav-user-info">{{assessment.user.birth}}</span>
+            }
+            <span class="fav-user-info"> - {{assessment.user.city}}</span>
           </p>
         </div>
 
         <div (click)="item('registry', assessment.registry.id)">
           <p>
-            <span style="font-family: monospace; text-transform: capitalize;">{{assessment.registry.media}}: </span>
-            <span style="font-weight: bold;">{{assessment.registry.title}} </span>
-            <span style="font-weight: normal;">(
-              {{assessment.registry.media}} )</span>
-            <span style="font-style: italic;">{{assessment.registry.author}}
-            </span>
-            <span style="font-weight: bold;">{{assessment.registry.productionDate | date: "dd-MM-yyyy"}} </span>
+            <span class="fav-label fav-media">{{assessment.registry.media}}</span>
           </p>
+          <div class="">
+            <p>
+              <span class="fav-value">{{assessment.registry.title}} </span>
+            </p>
+            <p>
+              <span class="fav-author">{{assessment.registry.author}}</span>
+              <span class="fav-value-date">{{assessment.registry.productionDate | date: "dd-MM-yyyy"}} </span>
+            </p>
+          </div>
         </div>
 
-        <p><span style="font-family: monospace; ">Favorite:</span>
-          <span style="font-weight: bold;">{{assessment.favorite | score}}</span>
+        <p><span class="fav-label">Favorite:</span>
+          <span class="fav-value">{{assessment.favorite | score}}</span>
         </p>
-        <p><span style="font-family: monospace; ">Recommend:</span>
-          <span style="font-weight: bold;">{{assessment.recommend | score}} </span>
 
+        <p><span class="fav-label">Recommend:</span>
+          <span class="fav-value">{{assessment.recommend | score}} </span>
         </p>
-        <p><span style="font-family: monospace; ">Modified:</span>
-          <span style="">{{assessment.registeredAt | date: "dd-MM-yy - hh:mm:ss"}}</span>
+
+        <p><span class="fav-label">Modified:</span>
+          <span class="fav-value-date">{{assessment.registeredAt | date: "dd-MM-yy - hh:mm:ss"}}</span>
         </p>
+
         <textarea [contentEditable]="false" name="notes" id="notes" class="notes" cols="100"
           rows="10">{{assessment.notes}}</textarea>
-        <div class="actions">
+        <div class="fav-actions">
           <button type="button" class="btn btn-secondary" (click)="goBack(assessment.registry.id, assessment.user.id)">
             back
           </button>
           <button type="button" class="btn btn-primary" (click)="editAssessment(assessment.id)">
             Edit
           </button>
+          <button type="button" class="btn btn-danger" (click)="deleteAssessment(assessment.id)">
+            Delete
+          </button>
+
         </div>
         <p>
           <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
@@ -70,6 +74,7 @@
     </div>
   </div>
   }
+
   }@placeholder {
   <div>assessment detail</div>
   }
