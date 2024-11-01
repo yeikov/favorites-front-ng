@@ -59,6 +59,9 @@ export class UserComponent implements OnInit {
     if (result)
       this.userService.delete(this.paramId).subscribe(res => {
         this.user = new User();
+        this.sessionService.user = this.user;
+        this.sessionService.userLogged = false;
+        
         if (res)
           this.router.navigate(['home']);
       })
