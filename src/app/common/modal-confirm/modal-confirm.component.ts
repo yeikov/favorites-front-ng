@@ -9,19 +9,19 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrl: './modal-confirm.component.css'
 })
 export class ModalConfirmComponent {
-  @Input() 
+  @Input()
   entity = 'item';
 
   @Output()
   action = new EventEmitter<boolean>();
 
-  setAction(action: boolean){
+  setAction(action: boolean) {
     this.action.emit(action);
   }
 
   modal = inject(NgbActiveModal);
 
-  confirmAction(){
+  confirmAction() {
     this.setAction(true)
     this.modal.close('Ok click');
   }

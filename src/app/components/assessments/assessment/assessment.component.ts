@@ -11,7 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfirmComponent } from '../../../common/modal-confirm/modal-confirm.component';
 
 const MODALS: { [name: string]: Type<any> } = {
-	confirmDelete: ModalConfirmComponent
+  confirmDelete: ModalConfirmComponent
 };
 
 @Component({
@@ -58,25 +58,25 @@ export class AssessmentComponent implements OnInit {
 
   deleteAssessment(id: string | number) {
     const confirmModal = this.modalService.open(MODALS['confirmDelete']);
-    confirmModal.componentInstance.entity='assessment';
-    confirmModal.closed.subscribe((result)=>this.deleteItem(result))
-    
+    confirmModal.componentInstance.entity = 'assessment';
+    confirmModal.closed.subscribe((result) => this.deleteItem(result))
+
   }
 
-  deleteItem(result:boolean){
-    if (result )
-    this.assessmentService.delete(this.paramId).subscribe(res => {
-  console.log('delete')
-    if(this.assessment)
-      this.goBack(this.assessment.registry.id, this.assessment.user.id);
-    })
+  deleteItem(result: boolean) {
+    if (result)
+      this.assessmentService.delete(this.paramId).subscribe(res => {
+        console.log('delete')
+        if (this.assessment)
+          this.goBack(this.assessment.registry.id, this.assessment.user.id);
+      })
   }
 
   goBack(registryId: number | string, userId: number | string) {
     if (this.assessmentService.path === 'user')
-      this.router.navigate(['user/'+userId]);
-    if(this.assessmentService.path !== 'user')
-      this.router.navigate(['registry/'+registryId+'/assessments']);
+      this.router.navigate(['user/' + userId]);
+    if (this.assessmentService.path !== 'user')
+      this.router.navigate(['registry/' + registryId + '/assessments']);
   }
 
 }

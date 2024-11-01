@@ -19,11 +19,14 @@ export class LoginComponent implements OnInit {
     private router: Router
 
   ) { }
-  // template-driven form
+  
 
-  eMail = 'john@london.exp';
+  loginUser = new LoginUser('john@london.exp');
+
+  submitted = false;
+
   ngOnInit(): void {
-    this.userService.oneByEmail(this.eMail).subscribe(
+    this.userService.oneByEmail(this.loginUser.eMail).subscribe(
       res => {
         this.sessionService.userLogged = true;
         this.sessionService.user = res;
@@ -31,9 +34,14 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  continue() {
+  onSubmit() {
+    this.submitted = true;
     this.router.navigate(['/user/' + this.sessionService.user.id])
   }
 
+}
+
+export class LoginUser{
+  constructor( public eMail: string, public password?: string){}
 
 }

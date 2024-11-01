@@ -5,11 +5,12 @@ import { Router, RouterLink } from '@angular/router';
 
 import { User } from '../../users/user.model';
 import { SessionService } from '../../login/session.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-assessment-user-list',
   standalone: true,
-  imports:[RouterLink],
+  imports:[RouterLink, DatePipe],
   templateUrl: './assessment-user-list.component.html',
   styleUrls: ['./assessment-user-list.component.css']
 })
