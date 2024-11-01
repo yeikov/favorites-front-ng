@@ -21,17 +21,22 @@
                         <span class="fav-label">Born:</span>
                         <span class="fav-value">({{user.birth==null ?'...':user.birth}})</span>
                     </p>
-                    <span (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed"
-                        aria-controls="collapseExample"> + </span>
 
-                    <div id="collapseExample" [ngbCollapse]="isCollapsed">
-                        <div class="card">
+
+                    <a (click)="isSettingsCollapsed = !isSettingsCollapsed" [attr.aria-expanded]="!isSettingsCollapsed"
+                        aria-controls="collapseSettings"> User settings </a>
+
+                    <div id="collapseSettings" [ngbCollapse]="isSettingsCollapsed">
+                        <div class="card fav-margin-top">
                             <div class="card-body">
                                 <code><pre>{{user | json}}</pre></code>
                             </div>
                         </div>
+                        
+                        <div class="fav-actions fav-margin-top">
+                            <button class="btn btn-danger" (click)="deleteUserAsk()">Delete user</button>
+                        </div>
                     </div>
-
                 </div>
             </div>
         </div>

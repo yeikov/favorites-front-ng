@@ -56,17 +56,17 @@ export class AssessmentComponent implements OnInit {
     this.router.navigate(['assessment/' + id + '/edit']);
   }
 
-  deleteAssessment(id: string | number) {
+  deleteAssessmentAsk(id: string | number) {
     const confirmModal = this.modalService.open(MODALS['confirmDelete']);
     confirmModal.componentInstance.entity = 'assessment';
-    confirmModal.closed.subscribe((result) => this.deleteItem(result))
+    confirmModal.closed.subscribe((result) => this.deleteAssessment(result))
 
   }
 
-  deleteItem(result: boolean) {
+  deleteAssessment(result: boolean) {
     if (result)
       this.assessmentService.delete(this.paramId).subscribe(res => {
-        console.log('delete')
+        
         if (this.assessment)
           this.goBack(this.assessment.registry.id, this.assessment.user.id);
       })

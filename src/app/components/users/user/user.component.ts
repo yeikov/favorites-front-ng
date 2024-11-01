@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Type } from '@angular/core';
 import { JsonPipe } from '@angular/common';
-
-
 import { Router, ActivatedRoute } from '@angular/router';
-import { UserService } from '../user.service';
 
-import { AssessmentUserListComponent } from '../../assessments/assessment-user-list/assessment-user-list.component';
 import { UiModule } from '../../../ui/ui.module';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+import { UserService } from '../user.service';
+import { AssessmentUserListComponent } from '../../assessments/assessment-user-list/assessment-user-list.component';
 import { User } from '../user.model';
 import { AssessmentService } from '../../assessments/assessment.service';
+import { SessionService } from '../../login/session.service';
+import { ModalConfirmComponent } from '../../../common/modal-confirm/modal-confirm.component';
 
+const MODALS: { [name: string]: Type<any> } = {
+  confirmDelete: ModalConfirmComponent
+};
 
 @Component({
   selector: 'app-user',
@@ -19,23 +24,44 @@ import { AssessmentService } from '../../assessments/assessment.service';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  public isCollapsed = true;
+
+  public isSettingsCollapsed = false;
 
   constructor(
+    private sessionService: SessionService,
     private userService: UserService,
     private assessmentService: AssessmentService,
-    private activatedRoute: ActivatedRoute) { }
+    private activatedRoute: ActivatedRoute,
+    private modalService: NgbModal,
+    private router: Router) { }
 
   user = new User();
   paramId = '';
   resIn = false;
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.paramId = params['id'];
-      this.userService.one(this.paramId).subscribe(res => { this.user = res; this.resIn = true })
-    });
+    if (this.sessionService.userLogged)
+      this.activatedRoute.params.subscribe(params => {
+        this.paramId = params['id'];
+        this.userService.one(this.paramId).subscribe(res => { this.user = res; this.resIn = true })
+      });
     this.assessmentService.path = 'user';
+  }
+
+  deleteUserAsk() {
+    const confirmModal = this.modalService.open(MODALS['confirmDelete']);
+    confirmModal.componentInstance.entity = 'user';
+    confirmModal.closed.subscribe((result) => this.deleteUser(result))
+
+  }
+
+  deleteUser(result: boolean) {
+    if (result)
+      this.userService.delete(this.paramId).subscribe(res => {
+        console.log('user delete')
+        if (res)
+          this.router.navigate(['home']);
+      })
   }
 
 }

@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   ) { }
   
 
-  loginUser = new LoginUser('john@london.exp');
+  loginUser = new LoginUser('juana@barcelona.exp');
 
   submitted = false;
 

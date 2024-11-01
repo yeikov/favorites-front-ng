@@ -4,7 +4,6 @@ import { Observable } from 'rxjs';
 import { Utilities } from '../../common/utilities';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -24,6 +23,10 @@ export class UserService {
 
   oneByEmail(eMail: any): Observable<any> {
     return this.http.post(this.entityUrl + '/email', { eMail: eMail });
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(this.entityUrl + '/' + id);
   }
 
 }
