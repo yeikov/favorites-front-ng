@@ -2,7 +2,7 @@
     <form (ngSubmit)="onSubmit()" #loginUserform="ngForm" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
         <div class="form-floating mb-3">
             <input type="email" class="form-control" id="eMail" placeholder="name@example.com"
-                [(ngModel)]="loginUser.eMail" name="eMail" #eMail="ngModel" required>
+                [(ngModel)]="loginUser.eMail" name="eMail" #eMail="ngModel" pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
             <label for="eMail">Email address</label>
         </div>
 
