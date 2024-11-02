@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+h1 {
+    color: cadetblue;
+    font-weight: 100;
+}
+
 .fav-min-height {
     min-height: 2.5rem
 }
