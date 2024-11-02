@@ -46,9 +46,13 @@ export class LoginComponent implements OnInit {
   onSubmitAdd() {
     this.submitted = true;
     this.userService.add(this.addUser).subscribe(res => {
-      this.sessionService.user.set(res);
-
-      this.router.navigate(['/user/' + this.sessionService.user().id])
+      if (res.id > 0){
+        this.sessionService.user.set(res);
+        
+        this.router.navigate(['/user/' + this.sessionService.user().id])
+      } else {
+        this.error.message = 'Email already exists' 
+      }
     })
   }
 
