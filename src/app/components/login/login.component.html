@@ -97,8 +97,8 @@
     </button>
 </div>
 <div>
-    @if (sessionService.userLogged){
-    <p><code>logged as {{sessionService.user.name}}</code></p>
+    @if (sessionService.userLogged()){
+    <p><code>logged as {{sessionService.user().name}}</code></p>
     } @else {
     <p><code>no logged</code></p>
     }

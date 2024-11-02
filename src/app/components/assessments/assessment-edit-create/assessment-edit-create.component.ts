@@ -76,7 +76,7 @@ export class AssessmentEditCreateComponent implements OnInit {
     this.registryService.one(paramId.toString()).subscribe(res => {
       this.assessment = new Assessment();
       this.assessment.registry = res;
-      this.assessment.user = this.sessionService.user;
+      this.assessment.user = this.sessionService.user();
 
       this.dataIn = true;
 

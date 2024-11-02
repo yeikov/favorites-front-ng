@@ -40,12 +40,17 @@ export class UserComponent implements OnInit {
   resIn = false;
 
   ngOnInit(): void {
-    if (this.sessionService.userLogged)
+    if (this.sessionService.userLogged()){
+
       this.activatedRoute.params.subscribe(params => {
         this.paramId = params['id'];
         this.userService.one(this.paramId).subscribe(res => { this.user = res; this.resIn = true })
       });
-    this.assessmentService.path = 'user';
+      this.assessmentService.path = 'user';
+    } else {
+      this.router.navigate(['home']);
+    }
+
   }
 
   deleteUserAsk() {
@@ -59,8 +64,8 @@ export class UserComponent implements OnInit {
     if (result)
       this.userService.delete(this.paramId).subscribe(res => {
         this.user = new User();
-        this.sessionService.user = this.user;
-        this.sessionService.userLogged = false;
+        this.sessionService.user.set(this.user);
+       
         
         if (res)
           this.router.navigate(['home']);

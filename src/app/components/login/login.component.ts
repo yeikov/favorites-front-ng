@@ -34,9 +34,9 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     this.userService.oneByEmail(this.loginUser.eMail).subscribe(
       res => {
-        this.sessionService.userLogged = true;
-        this.sessionService.user = res;
-        this.router.navigate(['/user/' + this.sessionService.user.id])
+        
+        this.sessionService.user.set(res);
+        this.router.navigate(['/user/' + this.sessionService.user().id])
 
       }, error => {
         this.error = error.error;
@@ -46,9 +46,9 @@ export class LoginComponent implements OnInit {
   onSubmitAdd() {
     this.submitted = true;
     this.userService.add(this.addUser).subscribe(res => {
-      this.sessionService.user = res;
+      this.sessionService.user.set(res);
 
-      this.router.navigate(['/user/' + this.sessionService.user.id])
+      this.router.navigate(['/user/' + this.sessionService.user().id])
     })
   }
 

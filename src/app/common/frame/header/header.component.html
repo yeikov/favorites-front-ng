@@ -16,7 +16,7 @@
 
             
             <ul class="nav justify-content-end" style="margin: 1rem; float: right;">
-                @if(sessionService.userLogged){
+                @if(sessionService.userLogged()){
                     <span class="nav justify-content-end" style="
                         padding: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
                         font-size: var(--bs-nav-link-font-size);
@@ -25,7 +25,7 @@
                         background: 0 0;
                         border: 0;
                         transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out;
-                    ">{{sessionService.user.name}} {{sessionService.user.city}}</span>
+                    ">{{sessionService.user().name}} {{sessionService.user().city}}</span>
                 <li class="nav-item">
                     <a class="nav-link" (click)="logOut()">Log Out</a>
                 </li>
@@ -45,7 +45,7 @@
 
                 @if (sessionService.userLogged){
                     <li class="nav-item">
-                        <a class="nav-link" (click)="goto('user/'+sessionService.user.id)">Dashboard</a>
+                        <a class="nav-link" (click)="goto('user/'+sessionService.user().id)">Dashboard</a>
                     </li>
 
                 }@else {

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { computed, Injectable, Signal, signal } from '@angular/core';
 import { User } from '../users/user.model';
 
 
@@ -7,29 +7,11 @@ import { User } from '../users/user.model';
 })
 export class SessionService {
 
-  private _user = new User();
+  user = signal(new User());
   
-  private _userLogged = false;
+  userLogged: Signal<boolean> = computed(()=>this.user().eMail !== '') ;
 
   private _addMode = false;
-
-
-  public get user(): User {
-    return this._user;
-  }
-
-  public set user(user: User) {
-    this._user = user;
-  }
-
-  public get userLogged(): boolean {
-    return this._userLogged;
-  }
-
-  public set userLogged(v: boolean) {
-    this._userLogged = v;
-  }
-
 
   public get addMode(): boolean {
     return this._addMode;
