@@ -43,7 +43,7 @@
 
             <ul class="nav justify-content-end" style="margin: 1rem;">
 
-                @if (sessionService.userLogged){
+                @if (sessionService.userLogged()){
                     <li class="nav-item">
                         <a class="nav-link" (click)="goto('user/'+sessionService.user().id)">Dashboard</a>
                     </li>

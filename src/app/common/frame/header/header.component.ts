@@ -29,8 +29,8 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.sessionService.user.set(new User());
+    this.goto('home');
     
-
   }
 
 }
