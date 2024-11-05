@@ -8,9 +8,10 @@ export interface User {
 
 export class User implements User {
 
-    constructor(name = '', eMail = ''){
+    constructor(name = '', eMail = '', city = ''){
         this.name = name;
         this.eMail = eMail;
+        this.city = city;
     }
 
 }

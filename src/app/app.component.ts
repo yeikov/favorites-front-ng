@@ -14,7 +14,7 @@ import { SessionService } from './components/login/session.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'favorites-front-ng';
   private userService = inject(UserService);
   private sessionService = inject(SessionService);
@@ -23,21 +23,4 @@ export class AppComponent implements OnInit {
   isEmpty = true;
   criterio = 'recientes';
 
-  ngOnInit(): void {
-    this.isEmpty = true;
-
-    this.userService.recent(this.criterio).subscribe(response => {
-      this.dataList = response;
-      this.resIn = true;
-      if (this.dataList?.length > 0) {
-        this.isEmpty = false;
-      }
-
-    });
-
-
-    this.userService.one('2').subscribe(response => {
-      this.sessionService.user = response;
-    })
-  }
 }

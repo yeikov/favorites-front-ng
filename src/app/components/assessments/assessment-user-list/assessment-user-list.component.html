@@ -1,16 +1,22 @@
 <div class="fav-margin-bottom">
     @if (list) {
-    <h5 class="card-title">Reseñas</h5>
+    <h5 class="card-title">Reviews</h5>
     <hr>
     @for(assessment of list; track assessment.id){
-    <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" 
-    class="fav-pointer"
-    (click)="gotoItem(assessment)">
+    <div [title]="'f.'+assessment.favorite+', r:'+assessment.recommend" class="fav-pointer"
+        (click)="gotoItem(assessment)">
         <p>
-            <em>{{assessment.registry.media}}</em>&nbsp;<b>{{assessment.registry.title}}</b> de
-            {{assessment.registry.author}}
-            <b>favorite:</b>&nbsp;{{assessment.favorite}}&nbsp;<b>recommend:</b>&nbsp;{{assessment.recommend}}
+            <em>{{assessment.registry.media}}</em>
+            <span class="fav-value">{{assessment.registry.title}}</span> 
         </p>
+        <p>{{assessment.registry.productionDate | date: 'yyyy'}} <span class="fav-author">{{assessment.registry.author}}</span></p>
+        <p class="fav-text-align-right">
+            Favorite:<span class="fav-value">{{assessment.favorite}}</span>
+        </p>
+        <p class="fav-text-align-right">
+            Recommend:<span class="fav-value">{{assessment.recommend}}</span>
+        </p>
+        <hr>
     </div>
 
     }

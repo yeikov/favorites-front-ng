@@ -1,26 +1,104 @@
-<form class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
-    <div class="form-floating mb-3">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" [(ngModel)]="eMail">
-        <label for="floatingInput">Email address</label>
-    </div>
-    <div class="form-floating mb-3">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-    </div>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <button class="w-100 btn btn-lg btn-primary" type="submit" (click)="continue()">Sign up</button>
-    <hr class="my-4">
-    <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
-</form>
+<div [hidden]="submitted">
+    <form (ngSubmit)="onSubmitLogin()" #loginUserform="ngForm" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="eMail" placeholder="name@example.com"
+                [(ngModel)]="loginUser.eMail" name="eMail" #eMail="ngModel"
+                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+            <label for="eMail">Email address</label>
+        </div>
 
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="password" placeholder="Password"
+                [(ngModel)]="loginUser.password" name="password" #password="ngModel" required>
+            <label for="password">Password</label>
+        </div>
+
+        <div [hidden]="eMail.valid || eMail.pristine" class="alert alert-danger">
+            E-mail is required
+        </div>
+
+        <div [hidden]="password.valid || password.pristine" class="alert alert-danger">
+            Password is required
+        </div>
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" value="remember-me"> Remember me
+            </label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!loginUserform.form.valid">
+            Sign up
+        </button>
+        <hr class="my-4">
+        <small class="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+    </form>
+
+    <p class="fav-margin-top">Or create a new user</p>
+    <form (ngSubmit)="onSubmitAdd()" #addUserform="ngForm" class="p-4 p-md-5 border rounded-3 bg-body-tertiary">
+        <div class="form-floating mb-3">
+            <input type="email" class="form-control" id="eMailAdd" placeholder="name@example.com"
+                [(ngModel)]="addUser.eMail" name="eMailAdd" #eMailAdd="ngModel"
+                pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" required>
+            <label for="eMailAdd">Email address</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="name" placeholder="John"
+                [(ngModel)]="addUser.name" name="name" #name="ngModel" required>
+            <label for="name">Name</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="city" class="form-control" id="city" placeholder="London"
+                [(ngModel)]="addUser.city" name="city" #city="ngModel" required>
+            <label for="city">City</label>
+        </div>
+
+        <div class="form-floating mb-3">
+            <input type="birth" class="form-control" id="birth" placeholder="1900"
+                [(ngModel)]="addUser.birth" name="birth" #birth="ngModel" min="1900" max="2900" pattern="^[0-9]*4$">
+            <label for="birth">Birth</label>
+        </div>
+
+        <div [hidden]="eMailAdd.valid || eMailAdd.pristine" class="alert alert-danger">
+            E-mail is required
+        </div>
+
+        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+            Name is required
+        </div>
+
+        <div [hidden]="city.valid || city.pristine" class="alert alert-danger">
+            City is required
+        </div>
+
+
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit" [disabled]="!addUserform.form.valid">
+            Create user
+        </button>
+        <hr class="my-4">
+        <small class="text-body-secondary">By clicking Create user, you agree to the terms of use.</small>
+    </form>
+</div>
+
+<div [hidden]="!submitted">
+    <p [hidden]="this.error.message">please wait</p>
+    <p [hidden]="!this.error.message"> Error on Request:  {{error.message}}</p>
+    
+    <h2>You submitted the following:</h2>
+    <div class="row fav-margin-bottom">
+        <div class="col-xs-3">Name</div>
+        <div class="col-xs-9 fav-value">{{ loginUser.eMail }}</div>
+    </div>
+
+
+    <button class="w-100 btn btn-lg btn-primary" type="button" (click)="loginUserform.reset(); submitted = false;">
+        Try again
+    </button>
+</div>
 <div>
-    <!-- <p><code>ToDo inputs</code></p> -->
-    @if (sessionService.userLogged){
-    <p><code>logged as {{sessionService.user.name}}</code></p>
+    @if (sessionService.userLogged()){
+    <p><code>logged as {{sessionService.user().name}}</code></p>
     } @else {
     <p><code>no logged</code></p>
     }

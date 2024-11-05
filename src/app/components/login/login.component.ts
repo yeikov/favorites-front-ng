@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { UserService } from '../users/user.service';
 import { SessionService } from './session.service';
+import { User } from '../users/user.model';
 
 @Component({
   selector: 'app-login',
@@ -19,21 +20,55 @@ export class LoginComponent implements OnInit {
     private router: Router
 
   ) { }
-  // template-driven form
 
-  eMail = 'john@london.exp';
-  ngOnInit(): void {
-    this.userService.oneByEmail(this.eMail).subscribe(
+
+  loginUser = new LoginUser('juan@granada.exp');
+  addUser = new User('Juan', 'juan@granada.exp', 'Granada');
+
+  submitted = false;
+  error = new FavResponseError();
+
+  ngOnInit(): void { }
+
+  onSubmitLogin() {
+    this.submitted = true;
+    this.userService.oneByEmail(this.loginUser.eMail).subscribe(
       res => {
-        this.sessionService.userLogged = true;
-        this.sessionService.user = res;
+        
+        this.sessionService.user.set(res);
+        this.router.navigate(['/user/' + this.sessionService.user().id])
 
+      }, error => {
+        this.error = error.error;
       });
   }
 
-  continue() {
-    this.router.navigate(['/user/' + this.sessionService.user.id])
+  onSubmitAdd() {
+    this.submitted = true;
+    this.userService.add(this.addUser).subscribe(res => {
+      if (res.id > 0){
+        this.sessionService.user.set(res);
+        
+        this.router.navigate(['/user/' + this.sessionService.user().id])
+      } else {
+        this.error.message = 'Email already exists' 
+      }
+    })
   }
 
+}
+
+export class LoginUser {
+  constructor(public eMail: string, public password?: string) { }
+
+}
+
+export class FavResponseError {
+  constructor(cause = '', message = '') {
+    this.cause = cause;
+    this.message = message;
+  }
+  cause: string;
+  message: string;
 
 }

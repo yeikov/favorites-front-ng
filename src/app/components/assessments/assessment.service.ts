@@ -37,14 +37,14 @@ export class AssessmentService {
   }
 
   add(assessment: Assessment): Observable<any> {
-    return this.http.post(this.entityUrl,{'registryId': assessment.registry.id, 'userId': assessment.user.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend});
+    return this.http.post(this.entityUrl, { 'registryId': assessment.registry.id, 'userId': assessment.user.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend });
   }
 
   edit(assessment: Assessment): Observable<any> {
-    return this.http.put(this.entityUrl + '/' + assessment.id, {'registryId': assessment.registry.id, 'userId': assessment.user.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend});
+    return this.http.put(this.entityUrl + '/' + assessment.id, { 'registryId': assessment.registry.id, 'userId': assessment.user.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend });
   }
 
-  delete(id:number): Observable<any> {
+  delete(id: number): Observable<any> {
     return this.http.delete(this.entityUrl + '/' + id);
   }
 

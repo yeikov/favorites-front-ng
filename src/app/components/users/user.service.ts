@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utilities } from '../../common/utilities';
-
+import { User } from './user.model';
 
 
 @Injectable({
@@ -24,6 +24,14 @@ export class UserService {
 
   oneByEmail(eMail: any): Observable<any> {
     return this.http.post(this.entityUrl + '/email', { eMail: eMail });
+  }
+
+  delete(id: string): Observable<any> {
+    return this.http.delete(this.entityUrl + '/' + id);
+  }
+
+  add(user: User): Observable<any> {
+    return this.http.post(this.entityUrl, user);
   }
 
 }
