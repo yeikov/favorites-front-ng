@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { SessionService } from '../../../components/login/session.service';
 import { User } from '../../../components/users/user.model';
+import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private router: Router,
-
+    private http: HttpClient,
     public sessionService: SessionService) { }
 
   ngOnInit(): void {
@@ -28,9 +29,12 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.sessionService.user.set(new User());
-    this.goto('home');
-    
+    this.http.post('logout', {}).subscribe(() => {
+      this.sessionService.user.set(new User());
+      this.goto('home');
+    });
+
   }
+
 
 }

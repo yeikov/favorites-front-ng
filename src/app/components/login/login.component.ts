@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
   onSubmitLogin() {
     this.submitted = true;
     this.userService.oneByEmail(this.loginUser.eMail).subscribe(
-      res => {
+      (res) => {
         
         this.sessionService.user.set(res);
         this.router.navigate(['/user/' + this.sessionService.user().id])

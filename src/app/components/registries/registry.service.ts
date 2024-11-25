@@ -33,7 +33,7 @@ export class RegistryService {
   }
 
   add(title: string, media: string, author: string, year: string): Observable<any> {
-    return this.http.post(this.entityUrl, {'title': title, 'media': media, 'author': author, 'year': year})
+    return this.http.post(this.entityUrl + "/add", {'title': title, 'media': media, 'author': author, 'year': year})
   }
   
   delete(id: string):Observable<any>{
