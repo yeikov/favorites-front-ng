@@ -8,7 +8,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ViewerService } from '../viewer.service';
 import { Viewer } from '../viewer.model';
 import { AssessmentService } from '../../assessments/assessment.service';
-import { SessionService } from '../../login/session.service';
+import { SessionService } from '../../../common/frame/login/session.service';
 import { ModalConfirmComponent } from '../../../common/modal-confirm/modal-confirm.component';
 
 const MODALS: { [name: string]: Type<any> } = {

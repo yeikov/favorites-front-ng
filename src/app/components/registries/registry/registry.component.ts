@@ -5,7 +5,7 @@ import { JsonPipe, Location } from '@angular/common';
 import { RegistryService } from '../registry.service';
 import { AssessmentStatisticalSummaryComponent } from '../../assessments/assessment-statistical-summary/assessment-statistical-summary.component';
 import { UiModule } from '../../../ui/ui.module';
-import { SessionService } from '../../login/session.service';
+import { SessionService } from '../../../common/frame/login/session.service';
 import { AssessmentService } from '../../assessments/assessment.service';
 import { Registry } from '../registry.model';
 

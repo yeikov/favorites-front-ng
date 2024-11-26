@@ -1,7 +1,8 @@
 import { computed, Injectable, Signal, signal } from '@angular/core';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Viewer } from '../viewer/viewer.model';
+import { Viewer } from '../../../components/viewer/viewer.model';
+
 
 
 @Injectable({

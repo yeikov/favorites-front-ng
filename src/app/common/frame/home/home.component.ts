@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { RegistryListComponent } from '../registries/registry-list/registry-list.component';
-import { ViewerListComponent } from '../viewer/viewer-list/viewer-list.component';
+import { RegistryListComponent } from '../../../components/registries/registry-list/registry-list.component';
+import { ViewerListComponent } from '../../../components/viewer/viewer-list/viewer-list.component';
 
 
 @Component({

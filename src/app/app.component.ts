@@ -5,8 +5,9 @@ import { UiModule } from './ui/ui.module';
 import { HeaderComponent } from './common/frame/header/header.component';
 import { FooterComponent } from './common/frame/footer/footer.component';
 
-import { SessionService } from './components/login/session.service';
+
 import { ViewerService } from './components/viewer/viewer.service';
+import { SessionService } from './common/frame/login/session.service';
 
 @Component({
   selector: 'app-root',

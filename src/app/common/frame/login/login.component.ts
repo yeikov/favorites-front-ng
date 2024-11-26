@@ -3,8 +3,8 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { SessionService } from './session.service';
-import { ViewerService } from '../viewer/viewer.service';
-import { Viewer } from '../viewer/viewer.model';
+import { ViewerService } from '../../../components/viewer/viewer.service';
+import { Viewer } from '../../../components/viewer/viewer.model';
 
 @Component({
   selector: 'app-login',

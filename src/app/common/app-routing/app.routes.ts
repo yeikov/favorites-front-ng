@@ -1,14 +1,15 @@
 import { Routes } from '@angular/router';
 import { AssessmentListComponent } from '../../components/assessments/assessment-list/assessment-list.component';
 import { AssessmentComponent } from '../../components/assessments/assessment/assessment.component';
-import { HomeComponent } from '../../components/home/home.component';
+import { HomeComponent } from '../frame/home/home.component';
 import { RegistryComponent } from '../../components/registries/registry/registry.component';
 
 import { AssessmentEditCreateComponent } from '../../components/assessments/assessment-edit-create/assessment-edit-create.component';
-import { LoginComponent } from '../../components/login/login.component';
+
 import { RegistryAddComponent } from '../../components/registries/registry-add/registry-add.component';
 import { RegistryExplorerComponent } from '../../components/registries/registry-explorer/registry-explorer.component';
 import { ViewerComponent } from '../../components/viewer/viewer/viewer.component';
+import { LoginComponent } from '../frame/login/login.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },

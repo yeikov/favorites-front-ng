@@ -4,8 +4,8 @@ import { AssessmentService } from '../assessment.service';
 import { Router, RouterLink } from '@angular/router';
 
 
-import { SessionService } from '../../login/session.service';
 import { DatePipe } from '@angular/common';
+import { SessionService } from '../../../common/frame/login/session.service';
 
 @Component({
   selector: 'app-assessment-viewer-list',

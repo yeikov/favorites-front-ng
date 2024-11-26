@@ -5,7 +5,7 @@ import { UiModule } from '../../../ui/ui.module';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Assessment } from '../assessment.model';
-import { SessionService } from '../../login/session.service';
+import { SessionService } from '../../../common/frame/login/session.service';
 import { RegistryService } from '../../registries/registry.service';
 
 @Component({

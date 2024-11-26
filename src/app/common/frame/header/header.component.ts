@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { SessionService } from '../../../components/login/session.service';
 
 import { HttpClient } from '@angular/common/http';
 import { Viewer } from '../../../components/viewer/viewer.model';
+import { SessionService } from '../login/session.service';
 
 
 @Component({
