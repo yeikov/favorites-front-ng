@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { SessionService } from '../../../components/login/session.service';
-import { User } from '../../../components/users/user.model';
+
 import { HttpClient } from '@angular/common/http';
+import { Viewer } from '../../../components/viewer/viewer.model';
 
 
 @Component({
@@ -30,7 +31,7 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.http.post('logout', {}).subscribe(() => {
-      this.sessionService.user.set(new User());
+      this.sessionService.viewer.set(new Viewer());
       this.goto('home');
     });
 

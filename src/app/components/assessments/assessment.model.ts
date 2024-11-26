@@ -1,10 +1,11 @@
 import { Registry } from "../registries/registry.model"
-import { User } from "../users/user.model"
+import { Viewer } from "../viewer/viewer.model"
+
 
 export interface Assessment {
     
     id: string,
-    user: User,
+    viewer: Viewer,
     registry: Registry
     favorite: number  | string,
     recommend: number | string,

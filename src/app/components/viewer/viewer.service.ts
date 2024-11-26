@@ -2,17 +2,17 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Utilities } from '../../common/utilities';
-import { User } from './user.model';
+import { Viewer } from './viewer.model';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class ViewerService {
 
   constructor(private http: HttpClient) { }
 
-  private entityUrl = Utilities.favoritesBack + '/users';
+  private entityUrl = Utilities.favoritesBack + '/viewers';
 
   recent(criterio: string): Observable<any> {
     return this.http.get(this.entityUrl + '/recent/' + criterio)
@@ -30,8 +30,8 @@ export class UserService {
     return this.http.delete(this.entityUrl + '/' + id);
   }
 
-  add(user: User): Observable<any> {
-    return this.http.post(this.entityUrl, user);
+  add(viewer: Viewer): Observable<any> {
+    return this.http.post(this.entityUrl, viewer);
   }
 
 }

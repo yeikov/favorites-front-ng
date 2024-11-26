@@ -3,18 +3,18 @@ import { AssessmentListComponent } from '../../components/assessments/assessment
 import { AssessmentComponent } from '../../components/assessments/assessment/assessment.component';
 import { HomeComponent } from '../../components/home/home.component';
 import { RegistryComponent } from '../../components/registries/registry/registry.component';
-import { UserComponent } from '../../components/users/user/user.component';
-import { LoginComponent } from '../../components/login/login.component';
+
 import { AssessmentEditCreateComponent } from '../../components/assessments/assessment-edit-create/assessment-edit-create.component';
-import { RegistryListComponent } from '../../components/registries/registry-list/registry-list.component';
-import { RegistryExplorerComponent } from '../../components/registries/registry-explorer/registry-explorer.component';
+import { LoginComponent } from '../../components/login/login.component';
 import { RegistryAddComponent } from '../../components/registries/registry-add/registry-add.component';
+import { RegistryExplorerComponent } from '../../components/registries/registry-explorer/registry-explorer.component';
+import { ViewerComponent } from '../../components/viewer/viewer/viewer.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: 'home', title: 'App Home Page', component: HomeComponent },
     { path: 'login', title: 'App Login Page', component: LoginComponent },
-    { path: 'user/:id', title: 'App User Page', component: UserComponent },
+    { path: 'viewer/:id', title: 'App Viewer Page', component: ViewerComponent },
     { path: 'assessment/add/:registryId', title: 'App New Assessment', component: AssessmentEditCreateComponent },
     { path: 'assessment/:assessmentId', title: 'App Assessment Detail', component: AssessmentComponent },
     { path: 'assessment/:assessmentId/edit', title: 'App Edit Assessment', component: AssessmentEditCreateComponent },

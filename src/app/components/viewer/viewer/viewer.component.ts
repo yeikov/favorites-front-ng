@@ -5,9 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { UiModule } from '../../../ui/ui.module';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
-import { UserService } from '../user.service';
-import { AssessmentUserListComponent } from '../../assessments/assessment-user-list/assessment-user-list.component';
-import { User } from '../user.model';
+import { ViewerService } from '../viewer.service';
+import { Viewer } from '../viewer.model';
 import { AssessmentService } from '../../assessments/assessment.service';
 import { SessionService } from '../../login/session.service';
 import { ModalConfirmComponent } from '../../../common/modal-confirm/modal-confirm.component';
@@ -17,54 +16,54 @@ const MODALS: { [name: string]: Type<any> } = {
 };
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-viewer',
   standalone: true,
-  imports: [UiModule, AssessmentUserListComponent, JsonPipe],
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  imports: [UiModule, JsonPipe],
+  templateUrl: './viewer.component.html',
+  styleUrls: ['./viewer.component.css']
 })
-export class UserComponent implements OnInit {
+export class ViewerComponent implements OnInit {
 
   public isSettingsCollapsed = false;
 
   constructor(
     private sessionService: SessionService,
-    private userService: UserService,
+    private viewerService: ViewerService,
     private assessmentService: AssessmentService,
     private activatedRoute: ActivatedRoute,
     private modalService: NgbModal,
     private router: Router) { }
 
-  user = new User();
+  viewer = new Viewer();
   paramId = '';
   resIn = false;
 
   ngOnInit(): void {
-    if (this.sessionService.userLogged()){
+    if (this.sessionService.viewerLogged()){
 
       this.activatedRoute.params.subscribe(params => {
         this.paramId = params['id'];
-        this.userService.one(this.paramId).subscribe(res => { this.user = res; this.resIn = true })
+        this.viewerService.one(this.paramId).subscribe(res => { this.viewer = res; this.resIn = true })
       });
-      this.assessmentService.path = 'user';
+      this.assessmentService.path = 'viewer';
     } else {
       this.router.navigate(['home']);
     }
 
   }
 
-  deleteUserAsk() {
+  deleteViewerAsk() {
     const confirmModal = this.modalService.open(MODALS['confirmDelete']);
-    confirmModal.componentInstance.entity = 'user';
-    confirmModal.closed.subscribe((result) => this.deleteUser(result))
+    confirmModal.componentInstance.entity = 'viewer';
+    confirmModal.closed.subscribe((result) => this.deleteViewer(result))
 
   }
 
-  deleteUser(result: boolean) {
+  deleteViewer(result: boolean) {
     if (result)
-      this.userService.delete(this.paramId).subscribe(res => {
-        this.user = new User();
-        this.sessionService.user.set(this.user);
+      this.viewerService.delete(this.paramId).subscribe(res => {
+        this.viewer = new Viewer();
+        this.sessionService.viewer.set(this.viewer);
        
         
         if (res)

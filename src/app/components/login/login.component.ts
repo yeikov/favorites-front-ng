@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../users/user.service';
+import { Router } from '@angular/router';
+
 import { SessionService } from './session.service';
-import { User } from '../users/user.model';
+import { ViewerService } from '../viewer/viewer.service';
+import { Viewer } from '../viewer/viewer.model';
 
 @Component({
   selector: 'app-login',
@@ -15,15 +16,15 @@ import { User } from '../users/user.model';
 export class LoginComponent implements OnInit {
 
   constructor(
-    private userService: UserService,
+    private viewerService: ViewerService,
     public sessionService: SessionService,
     private router: Router
 
   ) { }
 
 
-  loginUser = new LoginUser('juan@granada.exp');
-  addUser = new User('Juan', 'juan@granada.exp', 'Granada');
+  loginViewer = new LoginViewer('juan@granada.exp');
+  addViewer = new Viewer('Juan', 'juan@granada.exp', 'Granada');
 
   submitted = false;
   error = new FavResponseError();
@@ -32,11 +33,11 @@ export class LoginComponent implements OnInit {
 
   onSubmitLogin() {
     this.submitted = true;
-    this.userService.oneByEmail(this.loginUser.eMail).subscribe(
+    this.viewerService.oneByEmail(this.loginViewer.eMail).subscribe(
       (res) => {
         
-        this.sessionService.user.set(res);
-        this.router.navigate(['/user/' + this.sessionService.user().id])
+        this.sessionService.viewer.set(res);
+        this.router.navigate(['/viewer/' + this.sessionService.viewer().id])
 
       }, error => {
         this.error = error.error;
@@ -45,11 +46,11 @@ export class LoginComponent implements OnInit {
 
   onSubmitAdd() {
     this.submitted = true;
-    this.userService.add(this.addUser).subscribe(res => {
+    this.viewerService.add(this.addViewer).subscribe(res => {
       if (res.id > 0){
-        this.sessionService.user.set(res);
+        this.sessionService.viewer.set(res);
         
-        this.router.navigate(['/user/' + this.sessionService.user().id])
+        this.router.navigate(['/viewer/' + this.sessionService.viewer().id])
       } else {
         this.error.message = 'Email already exists' 
       }
@@ -58,7 +59,7 @@ export class LoginComponent implements OnInit {
 
 }
 
-export class LoginUser {
+export class LoginViewer {
   constructor(public eMail: string, public password?: string) { }
 
 }

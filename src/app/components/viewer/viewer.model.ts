@@ -1,4 +1,4 @@
-export interface User {
+export interface Viewer {
     id: string | number,
     name?: string,
     eMail?: string,
@@ -6,7 +6,7 @@ export interface User {
     city?: string
 }
 
-export class User implements User {
+export class Viewer implements Viewer {
 
     constructor(name = '', eMail = '', city = ''){
         this.name = name;

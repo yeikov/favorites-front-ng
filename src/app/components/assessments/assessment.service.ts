@@ -20,16 +20,16 @@ export class AssessmentService {
     return this.http.get(this.entityUrl + '/' + assessmentId);
   }
 
-  user(userId: string): Observable<any> {
-    return this.http.get(this.entityUrl + '/user/' + userId);
+  viewer(viewerId: string): Observable<any> {
+    return this.http.get(this.entityUrl + '/viewer/' + viewerId);
   }
 
   media(media: string): Observable<any> {
     return this.http.get(this.entityUrl + "/media/" + media);
   }
 
-  userMedia(userId: string | number, media: string | String): Observable<any> {
-    return this.http.get(this.entityUrl + "/user/" + userId + "/" + media);
+  viewerMedia(viewerId: string | number, media: string | String): Observable<any> {
+    return this.http.get(this.entityUrl + "/viewer/" + viewerId + "/" + media);
   }
 
   registry(registryId: string | number): Observable<any> {
@@ -37,11 +37,11 @@ export class AssessmentService {
   }
 
   add(assessment: Assessment): Observable<any> {
-    return this.http.post(this.entityUrl, { 'registryId': assessment.registry.id, 'userId': assessment.user.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend });
+    return this.http.post(this.entityUrl, { 'registryId': assessment.registry.id, 'viewerId': assessment.viewer.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend });
   }
 
   edit(assessment: Assessment): Observable<any> {
-    return this.http.put(this.entityUrl + '/' + assessment.id, { 'registryId': assessment.registry.id, 'userId': assessment.user.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend });
+    return this.http.put(this.entityUrl + '/' + assessment.id, { 'registryId': assessment.registry.id, 'viewerId': assessment.viewer.id, 'notes': assessment.notes, 'favorite': assessment.favorite, 'recommend': assessment.recommend });
   }
 
   delete(id: number): Observable<any> {

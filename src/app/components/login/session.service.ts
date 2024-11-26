@@ -1,6 +1,7 @@
 import { computed, Injectable, Signal, signal } from '@angular/core';
-import { User } from '../users/user.model';
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Viewer } from '../viewer/viewer.model';
 
 
 @Injectable({
@@ -9,9 +10,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class SessionService {
   constructor(private http: HttpClient){}
 
-  user = signal(new User());
+  viewer = signal(new Viewer());
   
-  userLogged: Signal<boolean> = computed(()=>this.user().eMail !== '');
+  viewerLogged: Signal<boolean> = computed(()=>this.viewer().eMail !== '');
 
   private _addMode = false;
 
@@ -24,13 +25,13 @@ export class SessionService {
   }
 
 
-/*   authenticate(credentials: UserCredentials, callback: any) {
+/*   authenticate(credentials: ViewerCredentials, callback: any) {
 
     const headers = new HttpHeaders(credentials ? {
-        authorization : 'Basic ' + btoa(credentials.username + ':' + credentials.password)
+        authorization : 'Basic ' + btoa(credentials.viewername + ':' + credentials.password)
     } : {});
 
-    this.http.get('user', {headers: headers}).subscribe(response => {
+    this.http.get('viewer', {headers: headers}).subscribe(response => {
         if (response['name']) {
             this.authenticated = true;
         } else {
@@ -44,7 +45,7 @@ export class SessionService {
 
 }
 
-class UserCredentials {
-  username ='';
+class ViewerCredentials {
+  viewername ='';
   password='';
 }
