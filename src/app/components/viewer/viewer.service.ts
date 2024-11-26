@@ -14,10 +14,9 @@ export class ViewerService {
 
   private entityUrl = Utilities.favoritesBack + '/viewers';
 
-  recent(criterio: string): Observable<any> {
-    return this.http.get(this.entityUrl + '/recent/' + criterio)
-  }
 
+
+  
   one(id: string): Observable<any> {
     return this.http.get(this.entityUrl + '/' + id)
   }
@@ -33,5 +32,13 @@ export class ViewerService {
   add(viewer: Viewer): Observable<any> {
     return this.http.post(this.entityUrl, viewer);
   }
+
+  findByName(name: String): Observable<any>{
+    return this.http.get(this.entityUrl + '/findByName');
+  }
+  recent(media: string): Observable<any> {
+    return this.http.get(this.entityUrl + '/recent/' + media);
+  }
+
 
 }
