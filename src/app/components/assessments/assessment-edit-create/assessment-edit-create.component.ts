@@ -5,7 +5,7 @@ import { UiModule } from '../../../ui/ui.module';
 import { DatePipe, JsonPipe } from '@angular/common';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Assessment } from '../assessment.model';
-import { SessionService } from '../../login/session.service';
+import { SessionService } from '../../../common/frame/login/session.service';
 import { RegistryService } from '../../registries/registry.service';
 
 @Component({
@@ -76,7 +76,7 @@ export class AssessmentEditCreateComponent implements OnInit {
     this.registryService.one(paramId.toString()).subscribe(res => {
       this.assessment = new Assessment();
       this.assessment.registry = res;
-      this.assessment.user = this.sessionService.user();
+      this.assessment.viewer = this.sessionService.viewer();
 
       this.dataIn = true;
 

@@ -4,13 +4,13 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
-        <div class="fav-margin-bottom" (click)="item('user', assessment.user.id)">
+        <div class="fav-margin-bottom" (click)="item('viewer', assessment.viewer.id)">
           <p>
-            <span class="fav-user-info-name">{{assessment.user.name}}</span>
-            @if(assessment.user.birth){
-            <span class="fav-user-info">{{assessment.user.birth}}</span>
+            <span class="fav-viewer-info-name">{{assessment.viewer.name}}</span>
+            @if(assessment.viewer.birth){
+            <span class="fav-viewer-info">{{assessment.viewer.birth}}</span>
             }
-            <span class="fav-user-info"> - {{assessment.user.city}}</span>
+            <span class="fav-viewer-info"> - {{assessment.viewer.city}}</span>
           </p>
         </div>
 
@@ -44,7 +44,7 @@
         <textarea [contentEditable]="false" name="notes" id="notes" class="notes" cols="100"
           rows="10">{{assessment.notes}}</textarea>
         <div class="fav-actions">
-          <button type="button" class="btn btn-secondary" (click)="goBack(assessment.registry.id, assessment.user.id)">
+          <button type="button" class="btn btn-secondary" (click)="goBack(assessment.registry.id, assessment.viewer.id)">
             back
           </button>
           <button type="button" class="btn btn-primary" (click)="editAssessment(assessment.id)">

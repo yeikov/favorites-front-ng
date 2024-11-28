@@ -20,7 +20,7 @@
     </div>
 
     }
-    @if (sessionService.userLogged) {
+    @if (sessionService.viewerLogged()) {
     <div class="fav-actions">
         <button class="btn btn-primary" [disabled]="list.length >60" (click)="doAdd()">add</button>
     </div>

@@ -4,8 +4,10 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { UiModule } from './ui/ui.module';
 import { HeaderComponent } from './common/frame/header/header.component';
 import { FooterComponent } from './common/frame/footer/footer.component';
-import { UserService } from './components/users/user.service';
-import { SessionService } from './components/login/session.service';
+
+
+import { ViewerService } from './components/viewer/viewer.service';
+import { SessionService } from './common/frame/login/session.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +18,7 @@ import { SessionService } from './components/login/session.service';
 })
 export class AppComponent {
   title = 'favorites-front-ng';
-  private userService = inject(UserService);
+  private viewerService = inject(ViewerService);
   private sessionService = inject(SessionService);
   dataList: any;
   resIn = false;

@@ -68,14 +68,14 @@ export class AssessmentComponent implements OnInit {
       this.assessmentService.delete(this.paramId).subscribe(res => {
         
         if (this.assessment)
-          this.goBack(this.assessment.registry.id, this.assessment.user.id);
+          this.goBack(this.assessment.registry.id, this.assessment.viewer.id);
       })
   }
 
-  goBack(registryId: number | string, userId: number | string) {
-    if (this.assessmentService.path === 'user')
-      this.router.navigate(['user/' + userId]);
-    if (this.assessmentService.path !== 'user')
+  goBack(registryId: number | string, viewerId: number | string) {
+    if (this.assessmentService.path === 'viewer')
+      this.router.navigate(['viewer/' + viewerId]);
+    if (this.assessmentService.path !== 'viewer')
       this.router.navigate(['registry/' + registryId + '/assessments']);
   }
 

@@ -4,7 +4,7 @@ import { AssessmentService } from '../assessment.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { RegistryService } from '../../registries/registry.service';
-import { SessionService } from '../../login/session.service';
+import { SessionService } from '../../../common/frame/login/session.service';
 
 @Component({
   selector: 'app-assessment-list',

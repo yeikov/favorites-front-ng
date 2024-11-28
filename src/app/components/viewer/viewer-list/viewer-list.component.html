@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Viewers</h5>
+        <p class="card-text">Recently updated</p>
+
+        @defer (on viewport) {
+        <ul class="list-group">
+            @for(viewer of list; track viewer.id){
+            <li (click)="item(viewer.id)" class="list-group-item list-group-item-action fav-pointer">
+                <span> {{viewer.name}} </span>
+                <span class="fav-viewer-city">
+                    {{viewer.city}}
+                </span>
+            </li>
+            }
+        </ul>
+        } @placeholder {
+        <p>Viewer list</p>
+        } @loading {
+        <p>loading...</p>
+        }
+
+    </div>
+</div>

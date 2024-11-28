@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { RegistryService } from '../registry.service';
 import { Router } from '@angular/router';
-import { SessionService } from '../../login/session.service';
+import { SessionService } from '../../../common/frame/login/session.service';
 
 @Component({
   selector: 'app-registry-list',
