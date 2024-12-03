@@ -2,7 +2,7 @@ export interface Viewer {
     id: string | number,
     name?: string,
     eMail?: string,
-    birth?: Date,
+    birth?: Date | null,
     city?: string
 }
 

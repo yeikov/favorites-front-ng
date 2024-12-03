@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ModalConfirmComponent } from './modal-confirm.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 describe('ModalConfirmComponent', () => {
   let component: ModalConfirmComponent;
@@ -8,7 +10,8 @@ describe('ModalConfirmComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ModalConfirmComponent]
+      imports: [ ModalConfirmComponent ],
+      providers: [HttpClient, HttpHandler, NgbActiveModal]
     })
     .compileComponents();
 

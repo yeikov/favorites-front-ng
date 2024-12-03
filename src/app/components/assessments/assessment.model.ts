@@ -4,13 +4,13 @@ import { Viewer } from "../viewer/viewer.model"
 
 export interface Assessment {
     
-    id: string,
+    id: number | string,
     viewer: Viewer,
     registry: Registry
     favorite: number  | string,
     recommend: number | string,
     notes: string,
-    registeredAt: Date
+    registeredAt: Date | string
 
 }
 

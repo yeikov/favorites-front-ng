@@ -1,9 +1,9 @@
 export interface Registry {
     id: string | number,
     title: string,
-    media: 'film' | 'album' | 'book' | 'comic'
+    media: 'film' | 'album' | 'book' | 'comic' | 'serie'
     author: string,
-    productionDate: Date,
+    productionDate: Date | String,
     registrations?: string | number
 
 

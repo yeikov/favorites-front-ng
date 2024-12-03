@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from '../../../app.component';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,7 +11,10 @@ describe('HeaderComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent]
+      imports: [HeaderComponent],
+      providers:[HttpClient, HttpHandler,
+        provideRouter([{path: '**', component: AppComponent}]),
+      ]
     })
       .compileComponents();
   }));
