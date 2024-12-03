@@ -14,8 +14,6 @@ export class ViewerService {
 
   private entityUrl = Utilities.favoritesBack + '/viewers';
 
-
-
   
   one(id: string): Observable<any> {
     return this.http.get(this.entityUrl + '/' + id)
