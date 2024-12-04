@@ -1,6 +1,9 @@
 import {  ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ViewerComponent } from './viewer.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from '../../../app.component';
 
 describe('ViewerComponent', () => {
   let component: ViewerComponent;
@@ -8,7 +11,10 @@ describe('ViewerComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ViewerComponent ]
+      imports: [ ViewerComponent ],
+      providers: [HttpClient, HttpHandler,
+        provideRouter([{path: '**', component: AppComponent}]),
+      ],
     })
     .compileComponents();
   });

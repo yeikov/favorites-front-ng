@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RegistryComponent } from './registry.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from '../../../app.component';
 
 describe('RegistryComponent', () => {
   let component: RegistryComponent;
@@ -8,7 +11,10 @@ describe('RegistryComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [RegistryComponent]
+      imports: [RegistryComponent],
+      providers: [HttpClient, HttpHandler,
+        provideRouter([{path: '**', component: AppComponent}]),
+      ],
     })
       .compileComponents();
   }));

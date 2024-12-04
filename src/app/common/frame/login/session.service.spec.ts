@@ -1,16 +1,22 @@
 import { TestBed } from '@angular/core/testing';
 
 import { SessionService } from './session.service';
+import { HttpClient } from '@angular/common/http';
 
 describe('SessionService', () => {
   let service: SessionService;
+  let httpClientSpy: jasmine.SpyObj<HttpClient>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({});
-    service = TestBed.inject(SessionService);
+    httpClientSpy = jasmine.createSpyObj('HttpClient', ['get']);
+    service = new SessionService(httpClientSpy);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
-  });
+  it('should be not logged (false)', () => {
+    const logged =
+    service.viewerLogged();
+    expect(logged).toBe(false);
+    
+  }); 
+
 });

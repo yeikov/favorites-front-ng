@@ -1,6 +1,9 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AssessmentComponent } from './assessment.component';
+import { HttpClient, HttpHandler } from '@angular/common/http';
+import { provideRouter } from '@angular/router';
+import { AppComponent } from '../../../app.component';
 
 describe('AssessmentComponent', () => {
   let component: AssessmentComponent;
@@ -8,7 +11,10 @@ describe('AssessmentComponent', () => {
 
   beforeEach((() => {
     TestBed.configureTestingModule({
-      declarations: [ AssessmentComponent ]
+      imports: [ AssessmentComponent ],
+      providers: [HttpClient, HttpHandler,
+        provideRouter([{path: '**', component: AppComponent}]),
+      ],
     })
     .compileComponents();
   }));
