@@ -5,8 +5,6 @@ export interface Registry {
     author: string,
     productionDate: Date | String,
     registrations?: string | number
-
-
 }
 
 export class Registry implements Registry {

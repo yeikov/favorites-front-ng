@@ -42,11 +42,10 @@ describe('AssessmentService', () => {
     });
     httpClientSpy.get.and.returnValue(asyncError(errorResponse));
     service.one('9999').subscribe({
-      next: (response) => 
-        {
-          expect(response.status).toEqual(404);         
-          done()
-        }, 
+      next: (response) => {
+        expect(response.status).toEqual(404);
+        done()
+      },
       error: (error) => {
         expect(error.status).toContain('404');
         done();

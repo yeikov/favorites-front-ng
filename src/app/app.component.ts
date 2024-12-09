@@ -23,6 +23,6 @@ export class AppComponent {
   dataList: any;
   resIn = false;
   isEmpty = true;
-  criterio = 'recientes';
+  //criterio = 'recientes';
 
 }

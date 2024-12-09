@@ -13,10 +13,7 @@ describe('SessionService', () => {
   });
 
   it('should be not logged (false)', () => {
-    const logged =
-    service.viewerLogged();
-    expect(logged).toBe(false);
-    
+    expect(service.viewerLogged()).toBe(false);
   }); 
 
 });

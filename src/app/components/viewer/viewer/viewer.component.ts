@@ -10,6 +10,7 @@ import { Viewer } from '../viewer.model';
 import { AssessmentService } from '../../assessments/assessment.service';
 import { SessionService } from '../../../common/frame/login/session.service';
 import { ModalConfirmComponent } from '../../../common/modal-confirm/modal-confirm.component';
+import { AssessmentViewerListComponent } from '../../assessments/assessment-viewer-list/assessment-viewer-list.component';
 
 const MODALS: { [name: string]: Type<any> } = {
   confirmDelete: ModalConfirmComponent
@@ -18,7 +19,7 @@ const MODALS: { [name: string]: Type<any> } = {
 @Component({
   selector: 'app-viewer',
   standalone: true,
-  imports: [UiModule, JsonPipe],
+  imports: [UiModule, JsonPipe, AssessmentViewerListComponent],
   templateUrl: './viewer.component.html',
   styleUrls: ['./viewer.component.css']
 })

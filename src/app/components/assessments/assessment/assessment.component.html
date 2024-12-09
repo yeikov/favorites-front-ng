@@ -24,7 +24,8 @@
             </p>
             <p>
               <span class="fav-author">{{assessment.registry.author}}</span>
-              <span class="fav-value-date">{{assessment.registry.productionDate | date: "dd-MM-yyyy"}} </span>
+              <span class="fav-value-date">{{assessment.registry.productionDate.toLocaleString()| date: "dd-MM-yyyy"}}
+              </span>
             </p>
           </div>
         </div>
@@ -44,7 +45,8 @@
         <textarea [contentEditable]="false" name="notes" id="notes" class="notes" cols="100"
           rows="10">{{assessment.notes}}</textarea>
         <div class="fav-actions">
-          <button type="button" class="btn btn-secondary" (click)="goBack(assessment.registry.id, assessment.viewer.id)">
+          <button type="button" class="btn btn-secondary"
+            (click)="goBack(assessment.registry.id, assessment.viewer.id)">
             back
           </button>
           <button type="button" class="btn btn-primary" (click)="editAssessment(assessment.id)">
