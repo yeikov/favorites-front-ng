@@ -8,6 +8,7 @@ import { AppComponent } from '../../../app.component';
 describe('AssessmentEditCreateComponent', () => {
   let component: AssessmentEditCreateComponent;
   let fixture: ComponentFixture<AssessmentEditCreateComponent>;
+  let h5: HTMLElement;
 
   beforeEach((() => {
     TestBed.configureTestingModule({
@@ -22,10 +23,22 @@ describe('AssessmentEditCreateComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(AssessmentEditCreateComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    h5 = fixture.nativeElement.querySelector('h5');
+    
   });
+
+  it('no title in the DOM after createComponent()', () => {
+    expect(h5.textContent).toEqual('');
+  });
+
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should display original title after detectChanges()', () => {
+    fixture.detectChanges();
+    expect(h5.textContent).toContain(component.title()); 
+  });
+
 });

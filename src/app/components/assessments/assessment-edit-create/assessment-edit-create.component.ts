@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AssessmentService } from '../assessment.service';
 import { UiModule } from '../../../ui/ui.module';
@@ -25,6 +25,8 @@ export class AssessmentEditCreateComponent implements OnInit {
     private registryService: RegistryService,
     private sessionService: SessionService
   ) { }
+
+  title = signal('Edit assessment'); 
 
   dataIn = false;
 
@@ -60,15 +62,16 @@ export class AssessmentEditCreateComponent implements OnInit {
         this.componentModeIsEdit = false;
         this.paramId = params['registryId'];
         this.datosRegistry(this.paramId);
+        this.title = signal('New Assessment'); 
 
       }
 
       if (params['assessmentId']) {
         this.paramId = params['assessmentId'];
         this.datosAssessment(this.paramId);
-
       }
     })
+
   }
 
   datosRegistry(paramId: number | string) {

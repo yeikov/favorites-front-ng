@@ -1,54 +1,53 @@
+<div class=row>
+    @if(resIn){
 
-    <div class=row>
-        @if(resIn){
+    <div class='fav-margin-top'>
+        <div class="card">
+            <div class="card-body">
 
-        <div class='fav-margin-top'>
-            <div class="card">
-                <div class="card-body">
-
-                    <p>
-                        <span class="fav-label">Name:</span>
+                <p>
+                    <span class="fav-label">Name:</span>
                     <span class="fav-value">{{viewer.name}}</span>
-                    </p>
-                    <p>
-                        
+                </p>
+                <p>
+
                     <span class="fav-label">City:</span>
                     <span class="fav-value">{{viewer.city}}</span>
-                    
-                    </p>
-                    <p>
 
-                        <span class="fav-label">Born:</span>
-                        <span class="fav-value">({{viewer.birth==null ?'...':viewer.birth}})</span>
-                    </p>
+                </p>
+                <p>
+
+                    <span class="fav-label">Born:</span>
+                    <span class="fav-value">({{viewer.birth==null ?'...':viewer.birth}})</span>
+                </p>
 
 
-                    <a (click)="isSettingsCollapsed = !isSettingsCollapsed" [attr.aria-expanded]="!isSettingsCollapsed"
-                        aria-controls="collapseSettings"> Viewer settings </a>
+                <a (click)="isSettingsCollapsed = !isSettingsCollapsed" [attr.aria-expanded]="!isSettingsCollapsed"
+                    aria-controls="collapseSettings"> Viewer settings </a>
 
-                    <div id="collapseSettings" [ngbCollapse]="isSettingsCollapsed">
-                        <div class="card fav-margin-top">
-                            <div class="card-body">
-                                <code><pre>{{viewer | json}}</pre></code>
-                            </div>
+                <div id="collapseSettings" [ngbCollapse]="isSettingsCollapsed">
+                    <div class="card fav-margin-top">
+                        <div class="card-body">
+                            <code><pre>{{viewer | json}}</pre></code>
                         </div>
-                        
-                        <div class="fav-actions fav-margin-top">
-                            <button class="btn btn-danger" (click)="deleteViewerAsk()">Delete viewer</button>
-                        </div>
+                    </div>
+
+                    <div class="fav-actions fav-margin-top">
+                        <button class="btn btn-danger" (click)="deleteViewerAsk()">Delete viewer</button>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
 
-        <div class='fav-margin-top'>
-            <div class=row>
-                <div class="col-10 offset-1 col-lg-8 offset-lg-2">
-                    <app-assessment-viewer-list [viewerId]='viewer.id.toString()' />
-                </div>
+    <div class='fav-margin-top'>
+        <div class=row>
+            <div class="col-10 offset-1 col-lg-8 offset-lg-2">
+                <app-assessment-viewer-list [viewerId]='viewer.id.toString()' />
             </div>
         </div>
-
-        }
     </div>
+
+    }
+</div>

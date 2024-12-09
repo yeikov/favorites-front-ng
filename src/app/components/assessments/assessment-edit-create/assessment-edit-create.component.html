@@ -2,7 +2,7 @@
     <div class="col-10 offset-1 col-lg-6 offset-lg-3">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Edit assessment</h5>
+                <h5 class="card-title">{{title()}}</h5>
                 @defer(on viewport){
                 @if(dataIn){
                 <div class="fav-margin-bottom">
@@ -15,7 +15,8 @@
                         </p>
                         <p>
                             <span class="fav-author">{{assessment.registry.author}}</span>
-                            <span class="fav-value-date">{{assessment.registry.productionDate | date: "yyyy"}}
+                            <span class="fav-value-date">{{assessment.registry.productionDate.toLocaleString()| date:
+                                "yyyy"}}
                             </span>
                         </p>
                     </div>
@@ -32,8 +33,8 @@
                     <div class="fav-input">
                         <label class="fav-label">Recommend:</label>
                         {{assessmentForm.controls.recommend.value}}
-                            <input type="range" min="0" max="9" class="form-range" formControlName="recommend"
-                                [value]="assessment.recommend" />
+                        <input type="range" min="0" max="9" class="form-range" formControlName="recommend"
+                            [value]="assessment.recommend" />
                     </div>
 
                     <p><span class="fav-label">Last modified:</span>

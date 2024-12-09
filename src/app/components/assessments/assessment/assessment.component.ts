@@ -66,7 +66,7 @@ export class AssessmentComponent implements OnInit {
   deleteAssessment(result: boolean) {
     if (result)
       this.assessmentService.delete(this.paramId).subscribe(res => {
-        
+
         if (this.assessment)
           this.goBack(this.assessment.registry.id, this.assessment.viewer.id);
       })
