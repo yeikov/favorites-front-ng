@@ -4,11 +4,12 @@ import { RegistryService } from '../registry.service';
 import { RegistryListComponent } from '../registry-list/registry-list.component';
 import { Registry } from '../registry.model';
 import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-registry-explorer',
   standalone: true,
-  imports: [RegistryListComponent, RouterLink, FormsModule],
+  imports: [RegistryListComponent, RouterLink, FormsModule, DatePipe],
   templateUrl: './registry-explorer.component.html',
   styleUrl: './registry-explorer.component.css'
 })

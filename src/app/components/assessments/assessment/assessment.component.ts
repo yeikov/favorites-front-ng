@@ -31,7 +31,7 @@ export class AssessmentComponent implements OnInit {
     private modalService: NgbModal
   ) { }
 
-  assessment: Assessment | undefined;
+  assessment = new Assessment();
 
   paramId: number = 0;
 
