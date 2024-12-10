@@ -30,12 +30,9 @@ export class HeaderComponent implements OnInit {
   }
 
   logOut() {
-    this.http.post('logout', {}).subscribe(() => {
-      this.sessionService.viewer.set(new Viewer());
-      this.goto('home');
-    });
+    this.sessionService.viewer.set(new Viewer());
+    this.goto('home');
 
   }
-
 
 }

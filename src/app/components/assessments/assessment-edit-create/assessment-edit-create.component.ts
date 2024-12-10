@@ -26,7 +26,7 @@ export class AssessmentEditCreateComponent implements OnInit {
     private sessionService: SessionService
   ) { }
 
-  title = signal('Edit assessment'); 
+  title = signal('Edit Assessment'); 
 
   dataIn = false;
 

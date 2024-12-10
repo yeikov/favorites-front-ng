@@ -29,7 +29,7 @@ export class RegistryService {
   }
 
   find(title: string): Observable<any>{
-    return this.http.post(this.entityUrl + "/find", title);
+    return this.http.post(this.entityUrl + "/find?page=0&size=30&sort=productionDate,asc", title);
   }
 
   add(title: string, media: string, author: string, year: string): Observable<any> {

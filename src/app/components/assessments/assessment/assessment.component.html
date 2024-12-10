@@ -4,6 +4,7 @@
   <div class="col-12">
     <div class="card">
       <div class="card-body">
+        @if(assessment.viewer){
         <div class="fav-margin-bottom" (click)="item('viewer', assessment.viewer.id)">
           <p>
             <span class="fav-viewer-info-name">{{assessment.viewer.name}}</span>
@@ -13,7 +14,8 @@
             <span class="fav-viewer-info"> - {{assessment.viewer.city}}</span>
           </p>
         </div>
-
+        }
+        @if(assessment.registry){
         <div (click)="item('registry', assessment.registry.id)">
           <p>
             <span class="fav-label fav-media">{{assessment.registry.media}}</span>
@@ -24,11 +26,12 @@
             </p>
             <p>
               <span class="fav-author">{{assessment.registry.author}}</span>
-              <span class="fav-value-date">{{assessment.registry.productionDate.toLocaleString()| date: "dd-MM-yyyy"}}
+              <span class="fav-value-date">{{assessment.registry.productionDate.toLocaleString() | date: "dd-MM-yyyy"}}
               </span>
             </p>
           </div>
         </div>
+        }
 
         <p><span class="fav-label">Favorite:</span>
           <span class="fav-value">{{assessment.favorite | score}}</span>
@@ -78,6 +81,6 @@
   }
 
   }@placeholder {
-  <div>assessment detail</div>
+  <div>Assessment detail</div>
   }
 </div>

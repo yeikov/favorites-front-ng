@@ -31,9 +31,9 @@ describe('AssessmentComponent', () => {
     expect(component).toBeDefined();
   });
 
-  it('should contain "assessment detail"', () => {
+  it('should contain "Assessment detail"', () => {
     const placeHolderElement: HTMLElement = fixture.nativeElement;
-    expect(placeHolderElement.textContent).toContain('assessment detail');
+    expect(placeHolderElement.textContent).toContain('Assessment detail');
   });
 
   it('should have <div> with class ".fav-viewer-info-name"', () => {
@@ -46,13 +46,14 @@ describe('AssessmentComponent', () => {
     const bannerDe: DebugElement = fixture.debugElement;
     const bannerEl: HTMLElement = bannerDe.nativeElement;
     const div = bannerEl.querySelector('div')!;
-    expect(div.textContent).toEqual('assessment detail');
+    expect(div.textContent).toEqual('Assessment detail');
   });
 
   it('should find the <p> with fixture.debugElement.query(By.css)', () => {
     const bannerDe: DebugElement = fixture.debugElement;
     const paragraphDe = bannerDe.query(By.css('div'));
     const placeholderElement: HTMLElement = paragraphDe.nativeElement;
-    expect(placeholderElement.textContent).toEqual('assessment detail');
+    expect(placeholderElement.textContent).toEqual('Assessment detail');
   });
+    
 });

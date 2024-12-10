@@ -34,7 +34,7 @@
                 </div>
                 <ul class="list-group fav-margin-top">
                     @for (registry of searchResult; track registry.id){
-                        <li class="list-group-item fav-pointer" [routerLink]="['/registry/'+registry.id]">{{registry.title}}</li>
+                        <li class="list-group-item fav-pointer" [routerLink]="['/registry/'+registry.id]"><em>{{registry.media.toUpperCase()}}</em> - {{registry.title}} - {{registry.productionDate.toLocaleString()| date: 'yyyy'}}</li>
                     }
                     @if(searchResult.length<1) { 
                         <li class="list-group-item"> ... </li>
