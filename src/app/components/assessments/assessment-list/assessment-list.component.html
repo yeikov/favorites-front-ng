@@ -45,6 +45,7 @@
                         </li>
                         }
                     </ul>
+                    <ngb-pagination [collectionSize]="totalElements" [(page)]="number" aria-label="Default pagination" (pageChange)="changePage($event)"/>
                 </div>
             </div>
             }
