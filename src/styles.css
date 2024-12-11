@@ -88,3 +88,7 @@ h1 {
 .fav-year-input{
     width: 4em;
 }
+
+ngb-pagination {
+    align-self: center;
+}
