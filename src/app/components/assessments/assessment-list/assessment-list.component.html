@@ -24,14 +24,12 @@
                         {{registry? registry['productionDate']: ''}}
                     </span>
                 </p>
-
             </div>
 
             <div class="card-body">
                 <div class="card">
                     <ul>
                         @for(assessment of list; track assessment.id){
-
                         <li (click)="item(assessment)" class="fav-pointer">
                             <p class="notes">
                                 {{assessment.viewer.name}} - {{assessment.viewer.city}}
@@ -41,11 +39,11 @@
                                 <span class="fav-label">Recommend:</span>
                             </p>
                             <p class="fav-text-align-right">{{assessment.notes}}</p>
-
                         </li>
                         }
                     </ul>
-                    <ngb-pagination [collectionSize]="totalElements" [(page)]="number" aria-label="Default pagination" (pageChange)="changePage($event)"/>
+                    <ngb-pagination [collectionSize]="totalElements" [(page)]="number" aria-label="Default pagination"
+                        (pageChange)="changePage($event)" />
                 </div>
             </div>
             }

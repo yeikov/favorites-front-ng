@@ -33,7 +33,7 @@ export class AssessmentViewerListComponent implements OnInit {
 
   ngOnInit(): void {
     this.assessmentService.viewer(this.viewerId).subscribe(res => {
-      this.list = res;
+      this.list = res.content;
       this.resIn = true;
 
     });
@@ -47,7 +47,6 @@ export class AssessmentViewerListComponent implements OnInit {
       this.assessmentService.path = 'viewer';
       this.router.navigate(['assessment/' + assessment.id]);
     }
-
   }
 
   doAdd(){

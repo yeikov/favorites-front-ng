@@ -1,6 +1,7 @@
 import { Component, Input, Pipe } from '@angular/core';
 import { AssessmentService } from '../assessment.service';
 import { DecimalPipe, NgLocaleLocalization, NumberSymbol } from '@angular/common';
+import { Registry } from '../../registries/registry.model';
 
 
 @Component({
@@ -12,7 +13,13 @@ import { DecimalPipe, NgLocaleLocalization, NumberSymbol } from '@angular/common
 })
 export class AssessmentStatisticalSummaryComponent {
   @Input()
-  registryId = '';
+  mentions = 0;
+  
+  @Input()
+  favoriteSum = 0.0;
+
+  @Input()
+  recommendSum = 0.0;
 
   constructor(private assessmentService: AssessmentService) {
   }
@@ -20,30 +27,7 @@ export class AssessmentStatisticalSummaryComponent {
   resIn: boolean = false;
   list: { favorite: number, recommend: number }[] = [];
 
-  mentions = 0;
-  favoriteSum = 0;
-  recommendSum = 0;
-
   ngOnInit(): void {
-    this.assessmentService.registry(this.registryId).subscribe(res => {
-      this.list = res;
-      this.resIn = true;
-      this.showStadistics();
-
-    })
-  }
-
-  showStadistics() {
-    this.mentions = this.list.length;
-    let fav = 0;
-    let rec = 0;
-    this.list.forEach(elem => {
-      fav += elem.favorite;
-      rec += elem.recommend
-    });
-
-    this.favoriteSum += fav / this.mentions;
-    this.recommendSum += rec / this.mentions;
 
   }
 
