@@ -55,7 +55,7 @@ export class RegistryComponent implements OnInit {
 
   goToItemAssessments(id: string) {
     this.assessmentService.path = 'assessments';
-    this.router.navigate([`registry/${id}/assessments`])
+    this.router.navigate([`registry/${id}/assessments`]);
   }
 
   goBack() {
@@ -67,6 +67,10 @@ export class RegistryComponent implements OnInit {
     this.registryService.delete(id).subscribe(res =>{
       this.router.navigate(['home'])
     })
+  }
+
+  gotoNewAssessment(id: string) {
+    this.router.navigate([`assessment/add/${id}`]);
   }
 
 }
