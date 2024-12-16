@@ -15,7 +15,7 @@ describe('RegistryService', () => {
 
   it('should return expected registries (HttpClient called once)', (done: DoneFn) => {
     const expectedRegistries: Registry[] = [
-      { "id": 1, "title": "The Hobbit", "productionDate": "1937-01-01", "media": "book", "author": "J. R. R. Tolkien", "registrations": 35 }
+      { "id": 1, "title": "The Hobbit", "productionDate": "1937-01-01", "media": "book", "author": "J. R. R. Tolkien", "registrations": 1, "mentions": 0, "favoriteSum": 0, "recommendSum": 0 }
     ];
     httpClientSpy.get.and.returnValue(asyncData(expectedRegistries));
 
