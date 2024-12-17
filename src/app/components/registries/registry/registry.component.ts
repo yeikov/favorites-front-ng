@@ -24,6 +24,7 @@ export class RegistryComponent implements OnInit {
   assessments = null;
   assessmentsIn = false;
   isCollapsed = true;
+  isLoaded = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -35,10 +36,11 @@ export class RegistryComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isLoaded = this.sessionService.viewerLogged();
+
     this.activatedRoute.params.subscribe(params => {
       if (params['id'])
         this.paramId = params['id'];
-
       this.datosRegistry();
     })
   }

@@ -40,9 +40,11 @@
                         back
                     </button>
 
-                    <button type="button" class="btn btn-primary" (click)="gotoNewAssessment(paramId)">
-                        Add Assessment
-                    </button>
+                    @if (isLoaded) {
+                        <button type="button" class="btn btn-primary" (click)="gotoNewAssessment(paramId)">
+                            Add Assessment
+                        </button>
+                    }
 
                     @if(registry.registrations){
 
