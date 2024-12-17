@@ -9,6 +9,7 @@ import { ScorePipe } from '../../../common/pipes/score.pipe';
 import { Assessment } from '../assessment.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfirmComponent } from '../../../common/modal-confirm/modal-confirm.component';
+import { SessionService } from '../../../common/frame/login/session.service';
 
 const MODALS: { [name: string]: Type<any> } = {
   confirmDelete: ModalConfirmComponent
@@ -24,11 +25,14 @@ const MODALS: { [name: string]: Type<any> } = {
 export class AssessmentComponent implements OnInit {
 
   public isCollapsed = true;
+  isLoaded = false;
+  isOwner = false;
 
   constructor(private assessmentService: AssessmentService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private sessionService: SessionService
   ) { }
 
   assessment = new Assessment();
@@ -36,6 +40,7 @@ export class AssessmentComponent implements OnInit {
   paramId: number = 0;
 
   ngOnInit(): void {
+    this.isLoaded = this.sessionService.viewerLogged();
     this.activatedRoute.params.subscribe(params => {
       this.paramId = params['assessmentId'];
       this.datosAssessment();
@@ -44,8 +49,14 @@ export class AssessmentComponent implements OnInit {
 
   datosAssessment() {
     this.assessmentService.one(this.paramId).subscribe(res => {
-      this.assessment = res
-    })
+      this.assessment = res;
+      this.checkOwner();
+    });
+  }
+  checkOwner(){
+    if (this.assessment.viewer.id === this.sessionService.viewer().id){
+      this.isOwner = true;
+    }
   }
 
   item(entity: string, id: string | number) {

@@ -52,12 +52,14 @@
             (click)="goBack(assessment.registry.id, assessment.viewer.id)">
             back
           </button>
-          <button type="button" class="btn btn-primary" (click)="editAssessment(assessment.id)">
-            Edit
-          </button>
-          <button type="button" class="btn btn-danger" (click)="deleteAssessmentAsk(assessment.id)">
-            Delete
-          </button>
+          @if(isLoaded && isOwner){
+            <button type="button" class="btn btn-primary" (click)="editAssessment(assessment.id)">
+              Edit
+            </button>
+            <button type="button" class="btn btn-danger" (click)="deleteAssessmentAsk(assessment.id)">
+              Delete
+            </button>
+          }
 
         </div>
         <p>
